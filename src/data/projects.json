@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "img": "../../assets/images/im1.jpg",
+    "title": "Project One",
+    "description": "Description for project one. lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "link": "http://example.com/project-one"
+  },
+  {
+    "id": 2,
+    "img": "../../assets/images/im2.jpg",
+    "title": "Project Two",
+    "description": "Description for project two.",
+    "link": "http://example.com/project-two"
+  },
+  {
+    "id": 3,
+    "img": "../../assets/images/im3.jpg",
+    "title": "Project Three",
+    "description": "Description for project three.",
+    "link": "http://example.com/project-three"
+  },
+  {
+    "id": 4,
+    "img": "../../assets/images/im4.jpg",
+    "title": "Project Four",
+    "description": "Description for project four.",
+    "link": "http://example.com/project-four"
+  }
+]

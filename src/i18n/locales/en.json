@@ -1,0 +1,37 @@
+{
+  "header": {
+    "nav": {
+      "home": "Home",
+      "about": "About Me",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "language": {
+      "en": "English",
+      "fr": "French"
+    }
+  },
+  "home": {
+    "title": "Hi, I'm John Doe",
+    "subtitle": "A passionate Full-Stack Developer",
+    "description": "I build modern and scalable web applications."
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a developer who loves clean code and creative solutions."
+  },
+  "projects": {
+    "title": "My Projects",
+    "description": "Here are some of the applications I've built recently."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message"
+  },
+  "footer": {
+    "text": "© 2025 John Doe. All rights reserved."
+  }
+}

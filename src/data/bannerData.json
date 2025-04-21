@@ -1,0 +1,22 @@
+[
+  {
+    "img": "../../assets/images/im1.jpg",
+    "title": "frontend",
+    "desc": "JavaScript"
+  },
+  {
+    "img": "../../assets/images/im2.jpg",
+    "title": "dynamic frontend",
+    "desc": "React"
+  },
+  {
+    "img": "../../assets/images/im3.jpg",
+    "title": "styling",
+    "desc": "CSS"
+  },
+  {
+    "img": "../../assets/images/im4.jpg",
+    "title": "backend",
+    "desc": "Spring Boot"
+  }
+]

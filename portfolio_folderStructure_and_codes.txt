@@ -1,0 +1,1410 @@
+// portfolio-frontend/.lintstagedrc.js
+module.exports = {
+  "**/*.{js,jsx}": ["eslint --fix", "prettier --write"],
+};
+
+
+
+
+// portfolio-frontend/.prettierrc.json
+{
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": true
+}
+
+
+
+
+// portfolio-frontend/eslint.config.js
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+
+export default [
+  { ignores: ['dist'] },
+  {
+    files: ['**/*.{js,jsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+    },
+  },
+]
+
+
+
+
+// portfolio-frontend/index.html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+
+
+
+// portfolio-frontend/package.json
+{
+  "name": "portfolio-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.8.4",
+    "bootstrap": "^5.3.5",
+    "react": "^19.0.0",
+    "react-bootstrap": "^2.10.9",
+    "react-dom": "^19.0.0",
+    "react-i18next": "15.4.1",
+    "react-router-dom": "^7.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.22.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "sass-embedded": "1.86.3",
+    "vite": "^6.3.0"
+  }
+}
+
+
+
+
+// portfolio-frontend/postcss.config.js
+export const plugins = {
+  autoprefixer: {},
+};
+
+
+
+
+// portfolio-frontend/stylelint.config.js
+module.exports = {
+  extends: 'stylelint-config-standard',
+  rules: {
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: [
+          'tailwind',
+          'apply',
+          'variants',
+          'responsive',
+          'screen',
+        ],
+      },
+    ],
+  },
+};
+
+
+
+
+// portfolio-frontend/vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+
+export default defineConfig({
+  plugins: [react()],
+
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
+
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/variables.scss";`,
+      },
+    },
+  },
+
+  server: {
+    port: 3000,
+    strictPort: true,
+    fs: {
+      allow: ['..'],
+    },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        secure: false,
+        ws: true,
+        // rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
+  },
+
+  preview: {
+    port: 4173,
+    strictPort: true,
+  },
+
+  build: {
+    outDir: '../portfolio-backend/src/main/resources/static',
+    emptyOutDir: true,
+  },
+
+  optimizeDeps: {
+    include: ['@mui/material', '@emotion/react', '@emotion/styled'],
+  },
+
+  define: {
+    'process.env': {},
+  },
+
+  base: '/',
+  assetsInclude: ['**/*.svg'],
+  publicDir: 'public',
+});
+
+
+
+
+// portfolio-frontend/vitest.config.js
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: 'tests/setup.js',
+  },
+});
+
+
+
+
+// portfolio-frontend/src/App.css
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+
+
+// portfolio-frontend/src/App.jsx
+// src/App.jsx
+import React from 'react';
+import AppRoutes from './routes';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { SettingsProvider } from './contexts/SettingsContext';
+import './styles/global.scss';
+
+const App = () => (
+  <ThemeProvider>
+    <SettingsProvider>
+      <AppRoutes />
+    </SettingsProvider>
+  </ThemeProvider>
+);
+
+export default App;
+
+
+
+
+// portfolio-frontend/src/index.css
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+
+
+
+// portfolio-frontend/src/main.jsx
+// src/main.jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './i18n';  // Initialize i18n
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+
+
+
+// portfolio-frontend/src/api/apiClient.js
+// src/api/apiClient.js
+import axios from 'axios';
+
+const apiClient = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:8080/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+export default apiClient;
+
+
+
+
+// portfolio-frontend/src/api/contactApi.js
+// src/api/contactApi.js
+import apiClient from './apiClient';
+
+export const sendContactMessage = async (data) => {
+  const response = await apiClient.post('/contact', data);
+  return response.data;
+};
+
+
+
+
+// portfolio-frontend/src/api/index.js
+// src/api/index.js
+export * from './projectApi';
+export * from './contactApi';
+
+
+
+
+// portfolio-frontend/src/api/projectApi.js
+// src/api/projectApi.js
+import apiClient from './apiClient';
+
+export const getProjects = async () => {
+  const response = await apiClient.get('/projects');
+  return response.data;
+};
+
+
+
+
+// portfolio-frontend/src/components/common/Button.jsx
+// src/components/common/Button.jsx
+import React from 'react';
+import { Button as BootstrapButton } from 'react-bootstrap';
+
+const Button = ({ children, ...props }) => {
+  return <BootstrapButton {...props}>{children}</BootstrapButton>;
+};
+
+export default Button;
+
+
+
+
+// portfolio-frontend/src/components/forms/ValidatedInput.jsx
+// src/components/forms/ValidatedInput.jsx
+import React from 'react';
+
+const ValidatedInput = ({ label, error, ...props }) => (
+  <div>
+    <label>{label}</label>
+    <input {...props} className={`form-control ${error ? 'is-invalid' : ''}`} />
+    {error && <div className="invalid-feedback">{error}</div>}
+  </div>
+);
+
+export default ValidatedInput;
+
+
+
+
+// portfolio-frontend/src/components/layout/Footer.jsx
+// src/components/layout/Footer.jsx
+import React from 'react';
+
+const Footer = () => (
+  <footer className="bg-dark text-white text-center py-3">
+    <p>&copy; {new Date().getFullYear()} Your Name. All rights reserved.</p>
+  </footer>
+);
+
+export default Footer;
+
+
+
+
+// portfolio-frontend/src/components/layout/Navbar.jsx
+// src/components/layout/Navbar.jsx
+import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
+import '../../styles/global.scss';
+
+const Navigation = () => {
+  return (
+    <header className="custom-header">
+      <Navbar className="px-3 nav2" bg="dark" variant="dark" expand="md" collapseOnSelect>
+        <Container fluid className="d-flex justify-content-between align-items-center">
+          <Navbar.Brand as={Link} to="/" className="logo d-flex align-items-center gap-2">
+            <div className="logo-img" />
+            <span className="company-name">My Portfolio</span>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" className="menu-toggle d-md-none">
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </Navbar.Toggle>
+          <Navbar.Collapse id="responsive-navbar-nav" className="user-info d-flex align-items-center gap-2">
+            <Nav className="nav-links d-flex list-unstyled mb-0 me-auto">
+              <Nav.Item>
+                <Nav.Link as={Link} to="/">Home</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link as={Link} to="/about">About</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link as={Link} to="/projects">Projects</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+              </Nav.Item>
+            </Nav>
+            <Form className="d-flex" role="search">
+              <FormControl
+                type="search"
+                placeholder="Search"
+                className="custom-search-input me-2"
+                aria-label="Search"
+              />
+              <Button variant="outline-success" className="custom-search-button" type="submit">
+                Search
+              </Button>
+            </Form>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </header>
+  );
+};
+
+export default Navigation;
+
+
+
+
+// portfolio-frontend/src/components/specific/ProjectCard.jsx
+// src/components/specific/ProjectCard.jsx
+import React from 'react';
+import { Card, Button } from 'react-bootstrap';
+
+const ProjectCard = ({ title, description, link }) => (
+  <Card className="mb-4">
+    <Card.Body>
+      <Card.Title>{title}</Card.Title>
+      <Card.Text>{description}</Card.Text>
+      <Button variant="primary" href={link} target="_blank">Learn More</Button>
+    </Card.Body>
+  </Card>
+);
+
+export default ProjectCard;
+
+
+
+
+// portfolio-frontend/src/config/constants.js
+// src/config/constants.js
+export const ROUTES = {
+  HOME: '/',
+  ABOUT: '/about',
+  CONTACT: '/contact',
+  PROJECTS: '/projects',
+};
+
+
+
+
+// portfolio-frontend/src/config/index.js
+// src/config/index.js
+export * from './constants';
+export * from './siteConfig';
+
+
+
+
+// portfolio-frontend/src/config/siteConfig.js
+// src/config/siteConfig.js
+export const SITE_CONFIG = {
+  title: 'My Portfolio',
+  description: 'A showcase of my projects and skills',
+  author: 'Your Name',
+};
+
+
+
+
+// portfolio-frontend/src/contexts/index.js
+// src/contexts/index.js
+export * from './ThemeContext';
+export * from './SettingsContext';
+
+
+
+
+// portfolio-frontend/src/contexts/SettingsContext.jsx
+// src/contexts/SettingsContext.jsx
+import React, { createContext, useState } from 'react';
+
+export const SettingsContext = createContext();
+
+export const SettingsProvider = ({ children }) => {
+  const [settings, setSettings] = useState({
+    language: 'en'
+  });
+
+  return (
+    <SettingsContext.Provider value={{ settings, setSettings }}>
+      {children}
+    </SettingsContext.Provider>
+  );
+};
+
+
+
+
+// portfolio-frontend/src/contexts/ThemeContext.jsx
+// src/contexts/ThemeContext.jsx
+import React, { createContext, useState } from 'react';
+
+export const ThemeContext = createContext();
+
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () =>
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+
+
+
+// portfolio-frontend/src/data/projects.json
+[
+  {
+    "id": 1,
+    "title": "Project One",
+    "description": "Description for project one.",
+    "link": "http://example.com/project-one"
+  },
+  {
+    "id": 2,
+    "title": "Project Two",
+    "description": "Description for project two.",
+    "link": "http://example.com/project-two"
+  }
+]
+
+
+
+
+// portfolio-frontend/src/data/skills.js
+// src/data/skills.js
+export const skills = ['JavaScript', 'React', 'CSS', 'Node.js', 'Spring Boot'];
+
+
+
+
+// portfolio-frontend/src/hooks/index.js
+export { default as useAnalytics } from './useAnalytics';
+export { default as useFetch } from './useFetch';
+export { default as useLocalStorage } from './useLocalStorage';
+
+
+
+
+// portfolio-frontend/src/hooks/useAnalytics.js
+// src/hooks/useAnalytics.js
+import { useEffect } from 'react';
+
+const useAnalytics = (page) => {
+  useEffect(() => {
+    console.log(`Page view: ${page}`);
+    // Send analytics event here
+  }, [page]);
+};
+
+export default useAnalytics;
+
+
+
+
+// portfolio-frontend/src/hooks/useFetch.js
+// src/hooks/useFetch.js
+import { useState, useEffect } from 'react';
+
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((json) => {
+        setData(json);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+        setLoading(false);
+      });
+  }, [url]);
+
+  return { data, loading, error };
+};
+
+export default useFetch;
+
+
+
+
+// portfolio-frontend/src/hooks/useLocalStorage.js
+// src/hooks/useLocalStorage.js
+import { useState } from 'react';
+
+function useLocalStorage(key, initialValue) {
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
+
+  const setValue = (value) => {
+    try {
+      setStoredValue(value);
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return [storedValue, setValue];
+}
+
+export default useLocalStorage;
+
+
+
+
+// portfolio-frontend/src/i18n/config.js
+// src/i18n/config.js
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import translationEN from './locales/en.json';
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: {
+      translation: translationEN,
+    },
+  },
+  lng: 'en',
+  fallbackLng: 'en',
+  interpolation: {
+    escapeValue: false,
+  },
+});
+
+export default i18n;
+
+
+
+
+// portfolio-frontend/src/i18n/index.js
+// src/i18n/index.js
+import './config';
+
+
+
+
+// portfolio-frontend/src/i18n/locales/en.json
+{
+  "header": {
+    "nav": {
+      "home": "Home",
+      "about": "About Me",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "language": {
+      "en": "English",
+      "fr": "French"
+    }
+  },
+  "home": {
+    "title": "Hi, I'm John Doe",
+    "subtitle": "A passionate Full-Stack Developer",
+    "description": "I build modern and scalable web applications."
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a developer who loves clean code and creative solutions."
+  },
+  "projects": {
+    "title": "My Projects",
+    "description": "Here are some of the applications I've built recently."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message"
+  },
+  "footer": {
+    "text": "© 2025 John Doe. All rights reserved."
+  }
+}
+
+
+
+
+// portfolio-frontend/src/layouts/index.js
+export { default as MainLayout } from './MainLayout';
+
+
+
+
+// portfolio-frontend/src/layouts/MainLayout.jsx
+// src/layouts/MainLayout.jsx
+import React from 'react';
+import Navigation from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+
+const MainLayout = ({ children }) => (
+  <>
+    <Navigation />
+    <main className="container my-4">{children}</main>
+    <Footer />
+  </>
+);
+
+export default MainLayout;
+
+
+
+
+// portfolio-frontend/src/lib/formatDate.js
+// src/lib/formatDate.js
+export const formatDate = (date) => {
+  const d = new Date(date);
+  return d.toLocaleDateString();
+};
+
+
+
+
+// portfolio-frontend/src/lib/index.js
+export * from './formatDate';
+export * from './validation';
+
+
+
+
+// portfolio-frontend/src/lib/validation.js
+// src/lib/validation.js
+export const isEmailValid = (email) => /\S+@\S+\.\S+/.test(email);
+export const isPhoneValid = (phone) => /^\+?[1-9]\d{1,14}$/.test(phone);
+
+
+
+
+// portfolio-frontend/src/mocks/browser.js
+import { setupWorker } from 'msw';
+import { handlers } from './handlers';
+
+export const worker = setupWorker(...handlers);
+
+
+
+
+// portfolio-frontend/src/mocks/handlers.js
+import { rest } from 'msw';
+
+export const handlers = [
+  rest.get('/api/projects', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json([
+        { id: 1, title: 'Mock Project', description: 'A mocked project.' },
+      ])
+    );
+  }),
+];
+
+
+
+
+// portfolio-frontend/src/mocks/server.js
+import { setupServer } from 'msw/node';
+import { handlers } from './handlers';
+
+export const server = setupServer(...handlers);
+
+
+
+
+// portfolio-frontend/src/pages/AboutPage.jsx
+// src/pages/AboutPage.jsx
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import Navigation from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+
+const AboutPage = () => (
+  <Container>
+    <Navigation />
+    <h1>About Me</h1>
+    <p>Brief introduction, skills, background etc.</p>
+    <Footer />
+  </Container>
+);
+
+export default AboutPage;
+
+
+
+
+// portfolio-frontend/src/pages/ContactPage.jsx
+// src/pages/ContactPage.jsx
+import React, { useState } from 'react';
+import { Container, Form, Button } from 'react-bootstrap';
+import { sendContactMessage } from '../api/contactApi';
+import Navigation from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+
+const ContactPage = () => {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await sendContactMessage(formData);
+    setSubmitted(true);
+  };
+
+  return (
+    <Container>
+      <Navigation />
+      <h1>Contact Me</h1>
+      {submitted ? (
+        <p>Thank you for your message!</p>
+      ) : (
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formName">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text" name="name" onChange={handleChange} required />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" name="email" onChange={handleChange} required />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formMessage">
+            <Form.Label>Message</Form.Label>
+            <Form.Control as="textarea" name="message" rows={5} onChange={handleChange} required />
+          </Form.Group>
+          <Button variant="primary" type="submit">Submit</Button>
+        </Form>
+      )}
+      <Footer />
+    </Container>
+  );
+};
+
+export default ContactPage;
+
+
+
+
+// portfolio-frontend/src/pages/HomePage.jsx
+// src/pages/HomePage.jsx
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
+import Navigation from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+
+const HomePage = () => {
+  const { t } = useTranslation();
+  return (
+    <Container>
+      <Navigation />
+      <h1>{t('welcome')}</h1>
+      <p>This is the landing page of portfolio.</p>
+      <Footer />
+    </Container>
+  );
+};
+
+export default HomePage;
+
+
+
+
+// portfolio-frontend/src/pages/index.js
+// src/pages/index.js
+export { default as HomePage } from './HomePage';
+export { default as AboutPage } from './AboutPage';
+export { default as ContactPage } from './ContactPage';
+export { default as ProjectDetailPage } from './ProjectDetailPage';
+export { default as ProjectsPage } from './ProjectsPage';
+export { default as NotFoundPage } from './NotFoundPage';
+
+
+
+
+// portfolio-frontend/src/pages/NotFoundPage.jsx
+// src/pages/NotFoundPage.jsx
+import React from 'react';
+import { Container } from 'react-bootstrap';
+
+const NotFoundPage = () => (
+  <Container>
+    <h1>404 - Page Not Found</h1>
+    <p>Sorry, the page you're looking for does not exist.</p>
+  </Container>
+);
+
+export default NotFoundPage;
+
+
+
+
+// portfolio-frontend/src/pages/ProjectDetailPage.jsx
+// src/pages/ProjectDetailPage.jsx
+import React from 'react';
+import { Container } from 'react-bootstrap';
+
+const ProjectDetailPage = () => (
+  <Container>
+    <h1>Project Details</h1>
+    <p>More details about a specific project will be shown here.</p>
+  </Container>
+);
+
+export default ProjectDetailPage;
+
+
+
+
+// portfolio-frontend/src/pages/ProjectsPage.jsx
+// src/pages/ProjectsPage.jsx
+import React, { useEffect, useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import ProjectCard from '../components/specific/ProjectCard';
+import { getProjects } from '../api/projectApi';
+import Navigation from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+
+const ProjectsPage = () => {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const data = await getProjects();
+      setProjects(data);
+    };
+    fetchProjects();
+  }, []);
+
+  return (
+    <Container>
+      <Navigation />
+      <h1>Projects</h1>
+      <Row>
+        {projects.map(project => (
+          <Col md={4} key={project.id}>
+            <ProjectCard {...project} />
+          </Col>
+        ))}
+      </Row>
+      <Footer />
+    </Container>
+  );
+};
+
+export default ProjectsPage;
+
+
+
+
+// portfolio-frontend/src/routes/index.jsx
+// src/routes/index.jsx
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HomePage, AboutPage, ContactPage, ProjectsPage, ProjectDetailPage, NotFoundPage } from '../pages';
+
+const AppRoutes = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/projects" element={<ProjectsPage />} />
+      <Route path="/projects/:id" element={<ProjectDetailPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  </BrowserRouter>
+);
+
+export default AppRoutes;
+
+
+
+
+// portfolio-frontend/src/routes/ProtectedRoute.jsx
+// src/routes/ProtectedRoute.jsx
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+
+const ProtectedRoute = ({ isAuthenticated, children }) => {
+  if (!isAuthenticated) {
+    return <Navigate to="/" replace />;
+  }
+  return children;
+};
+
+export default ProtectedRoute;
+
+
+
+
+// portfolio-frontend/src/store/index.js
+export * from './projectStore';
+export * from './uiStore';
+
+
+
+
+// portfolio-frontend/src/store/projectStore.js
+// A simple example using React's useState or Context can be provided here.
+// For a full state management solution, integrate Redux, Zustand, or another library.
+export const projectsStore = {
+  projects: [],
+  setProjects: () => {},
+};
+
+
+
+
+// portfolio-frontend/src/store/uiStore.js
+// Similar dummy store for UI related states.
+export const uiStore = {
+  loading: false,
+  setLoading: () => {},
+};
+
+
+
+
+// portfolio-frontend/src/styles/global.scss
+@import './_variables.scss';
+
+body {
+  font-family: $font-stack;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  color: $secondary-color;
+}
+
+// navigation------------------------------------------------
+
+/* CustomNavbar.css */
+
+.custom-header {
+  font-family: "Times New Roman", Times, serif;
+  color: #fff;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 10px;
+  z-index: 1000;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  background: red;
+}
+
+.nav2 {
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center; */
+  width: 100%;
+  // margin: 0 auto;
+  /* padding: 0 20px; Bootstrap's Navbar has its own padding */
+}
+
+.logo {
+  /* display: flex;
+  align-items: center;
+  gap: 5px; */ 
+  text-decoration: none !important; /* Override Bootstrap link styles */
+}
+
+.logo-img {
+  width: 120px;
+  height: 50px;
+  background-image: url("/logo.png"); /* Ensure the path is correct */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0; /* Adjust margin as needed */
+  animation: floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(3deg);
+  }
+}
+
+.company-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 0px;
+  padding-left: 0px;
+  color: #fff; /* Ensure text color is white */
+}
+
+.user-info {
+  font-size: 1rem;
+  /* display: flex;
+  align-items: center;
+  gap: 2px; */ /* Handled by Bootstrap's flex utilities */
+}
+
+.nav-links {
+  /* list-style: none;
+  display: flex; */ /* Handled by Bootstrap's Nav component */
+  margin-bottom: 0; /* Remove default bottom margin from ul */
+}
+
+.nav-links .nav-item {
+  margin-left: 20px;
+}
+
+.nav-links .nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0; /* Adjust padding for better spacing */
+}
+
+.nav-links .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #ff6f61;
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.nav-links .nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.menu-toggle {
+  display: none; /* Hidden by default, shown on smaller screens by Bootstrap's collapse */
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  height: 3px;
+  width: 25px;
+  background: #fff;
+  margin: 4px 0;
+}
+
+/* Custom styles for the search input */
+.custom-search-input {
+  max-width: 170px; /* Set a max width for the input */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease-in-out; /* Smooth border transition on focus */
+}
+
+.custom-search-input:focus {
+  border-color: #007bff; /* Highlight color on focus */
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle shadow on focus */
+}
+
+.custom-search-input::placeholder {
+  font-family: "Times New Roman", Times, serif;
+  color: #999;
+  font-style: italic;
+  text-align: left; /* Adjust if needed */
+}
+
+/* Custom styles for the search button */
+.custom-search-button {
+  background-color: #007bff; /* Blue background */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.custom-search-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.custom-search-button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.custom-search-button:active {
+  background-color: #003366; /* Even darker blue when active */
+}
+
+/* Media query for mobile menu */
+@media (max-width: 767.98px) { /* Bootstrap's medium breakpoint */
+  .menu-toggle {
+    display: flex;
+  }
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 1rem;
+  }
+  .nav-links .nav-item {
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+  }
+  .nav-links .nav-link::after {
+    bottom: -2px;
+  }
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .d-flex.role-search {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .custom-search-input {
+    max-width: 100%;
+  }
+}
+
+
+
+// portfolio-frontend/src/styles/_variables.scss
+// Global SCSS variables
+$primary-color: #0d6efd;
+$secondary-color: #6c757d;
+$font-stack: 'Helvetica Neue', sans-serif;
+
+
+
+
+// portfolio-frontend/src/styles/themes/dark.scss
+$background-color: #000000;
+$text-color: #ffffff;
+
+
+
+
+// portfolio-frontend/src/styles/themes/light.scss
+$background-color: #ffffff;
+$text-color: #000000;
+
+
+
+
+// portfolio-frontend/src/__tests__/setup.js
+import '@testing-library/jest-dom';
+
+
+
