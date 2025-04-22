@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Row, Col, Image } from "react-bootstrap";
-// import { ToastContainer } from "react-toastify";
 import bannerData from "../../data/bannerData.json";
 import im1 from "../../assets/images/im1.jpg";
 import im2 from "../../assets/images/im2.jpg";
@@ -28,7 +27,8 @@ const Banner = () => {
               const imageSrc = imageMap[fileName] || im1;
 
               return (
-                <Col key={i} lg={3} md={6} sm={6} xs={12} className="mb-4">
+                // <Col key={i} lg={3} md={6} sm={6} xs={12} className="mb-4">
+                <Col key={i} lg={3} md={6} sm={6} xs={12} className={`mb-4 fade-in-up staggered-delay-${i + 1}`}>
                   <div className="single-banner d-flex align-items-start banner-shadow-hover">
                     <div className="banner-img me-3">
                       <a href="#">

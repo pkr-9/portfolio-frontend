@@ -16,13 +16,13 @@ const HomePage = () => {
       <Hero />
       <Banner />
       <CarouselComponent />
-      <div className="homepage-projects">
+      <div className="homepage-projects fade-in-up staggered-delay-1">
         <h2>Our Projects</h2>
         <WideProjectsSection />
       </div>
       <div className="about">
         <h2>About Us</h2>
-        <div className="about-highlight">
+        <div className="about-highlight fade-in-up staggered-delay-1">
           <h2>Our Commitment</h2>
           <p>
             At Swpris Facilities, we pride ourselves on being a dependable

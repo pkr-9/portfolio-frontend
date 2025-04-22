@@ -1,9 +1,8 @@
 import React from "react";
-// import { Container, Button } from "react-bootstrap";
 
 const Hero = () => (
   <section id="home" className="hero">
-    <div className="hero-content">
+    <div className="hero-content fade-in-up staggered-delay-1">
       <h1>Staffing & Facility Services You Can Rely On</h1>
       <p>
         Supplying skilled and semi-skilled professionals across industries with a commitment to quality service.

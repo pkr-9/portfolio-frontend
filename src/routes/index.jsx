@@ -3,6 +3,10 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HomePage, AboutPage, ContactPage, ProjectsPage, ProjectDetailPage, NotFoundPage } from '../pages';
 
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+});
+
 const AppRoutes = () => (
   // <BrowserRouter  basename="/portfolio-pappu">
    <BrowserRouter>

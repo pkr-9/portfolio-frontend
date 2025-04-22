@@ -20,7 +20,7 @@ const Testimonials = () => (
   <section id="testimonials">
     <h2>Testimonials</h2>
     {testimonials.map((t, i) => (
-      <blockquote key={i}>
+      <blockquote className="fade-in-up staggered-delay-{i+1}" key={i}>
         <p>"{t.text}"</p>
         <footer>- {t.author}</footer>
       </blockquote>

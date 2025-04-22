@@ -17,11 +17,11 @@ const ClientsSection = () => {
       <h2>Our Clients</h2>
       <div className="blog-grid">
         {initialClients.map((c, i) => (
-          <div className="blog-card" key={i}><h3>{c}</h3></div>
+          <div className="blog-card fade-in-up staggered-delay-{i+1}" key={i}><h3>{c}</h3></div>
         ))}
         {showMore &&
           extraClients.map((c, i) => (
-            <div className="blog-card" key={i}><h3>{c}</h3></div>
+            <div className="blog-card fade-in-up staggered-delay-{i+1}" key={i}><h3>{c}</h3></div>
           ))}
       </div>
       <button
