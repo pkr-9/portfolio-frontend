@@ -1,42 +1,78 @@
-import React from 'react';
-import { Container, Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import React, { useEffect, useState } from 'react';
+import {
+  Container,
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  Button,
+} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../../styles/global.scss';
 
 const Navigation = () => {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 30);
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="custom-header" fluid-width="true">
-      <Navbar expand="lg" className="nav2 px-3" bg="dark" variant="dark">
-        <Container fluid className="d-flex justify-content-between align-items-center">
-          {/* Brand Logo and Name */}
-          <Navbar.Brand as={Link} to="/" className="d-flex align-items-center gap-2">
+    <header className="custom-header">
+      <Navbar
+        expand="lg"
+        className={`nav2 ${scrolled ? 'scrolled' : ''}`}
+        fixed="top"
+      >
+        <Container
+          fluid
+          className="d-flex justify-content-between align-items-center px-3"
+        >
+          <Navbar.Brand
+            as={Link}
+            to="/"
+            className="d-flex align-items-center gap-2"
+          >
             <div className="logo-img" />
             <span className="company-name">My Portfolio</span>
           </Navbar.Brand>
-          <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end user-info d-flex align-items-center gap-2">
-            <Nav className="nav-links d-flex list-unstyled mb-0">
-              <Nav.Item>
-                <Nav.Link as={Link} to="/">Home</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={Link} to="/about">About</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={Link} to="/projects">Projects</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-              </Nav.Item>
+
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            className="border-0"
+          />
+
+          <Navbar.Collapse
+            id="responsive-navbar-nav"
+            className="justify-content-end align-items-center gap-3"
+          >
+            <Nav className="nav-links d-flex align-items-center gap-3">
+              <Nav.Link as={Link} to="/">
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/about">
+                About
+              </Nav.Link>
+              <Nav.Link as={Link} to="/projects">
+                Projects
+              </Nav.Link>
+              <Nav.Link as={Link} to="/contact">
+                Contact
+              </Nav.Link>
             </Nav>
-            <Form className="d-flex" role="search">
+
+            <Form className="d-flex search-form" role="search">
               <FormControl
                 type="search"
-                placeholder="Search"
+                placeholder="Search..."
                 className="custom-search-input me-2"
                 aria-label="Search"
               />
               <Button className="custom-search-button" type="submit">
-                Search
+                Go
               </Button>
             </Form>
           </Navbar.Collapse>

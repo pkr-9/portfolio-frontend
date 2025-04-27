@@ -1,0 +1,3218 @@
+//portfolio-frontend/.editorconfig
+# EditorConfig helps maintain consistent coding styles across different editors
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+
+//portfolio-frontend/.eslintrc.cjs
+module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    node: true,
+    es2021: true,
+  },
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: "module",
+  },
+  extends: ["eslint:recommended", "plugin:react/recommended"],
+  rules: {
+    "react/react-in-jsx-scope": "off",
+  },
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
+};
+
+
+//portfolio-frontend/.lintstagedrc.js
+module.exports = {
+  "**/*.{js,jsx}": ["eslint --fix", "prettier --write"],
+};
+
+
+//portfolio-frontend/.npmrc
+save-exact=true
+
+//portfolio-frontend/.prettierrc.json
+{
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": true
+}
+
+
+//portfolio-frontend/eslint.config.js
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+
+export default [
+  { ignores: ['dist'] },
+  {
+    files: ['**/*.{js,jsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+    },
+  },
+]
+
+
+//portfolio-frontend/index.html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+
+//portfolio-frontend/package.json
+{
+  "name": "portfolio-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "4.1.4",
+    "aos": "2.3.4",
+    "axios": "^1.8.4",
+    "bootstrap": "^5.3.5",
+    "portfolio-frontend": "file:",
+    "react": "^19.0.0",
+    "react-bootstrap": "^2.10.9",
+    "react-dom": "^19.0.0",
+    "react-i18next": "15.4.1",
+    "react-router-dom": "^7.5.0",
+    "tailwindcss": "4.1.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.22.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "gh-pages": "6.3.0",
+    "globals": "^16.0.0",
+    "sass-embedded": "1.86.3",
+    "vite": "^6.3.0",
+    "vite-plugin-pages": "0.33.0",
+    "vite-plugin-singlefile": "2.2.0"
+  }
+}
+
+
+//portfolio-frontend/postcss.config.js
+export const plugins = {
+  autoprefixer: {},
+};
+
+
+//portfolio-frontend/stylelint.config.js
+module.exports = {
+  extends: 'stylelint-config-standard',
+  rules: {
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: [
+          'tailwind',
+          'apply',
+          'variants',
+          'responsive',
+          'screen',
+        ],
+      },
+    ],
+  },
+};
+
+
+//portfolio-frontend/vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default defineConfig({
+  plugins: [react()],
+
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
+
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/variables.scss" as *;`,
+      },
+    },
+  },
+
+  server: {
+    port: 3000,
+    strictPort: true,
+    fs: {
+      allow: ['..'],
+    },
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        secure: false,
+        ws: true,
+      },
+    },
+  },
+
+  preview: {
+    port: 4173,
+    strictPort: true,
+  },
+
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+  },
+
+  optimizeDeps: {
+    include: ['@mui/material', '@emotion/react', '@emotion/styled'],
+  },
+
+  define: {
+    'process.env': {},
+  },
+
+  assetsInclude: ['**/*.svg'],
+  publicDir: 'public',
+});
+
+
+//portfolio-frontend/vitest.config.js
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: 'tests/setup.js',
+  },
+});
+
+
+//portfolio-frontend/src/App.css
+#root {
+  width: 100vw;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+//portfolio-frontend/src/App.jsx
+import React from 'react';
+import AppRoutes from './routes';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { SettingsProvider } from './contexts/SettingsContext';
+import './styles/global.scss';
+
+const App = () => (
+  <ThemeProvider>
+    <SettingsProvider>
+      <AppRoutes />
+    </SettingsProvider>
+  </ThemeProvider>
+);
+
+export default App;
+
+
+//portfolio-frontend/src/index.css
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+
+//portfolio-frontend/src/main.jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './i18n'; 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+AOS.init({
+  duration: 800,
+  offset: 100,    
+  once: true 
+});
+
+//portfolio-frontend/src/api/apiClient.js
+// src/api/apiClient.js
+import axios from 'axios';
+
+const apiClient = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:8080/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+export default apiClient;
+
+
+//portfolio-frontend/src/api/contactApi.js
+// src/api/contactApi.js
+import apiClient from './apiClient';
+
+export const sendContactMessage = async (data) => {
+  const response = await apiClient.post('/contact', data);
+  return response.data;
+};
+
+
+//portfolio-frontend/src/api/index.js
+// src/api/index.js
+export * from './projectApi';
+export * from './contactApi';
+
+
+//portfolio-frontend/src/api/projectApi.js
+// src/api/projectApi.js
+import apiClient from './apiClient';
+
+export const getProjects = async () => {
+  const response = await apiClient.get('/projects');
+  return response.data;
+};
+
+
+//portfolio-frontend/src/components/common/Button.jsx
+// src/components/common/Button.jsx
+import React from 'react';
+import { Button as BootstrapButton } from 'react-bootstrap';
+
+const Button = ({ children, ...props }) => {
+  return <BootstrapButton {...props}>{children}</BootstrapButton>;
+};
+
+export default Button;
+
+
+//portfolio-frontend/src/components/forms/ValidatedInput.jsx
+// src/components/forms/ValidatedInput.jsx
+import React from 'react';
+
+const ValidatedInput = ({ label, error, ...props }) => (
+  <div>
+    <label>{label}</label>
+    <input {...props} className={`form-control ${error ? 'is-invalid' : ''}`} />
+    {error && <div className="invalid-feedback">{error}</div>}
+  </div>
+);
+
+export default ValidatedInput;
+
+
+//portfolio-frontend/src/components/layout/AboutSection.jsx
+import React from "react";
+import "../../styles/global.scss";
+import { Container, Row, Col, Card } from "react-bootstrap";
+
+const aboutItems = [
+  {
+    title: "Our Vision",
+    img: "https://picsum.photos/500/300",
+    desc: `We envision a future where every individual has access to dignified employment and every organization can rely on skilled professionals...`,
+  },
+  {
+    title: "Our Mission",
+    img: "https://picsum.photos/500/300",
+    desc: `Swpris Facilities is a people-first facility management startup providing tailored staffing solutions...`,
+  },
+  {
+    title: "Our Operations",
+    img: "https://picsum.photos/500/300",
+    desc: `Our operations are powered by cutting-edge tools ensuring exceptional service delivery.`,
+  },
+];
+
+const AboutSection = () => (
+  <section id="about" className="about">
+    <h2>About Us</h2>
+    <div className="about-highlight">
+      <h2>Our Commitment</h2>
+      <p>
+        At Swpris Facilities, we pride ourselves on being a dependable provider of skilled professionals and facility services...
+      </p>
+    </div>
+    <Container className="about-content">
+      <Row className="g-4 justify-content-center">
+        {aboutItems.map((item, i) => (
+          <Col key={i} xs={12} sm={6} md={4}>
+            <Card className="about-card h-100 text-center shadow-sm">
+              <Card.Img variant="top" src={item.img} className="about-img" />
+              <Card.Body>
+                <Card.Title className="about-title">{item.title}</Card.Title>
+                <Card.Text className="about-desc">{item.desc}</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  </section>
+);
+
+export default AboutSection;
+
+
+//portfolio-frontend/src/components/layout/Carousel.jsx
+import React from "react";
+import { Carousel } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../../styles/global.scss"
+import c1 from "../../assets/images/imggg.jpg"
+import c2 from "../../assets/images/new2.jpg";
+import c3 from "../../assets/images/im2.jpg";
+
+const images = [c1, c2, c3];
+
+const CarouselComponent = () => {
+    return (
+        <Carousel fade interval={3000}>
+        {images.map((img, i) => (
+          <Carousel.Item key={i}>
+            <img src={img} alt={`Slide ${i + 1}`} className="d-block w-100" />
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    );
+    };
+export default CarouselComponent;
+
+//portfolio-frontend/src/components/layout/ClientsSection.jsx
+import React, { useState } from "react";
+import "../../styles/global.scss";
+
+const initialClients = [
+  "Santtukaram International School", "MJ Hospital", "OM Packaging",
+  "Yashhtej Solvent", "Galaxy Mall", "Vishweshwarayya Mahavidyalaya",
+];
+
+const extraClients = [
+  "Patil Hospital", "Akashay Hotel", "Snehshree Realty", "Bharat Hotel",
+];
+
+const ClientsSection = () => {
+  const [showMore, setShowMore] = useState(false);
+  return (
+    <section id="clients" className="blog">
+      <h2>Our Clients</h2>
+      <div className="blog-grid">
+        {initialClients.map((c, i) => (
+          <div className="blog-card fade-in-up staggered-delay-{i+1}" key={i}><h3>{c}</h3></div>
+        ))}
+        {showMore &&
+          extraClients.map((c, i) => (
+            <div className="blog-card fade-in-up staggered-delay-{i+1}" key={i}><h3>{c}</h3></div>
+          ))}
+      </div>
+      <button
+        className="cta-button mt-3 show-more-btn"
+        onClick={() => setShowMore((prev) => !prev)}
+      >
+        {showMore ? "Show Less" : "View More"}
+      </button>
+    </section>
+  );
+};
+
+export default ClientsSection;
+
+
+//portfolio-frontend/src/components/layout/Contact.jsx
+import React, { useState } from 'react';
+import { Container, Form, Button, Row, Col, Alert } from 'react-bootstrap';
+import '../../styles/global.scss';
+
+const Contact = () => {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <section id="contact" className="contact-section">
+      <Container>
+        <h2 className="section-title">Contact Me</h2>
+        <Row className="justify-content-center">
+          <Col md={8}>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group controlId="name" className="mb-3">
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter your name" required />
+              </Form.Group>
+              <Form.Group controlId="email" className="mb-3">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" placeholder="Enter your email" required />
+              </Form.Group>
+              <Form.Group controlId="message" className="mb-3">
+                <Form.Label>Message</Form.Label>
+                <Form.Control as="textarea" rows={4} required />
+              </Form.Group>
+              <Button type="submit" variant="primary">Send Message</Button>
+            </Form>
+            {submitted && (
+              <Alert variant="success" className="mt-3">
+                Message sent successfully!
+              </Alert>
+            )}
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
+};
+
+export default Contact;
+
+
+//portfolio-frontend/src/components/layout/ContactSection.jsx
+import React from "react";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import "../../styles/global.scss";
+
+const ContactSection = () => {
+  return (
+    <section id="contact" className="contact">
+      <Container>
+        <h2>Contact Us</h2>
+        <p>
+          Looking to hire reliable facility staff or need professional housekeeping services?
+          We’re here to help!
+        </p>
+        <Row className="justify-content-center">
+          <Col md={8}>
+            <Form className="contact-form">
+              <Form.Group className="mb-3" controlId="formName">
+                <Form.Label>Your Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter your name" />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="name@example.com" />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formPhone">
+                <Form.Label>Phone</Form.Label>
+                <Form.Control type="tel" placeholder="+91-XXXXXXXXXX" />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formMessage">
+                <Form.Label>Message</Form.Label>
+                <Form.Control as="textarea" rows={4} placeholder="How can we help you?" />
+              </Form.Group>
+
+              <Button type="submit" className="cta-button">Send Message</Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  );
+};
+
+export default ContactSection;
+
+
+//portfolio-frontend/src/components/layout/Footer.jsx
+// src/components/layout/Footer.jsx
+import React from 'react';
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+
+const Footer = () => (
+  <footer className="footer">
+  <Container className="footer-container">
+    <Row>
+      {/* Logo + About */}
+      <Col md={3} className="footer-section text-center text-md-start">
+        {/* <div className="footer-logo mx-auto"> */}
+          <img src="./logo.png" alt="PrimePark Logo" className="footer-logo mx-auto" />
+        {/* </div> */}
+        <p className="mt-3">
+          Smart Parking Solutions for Modern Cities
+        </p>
+        <div className="social-links d-flex justify-content-center justify-content-md-start mt-3">
+          <a href="#"><i className="fab fa-facebook"></i></a>
+          <a href="#"><i className="fab fa-twitter"></i></a>
+          <a href="#"><i className="fab fa-linkedin"></i></a>
+          <a href="#"><i className="fab fa-instagram"></i></a>
+        </div>
+      </Col>
+
+      {/* Quick Links */}
+      <Col md={3} className="footer-section">
+        <h4>Quick Links</h4>
+        <ul className="list-unstyled">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </Col>
+
+      {/* Contact Info */}
+      <Col md={3} className="footer-section">
+        <h4>Contact Info</h4>
+        <ul className="contact-inf list-unstyled">
+          <li><i className="fas fa-map-marker-alt"></i> 123 Parking St, Pune, India</li>
+          <li><i className="fas fa-phone"></i> +91 12345 67890</li>
+          <li><i className="fas fa-envelope"></i> info@primepark.com</li>
+        </ul>
+      </Col>
+
+      {/* Newsletter */}
+      <Col md={3} className="footer-section">
+        <h4>Newsletter</h4>
+        <Form className="newsletter-form">
+          <Form.Control type="email" placeholder="Enter your email" />
+          <Button type="submit" className="mt-2">Subscribe</Button>
+        </Form>
+      </Col>
+    </Row>
+  </Container>
+
+  <div className="footer-bottom text-center mt-4">
+    <p>&copy; 2024 PrimePark. All rights reserved.</p>
+  </div>
+</footer>
+);
+
+export default Footer;
+
+
+//portfolio-frontend/src/components/layout/FooterSection.jsx
+import React from "react";
+import { Container } from "react-bootstrap";
+import "./Footer.css"; // optional if separated
+
+const Footer = () => {
+  return (
+    <footer className="footer">
+      <Container className="text-center">
+        <p>&copy; {new Date().getFullYear()} Swpris Facilities. All rights reserved.</p>
+        <p>Website developed by Pappu Kumar</p>
+      </Container>
+    </footer>
+  );
+};
+
+export default Footer;
+
+
+//portfolio-frontend/src/components/layout/Hero.jsx
+import React from "react";
+
+const Hero = () => (
+  <section id="home" className="hero">
+    <div className="hero-content fade-in-up staggered-delay-1">
+      <h1>Staffing & Facility Services You Can Rely On</h1>
+      <p>
+        Supplying skilled and semi-skilled professionals across industries with a commitment to quality service.
+      </p>
+      <a href="#about" className="cta-button">
+        Learn More
+      </a>
+    </div>
+  </section>
+);
+
+export default Hero;
+
+
+//portfolio-frontend/src/components/layout/Navbar.jsx
+import React from 'react';
+import { Container, Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Link } from 'react-router-dom';
+import '../../styles/global.scss';
+
+const Navigation = () => {
+  return (
+    <header className="custom-header" fluid-width="true">
+      <Navbar expand="lg" className="nav2 px-3" bg="dark" variant="dark">
+        <Container fluid className="d-flex justify-content-between align-items-center">
+          {/* Brand Logo and Name */}
+          <Navbar.Brand as={Link} to="/" className="d-flex align-items-center gap-2">
+            <div className="logo-img" />
+            <span className="company-name">My Portfolio</span>
+          </Navbar.Brand>
+          <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end user-info d-flex align-items-center gap-2">
+            <Nav className="nav-links d-flex list-unstyled mb-0">
+              <Nav.Item>
+                <Nav.Link as={Link} to="/">Home</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link as={Link} to="/about">About</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link as={Link} to="/projects">Projects</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+              </Nav.Item>
+            </Nav>
+            <Form className="d-flex" role="search">
+              <FormControl
+                type="search"
+                placeholder="Search"
+                className="custom-search-input me-2"
+                aria-label="Search"
+              />
+              <Button className="custom-search-button" type="submit">
+                Search
+              </Button>
+            </Form>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </header>
+  );
+};
+
+export default Navigation;
+
+
+//portfolio-frontend/src/components/layout/ServicesSection.jsx
+import React from "react";
+import "../../styles/global.scss";
+import { Container, Row, Col, Card } from "react-bootstrap";
+
+const services = [
+  {
+    title: "Housekeeping Services",
+    img: "https://picsum.photos/400/300?1",
+    list: [
+      "Office, hospital, mall, and school cleaning",
+      "Sanitization and deep cleaning",
+    ],
+  },
+  {
+    title: "Ward Boy / Patient Care",
+    img: "https://picsum.photos/400/300?2",
+    list: ["Bed bath, feeding, patient hygiene", "24/7 Elderly care"],
+  },
+  {
+    title: "Security Services",
+    img: "https://picsum.photos/400/300?3",
+    list: ["Patrolling, fire drills, log management"],
+  },
+  {
+    title: "Gardening",
+    img: "https://picsum.photos/400/300?4",
+    list: ["Landscaping, seasonal gardening", "Hedge trimming"],
+  },
+];
+
+const ServicesSection = () => (
+  <section id="services" className="services">
+    <h2>Our Services</h2>
+    <div className="labor-highlight">
+      <h2>Labor Supply – Our Core Strength</h2>
+      <p>
+        We specialize in skilled/semi-skilled labor for factories, events, hospitals, and institutions.
+      </p>
+    </div>
+    <Container className="service-grid">
+      <Row>
+        {services.map((s, i) => (
+          <Col key={i} md={6} lg={3} className="d-flex">
+            <Card className="service-card flex-fill d-flex flex-column">
+              <Card.Img src={s.img} />
+              <Card.Body className="d-flex flex-column justify-content-between">
+                <Card.Title className="text-center mb-3">{s.title}</Card.Title>
+                <ul>
+                  {s.list.map((l, j) => (
+                    <li key={j}>{l}</li>
+                  ))}
+                </ul>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  </section>
+);
+
+export default ServicesSection;
+
+
+//portfolio-frontend/src/components/layout/Testimonials.jsx
+import React from "react";
+import "../../styles/global.scss";
+
+const testimonials = [
+  {
+    text: "Swpris has transformed our hygiene standards.",
+    author: "Santtukaram International School",
+  },
+  {
+    text: "Prompt labor supply and excellent support.",
+    author: "MJ Hospital",
+  },
+  {
+    text: "They handle security and cleaning professionally.",
+    author: "Galaxy Mall",
+  },
+];
+
+const Testimonials = () => (
+  <section id="testimonials">
+    <h2>Testimonials</h2>
+    {testimonials.map((t, i) => (
+      <blockquote className="fade-in-up staggered-delay-{i+1}" key={i}>
+        <p>"{t.text}"</p>
+        <footer>- {t.author}</footer>
+      </blockquote>
+    ))}
+  </section>
+);
+
+export default Testimonials;
+
+
+//portfolio-frontend/src/components/layout/VerticalProjectsSection.jsx
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import projects from "../../data/projects.json";
+import VerticalProjectCard from "../specific/VerticalProjectCard";
+
+const VerticalProjectsSection = () => (
+  <section className="pt-5 pb-5">
+    <Container>
+      <Row>
+        {projects.slice(0, 4).map((project) => {
+          const imgFile = project.img.split("/").pop();
+          return (
+            <Col md={4} key={project.id}>
+              <VerticalProjectCard
+                title={project.title}
+                description={project.description}
+                link={project.link}
+                imgName={imgFile}
+              />
+            </Col>
+          );
+        })}
+      </Row>
+    </Container>
+  </section>
+);
+
+export default VerticalProjectsSection;
+
+
+//portfolio-frontend/src/components/layout/WhyUs.jsx
+import React from "react";
+import "../../styles/global.scss";
+
+const WhyUs = () => (
+  <section className="why-us">
+    <h2>Why Choose Us?</h2>
+    <p>Swpris Facilities is your trusted partner for all staffing and facility service needs.</p>
+    <p>We deliver quality with precision and tailored care for all industries.</p>
+    <ul>
+      <li>🌟 Aligned with Startup India – Innovation & Impact</li>
+      <li>🧹 Professional Housekeeping & Patient Care</li>
+      <li>🔒 Compliant, Trusted, On-Demand Staffing</li>
+    </ul>
+  </section>
+);
+
+export default WhyUs;
+
+
+//portfolio-frontend/src/components/layout/WideProjectsSection.jsx
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import projects from "../../data/projects.json";
+import WideProjectCard from "../specific/WideProjectCard";
+
+const WideProjectsSection = () => (
+  <section className="pt-5 pb-5">
+    <Container>
+      <Row>
+        {projects.slice(0, 1).map((project) => {
+          const imgFile = project.img.split("/").pop();
+          return (
+            <Col md={12} key={project.id}>
+              <WideProjectCard
+                title={project.title}
+                description={project.description}
+                link={project.link}
+                imgName={imgFile}
+              />
+            </Col>
+          );
+        })}
+      </Row>
+    </Container>
+  </section>
+);
+
+export default WideProjectsSection;
+
+
+//portfolio-frontend/src/components/specific/Achievements.jsx
+import React from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import '../../styles/global.scss';
+
+const certifications = [
+  { title: 'Java Backend', provider: 'Udemy', date: '2024' },
+  { title: 'React Mastery', provider: 'FreeCodeCamp', date: '2023' },
+  { title: 'Oracle SQL Expert', provider: 'Oracle', date: '2023' },
+];
+
+const Achievements = () => (
+  <section id="achievements" className="achievements-section">
+    <Container>
+      <h2 className="section-title">Certifications</h2>
+      <Row>
+        {certifications.map((cert, i) => (
+          <Col key={i} md={4} className="mb-4">
+            <Card className="achievement-card">
+              <Card.Body>
+                <Card.Title>{cert.title}</Card.Title>
+                <Card.Text>
+                  <strong>Provider:</strong> {cert.provider}<br />
+                  <strong>Year:</strong> {cert.date}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  </section>
+);
+
+export default Achievements;
+
+
+//portfolio-frontend/src/components/specific/Banner.jsx
+import React from "react";
+import { Container, Row, Col, Image } from "react-bootstrap";
+import bannerData from "../../data/bannerData.json";
+import im1 from "../../assets/images/im1.jpg";
+import im2 from "../../assets/images/im2.jpg";
+import im3 from "../../assets/images/im3.jpg";
+import im4 from "../../assets/images/im4.jpg";
+import "../../styles/global.scss";
+
+// Static map for image lookup
+const imageMap = {
+  "im1.jpg": im1,
+  "im2.jpg": im2,
+  "im3.jpg": im3,
+  "im4.jpg": im4,
+};
+
+const getBannerData = (key) => bannerData[key] || "";
+
+const Banner = () => {
+  return (
+      <section className="banner-area">
+        <Container>
+          <Row>
+            {bannerData.map((banner, i) => {
+              const fileName = banner.img.split("/").pop();
+              const imageSrc = imageMap[fileName] || im1;
+
+              return (
+                // <Col key={i} lg={3} md={6} sm={6} xs={12} className="mb-4">
+                <Col key={i} lg={3} md={6} sm={6} xs={12} className={`mb-4 fade-in-up staggered-delay-${i + 1}`}>
+                  <div className="single-banner d-flex align-items-start banner-shadow-hover">
+                    <div className="banner-img me-3">
+                      <a href="#">
+                        <Image
+                          src={imageSrc}
+                          alt={`banner-${i}`}
+                          fluid
+                        />
+                      </a>
+                    </div>
+                    <div className="banner-text">
+                      <h4>{banner.title}</h4>
+                      <p>{banner.desc}</p>
+                    </div>
+                  </div>
+                </Col>
+              );
+            })}
+          </Row>
+        </Container>
+      </section>
+  );
+};
+
+export default Banner;
+
+
+//portfolio-frontend/src/components/specific/Experience.jsx
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import '../../styles/global.scss';
+
+const experiences = [
+  { year: '2024', title: 'Spring Boot Internship', desc: 'Built REST APIs and JWT-secured systems.' },
+  { year: '2023', title: 'Portfolio Project', desc: 'Created full-stack app using MERN + Tailwind.' },
+  { year: '2022', title: 'Graduation - B.Tech', desc: 'Major in CSE. Explored Java, DBMS, and OS.' },
+];
+
+const Experience = () => (
+  <section id="experience" className="experience-section">
+    <Container>
+      <h2 className="experience-section-title">Experience</h2>
+      <Row>
+        <Col>
+          <ul className="experience-timeline">
+            {experiences.map((item, i) => (
+              <li key={i}>
+                <span className="experience-timeline-date">{item.year}</span>
+                <div className="experience-timeline-content">
+                  <h4>{item.title}</h4>
+                  <p>{item.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Col>
+      </Row>
+    </Container>
+  </section>
+);
+
+export default Experience;
+
+
+//portfolio-frontend/src/components/specific/ProjectCard.jsx
+import React from "react";
+import { Card, Button } from "react-bootstrap";
+import "../../styles/global.scss";
+import im1 from "../../assets/images/im1.jpg";
+import im2 from "../../assets/images/im2.jpg";
+import im3 from "../../assets/images/im3.jpg";
+import im4 from "../../assets/images/im4.jpg";
+
+const imageMap = {
+  "im1.jpg": im1,
+  "im2.jpg": im2,
+  "im3.jpg": im3,
+  "im4.jpg": im4,
+};
+
+const ProjectCard = ({ imgName, title, description, link, className = "", imgStyle = {}, bodyStyle = {} }) => {
+  const imgSrc = imageMap[imgName] || im1;
+
+  return (
+    <Card className={`project-card shadow-sm ${className}`}>
+      <Card.Img variant="top" src={imgSrc} alt={title} style={imgStyle} />
+      <Card.Body style={bodyStyle}>
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{description}</Card.Text>
+        <Button variant="outline-primary" href={link} target="_blank">
+          Learn More
+        </Button>
+      </Card.Body>
+    </Card>
+  );
+};
+
+export default ProjectCard;
+
+
+//portfolio-frontend/src/components/specific/Skills.jsx
+import React from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import '../../styles/global.scss';
+
+const techSkills = [
+  { title: 'React', icon: '⚛️' },
+  { title: 'Node.js', icon: '🟩' },
+  { title: 'Java', icon: '☕' },
+  { title: 'Spring Boot', icon: '🌱' },
+  { title: 'Oracle DB', icon: '🛢️' },
+  { title: 'PostgreSQL', icon: '🐘' },
+  { title: 'Git', icon: '🐙' },
+  { title: 'Docker', icon: '🐳' },
+];
+
+const Skills = () => (
+  <section id="skills" className="skills-section">
+    <Container>
+      <h2 className="skill-section-title">Tech Stack</h2>
+      <Row className="justify-content-center">
+        {techSkills.map((skill, idx) => (
+          <Col key={idx} xs={6} sm={4} md={3} className="mb-4">
+            <Card className="skill-card text-center">
+              <Card.Body>
+                <div className="skill-icon">{skill.icon}</div>
+                <Card.Title>{skill.title}</Card.Title>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  </section>
+);
+
+export default Skills;
+
+
+//portfolio-frontend/src/components/specific/VerticalProjectCard.jsx
+import React from "react";
+import ProjectCard from "./ProjectCard";
+
+const VerticalProjectCard = (props) => (
+  <ProjectCard
+    {...props}
+    className="vertical-project-card"
+    imgStyle={{ height: "220px", objectFit: "cover" }}
+  />
+);
+
+export default VerticalProjectCard;
+
+
+//portfolio-frontend/src/components/specific/WideProjectCard.jsx
+import React from "react";
+import ProjectCard from "./ProjectCard";
+
+const WideProjectCard = (props) => (
+  <ProjectCard
+    {...props}
+    className="wide-project-card"
+    imgStyle={{ height: "280px", objectFit: "cover" }}
+    bodyStyle={{ textAlign: "center" }}
+  />
+);
+
+export default WideProjectCard;
+
+
+//portfolio-frontend/src/config/constants.js
+// src/config/constants.js
+export const ROUTES = {
+  HOME: '/',
+  ABOUT: '/about',
+  CONTACT: '/contact',
+  PROJECTS: '/projects',
+};
+
+
+//portfolio-frontend/src/config/index.js
+// src/config/index.js
+export * from './constants';
+export * from './siteConfig';
+
+
+//portfolio-frontend/src/config/siteConfig.js
+// src/config/siteConfig.js
+export const SITE_CONFIG = {
+  title: 'My Portfolio',
+  description: 'A showcase of my projects and skills',
+  author: 'Your Name',
+};
+
+
+//portfolio-frontend/src/contexts/index.js
+// src/contexts/index.js
+export * from './ThemeContext';
+export * from './SettingsContext';
+
+
+//portfolio-frontend/src/contexts/SettingsContext.jsx
+// src/contexts/SettingsContext.jsx
+import React, { createContext, useState } from 'react';
+
+export const SettingsContext = createContext();
+
+export const SettingsProvider = ({ children }) => {
+  const [settings, setSettings] = useState({
+    language: 'en'
+  });
+
+  return (
+    <SettingsContext.Provider value={{ settings, setSettings }}>
+      {children}
+    </SettingsContext.Provider>
+  );
+};
+
+
+//portfolio-frontend/src/contexts/ThemeContext.jsx
+// src/contexts/ThemeContext.jsx
+import React, { createContext, useState } from 'react';
+
+export const ThemeContext = createContext();
+
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () =>
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+
+//portfolio-frontend/src/data/bannerData.json
+[
+  {
+    "img": "../../assets/images/im1.jpg",
+    "title": "frontend",
+    "desc": "JavaScript"
+  },
+  {
+    "img": "../../assets/images/im2.jpg",
+    "title": "dynamic frontend",
+    "desc": "React"
+  },
+  {
+    "img": "../../assets/images/im3.jpg",
+    "title": "styling",
+    "desc": "CSS"
+  },
+  {
+    "img": "../../assets/images/im4.jpg",
+    "title": "backend",
+    "desc": "Spring Boot"
+  }
+]
+
+
+//portfolio-frontend/src/data/projects.json
+[
+  {
+    "id": 1,
+    "img": "../../assets/images/im1.jpg",
+    "title": "Project One",
+    "description": "Description for project one. lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "link": "http://example.com/project-one"
+  },
+  {
+    "id": 2,
+    "img": "../../assets/images/im2.jpg",
+    "title": "Project Two",
+    "description": "Description for project two.",
+    "link": "http://example.com/project-two"
+  },
+  {
+    "id": 3,
+    "img": "../../assets/images/im3.jpg",
+    "title": "Project Three",
+    "description": "Description for project three.",
+    "link": "http://example.com/project-three"
+  },
+  {
+    "id": 4,
+    "img": "../../assets/images/im4.jpg",
+    "title": "Project Four",
+    "description": "Description for project four.",
+    "link": "http://example.com/project-four"
+  }
+]
+
+
+//portfolio-frontend/src/data/skills.js
+// src/data/skills.js
+export const skills = ['JavaScript', 'React', 'CSS', 'Node.js', 'Spring Boot'];
+
+
+//portfolio-frontend/src/hooks/index.js
+export { default as useAnalytics } from './useAnalytics';
+export { default as useFetch } from './useFetch';
+export { default as useLocalStorage } from './useLocalStorage';
+
+
+//portfolio-frontend/src/hooks/useAnalytics.js
+// src/hooks/useAnalytics.js
+import { useEffect } from 'react';
+
+const useAnalytics = (page) => {
+  useEffect(() => {
+    console.log(`Page view: ${page}`);
+    // Send analytics event here
+  }, [page]);
+};
+
+export default useAnalytics;
+
+
+//portfolio-frontend/src/hooks/useFetch.js
+// src/hooks/useFetch.js
+import { useState, useEffect } from 'react';
+
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((json) => {
+        setData(json);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+        setLoading(false);
+      });
+  }, [url]);
+
+  return { data, loading, error };
+};
+
+export default useFetch;
+
+
+//portfolio-frontend/src/hooks/useLocalStorage.js
+// src/hooks/useLocalStorage.js
+import { useState } from 'react';
+
+function useLocalStorage(key, initialValue) {
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error(error);
+      return initialValue;
+    }
+  });
+
+  const setValue = (value) => {
+    try {
+      setStoredValue(value);
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return [storedValue, setValue];
+}
+
+export default useLocalStorage;
+
+
+//portfolio-frontend/src/i18n/config.js
+// src/i18n/config.js
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import translationEN from './locales/en.json';
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: {
+      translation: translationEN,
+    },
+  },
+  lng: 'en',
+  fallbackLng: 'en',
+  interpolation: {
+    escapeValue: false,
+  },
+});
+
+export default i18n;
+
+
+//portfolio-frontend/src/i18n/index.js
+// src/i18n/index.js
+import './config';
+
+
+//portfolio-frontend/src/i18n/locales/en.json
+{
+  "header": {
+    "nav": {
+      "home": "Home",
+      "about": "About Me",
+      "projects": "Projects",
+      "contact": "Contact"
+    },
+    "language": {
+      "en": "English",
+      "fr": "French"
+    }
+  },
+  "home": {
+    "title": "Hi, I'm John Doe",
+    "subtitle": "A passionate Full-Stack Developer",
+    "description": "I build modern and scalable web applications."
+  },
+  "about": {
+    "title": "About Me",
+    "description": "I'm a developer who loves clean code and creative solutions."
+  },
+  "projects": {
+    "title": "My Projects",
+    "description": "Here are some of the applications I've built recently."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message"
+  },
+  "footer": {
+    "text": "© 2025 John Doe. All rights reserved."
+  }
+}
+
+
+//portfolio-frontend/src/layouts/index.js
+export { default as MainLayout } from './MainLayout';
+
+
+//portfolio-frontend/src/layouts/MainLayout.jsx
+// src/layouts/MainLayout.jsx
+import React from 'react';
+import Navigation from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+
+const MainLayout = ({ children }) => (
+  <>
+    <Navigation />
+    <main className="container my-4">{children}</main>
+    <Footer />
+  </>
+);
+
+export default MainLayout;
+
+
+//portfolio-frontend/src/lib/formatDate.js
+// src/lib/formatDate.js
+export const formatDate = (date) => {
+  const d = new Date(date);
+  return d.toLocaleDateString();
+};
+
+
+//portfolio-frontend/src/lib/index.js
+export * from './formatDate';
+export * from './validation';
+
+
+//portfolio-frontend/src/lib/validation.js
+// src/lib/validation.js
+export const isEmailValid = (email) => /\S+@\S+\.\S+/.test(email);
+export const isPhoneValid = (phone) => /^\+?[1-9]\d{1,14}$/.test(phone);
+
+
+//portfolio-frontend/src/mocks/browser.js
+import { setupWorker } from 'msw';
+import { handlers } from './handlers';
+
+export const worker = setupWorker(...handlers);
+
+
+//portfolio-frontend/src/mocks/handlers.js
+import { rest } from 'msw';
+
+export const handlers = [
+  rest.get('/api/projects', (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json([
+        { id: 1, title: 'Mock Project', description: 'A mocked project.' },
+      ])
+    );
+  }),
+];
+
+
+//portfolio-frontend/src/mocks/server.js
+import { setupServer } from 'msw/node';
+import { handlers } from './handlers';
+
+export const server = setupServer(...handlers);
+
+
+//portfolio-frontend/src/pages/AboutPage.jsx
+import React from 'react';
+import Navigation from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+import '../styles/global.scss';
+import Skills from '../components/specific/Skills';
+import Experience from '../components/specific/Experience';
+import Achievements from '../components/specific/Achievements';
+import AboutSection from '../components/layout/AboutSection';
+import WhyUs from '../components/layout/WhyUs';
+
+
+const AboutPage = () => {
+  return (
+    <div>
+      <Navigation />
+      <AboutSection />
+      <Skills />
+      <Achievements />
+      <Experience />
+            <WhyUs />
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default AboutPage;
+
+
+//portfolio-frontend/src/pages/ContactPage.jsx
+// src/pages/ContactPage.jsx
+import React, { useState } from 'react';
+import { Container, Form, Button } from 'react-bootstrap';
+import Navigation from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+import WhyUs from '../components/layout/WhyUs';
+import Testimonials from '../components/layout/Testimonials';
+import ContactSection from '../components/layout/ContactSection';
+import '../styles/global.scss';
+const ContactPage = () => {
+  return (
+    <>
+      <Navigation />
+      <div className="contact-page">
+      <h1>Contact Me</h1>
+      <WhyUs />
+      <Testimonials />
+      <ContactSection />
+      </div>
+      <Footer />
+    </>
+  );
+};
+
+export default ContactPage;
+
+
+//portfolio-frontend/src/pages/HomePage.jsx
+import React from 'react';
+import Navigation from '../components/layout/Navbar';
+import Banner from '../components/specific/Banner';
+import CarouselComponent from '../components/layout/Carousel';
+import WideProjectsSection from '../components/layout/WideProjectsSection';
+import Footer from '../components/layout/Footer';
+import '../styles/global.scss';
+import ClientsSection from '../components/layout/ClientsSection';
+import Testimonials from '../components/layout/Testimonials';
+import Hero from '../components/layout/Hero';
+
+const HomePage = () => {
+  return (
+    <div>
+      <Navigation />
+      <Hero />
+      <Banner />
+      <CarouselComponent />
+      <div className="homepage-projects fade-in-up staggered-delay-1">
+        <h2>Our Projects</h2>
+        <WideProjectsSection />
+      </div>
+      <div className="about">
+        <h2>About Us</h2>
+        <div className="about-highlight fade-in-up staggered-delay-1">
+          <h2>Our Commitment</h2>
+          <p>
+            At Swpris Facilities, we pride ourselves on being a dependable
+            provider of skilled professionals and facility services...
+          </p>
+        </div>
+      </div>
+      <div className="services">
+        <h2>Our Services</h2>
+        <div className="labor-highlight">
+          <h2>Labor Supply – Our Core Strength</h2>
+          <p>
+            We specialize in skilled/semi-skilled labor for factories, events,
+            hospitals, and institutions.
+          </p>
+        </div>
+      </div>
+      <ClientsSection />
+      <Testimonials />
+      <Footer />
+    </div>
+  );
+};
+
+export default HomePage;
+
+
+//portfolio-frontend/src/pages/index.js
+// src/pages/index.js
+export { default as HomePage } from './HomePage';
+export { default as AboutPage } from './AboutPage';
+export { default as ContactPage } from './ContactPage';
+export { default as ProjectDetailPage } from './ProjectDetailPage';
+export { default as ProjectsPage } from './ProjectsPage';
+export { default as NotFoundPage } from './NotFoundPage';
+
+
+//portfolio-frontend/src/pages/NotFoundPage.jsx
+// src/pages/NotFoundPage.jsx
+import React from 'react';
+import { Container } from 'react-bootstrap';
+
+const NotFoundPage = () => (
+  <Container>
+    <h1>404 - Page Not Found</h1>
+    <p>Sorry, the page you're looking for does not exist.</p>
+  </Container>
+);
+
+export default NotFoundPage;
+
+
+//portfolio-frontend/src/pages/ProjectDetailPage.jsx
+// src/pages/ProjectDetailPage.jsx
+import React from 'react';
+import { Container } from 'react-bootstrap';
+
+const ProjectDetailPage = () => (
+  <Container>
+    <h1>Project Details</h1>
+    <p>More details about a specific project will be shown here.</p>
+  </Container>
+);
+
+export default ProjectDetailPage;
+
+
+//portfolio-frontend/src/pages/ProjectsPage.jsx
+// src/pages/ProjectsPage.jsx
+import '../styles/global.scss';
+import Navigation from '../components/layout/Navbar';
+import VerticalProjectsSection from '../components/layout/VerticalProjectsSection';
+import Footer from '../components/layout/Footer';
+
+const ProjectsPage = () => {
+  return (
+    <>
+      <Navigation />
+    <div className="projects-page">
+      <h1>Projects</h1>
+      <VerticalProjectsSection />
+      <Footer />
+    </div>
+    </>
+  );
+};
+
+export default ProjectsPage;
+
+
+//portfolio-frontend/src/routes/index.jsx
+// src/routes/index.jsx
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HomePage, AboutPage, ContactPage, ProjectsPage, ProjectDetailPage, NotFoundPage } from '../pages';
+
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+});
+
+const AppRoutes = () => (
+  // <BrowserRouter  basename="/portfolio-pappu">
+   <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/projects" element={<ProjectsPage />} />
+      <Route path="/projects/:id" element={<ProjectDetailPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  </BrowserRouter>
+);
+
+export default AppRoutes;
+
+
+//portfolio-frontend/src/routes/ProtectedRoute.jsx
+// src/routes/ProtectedRoute.jsx
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+
+const ProtectedRoute = ({ isAuthenticated, children }) => {
+  if (!isAuthenticated) {
+    return <Navigate to="/" replace />;
+  }
+  return children;
+};
+
+export default ProtectedRoute;
+
+
+//portfolio-frontend/src/store/index.js
+export * from './projectStore';
+export * from './uiStore';
+
+
+//portfolio-frontend/src/store/projectStore.js
+// A simple example using React's useState or Context can be provided here.
+// For a full state management solution, integrate Redux, Zustand, or another library.
+export const projectsStore = {
+  projects: [],
+  setProjects: () => {},
+};
+
+
+//portfolio-frontend/src/store/uiStore.js
+// Similar dummy store for UI related states.
+export const uiStore = {
+  loading: false,
+  setLoading: () => {},
+};
+
+
+//portfolio-frontend/src/styles/global.scss
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.staggered-delay-1 { animation-delay: 0.2s; }
+.staggered-delay-2 { animation-delay: 0.4s; }
+.staggered-delay-3 { animation-delay: 0.6s; }
+.staggered-delay-4 { animation-delay: 0.8s; }
+
+
+body {
+  font-family: $font-stack;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  color: $secondary-color;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+
+.homepage-projects h2 {
+
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 2rem auto 0 auto;
+  color: #14213d;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+
+// navigation------------------------------------------------
+
+/* CustomNavbar.css */
+.container {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+
+.custom-header {
+  font-family: "Times New Roman", Times, serif;
+  color: #fff;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  z-index: 1000;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  background: none;
+}
+
+.nav2 {
+  background: linear-gradient(45deg, rgb(0 255 222 / 80%), rgb(0 90 255 / 80%));
+   display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none !important; 
+}
+
+.logo-img {
+  width: 120px;
+  height: 50px;
+  background-image: url("/logo.png"); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0; 
+  animation: floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(3deg);
+  }
+}
+
+.company-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 0px;
+  padding-left: 0px;
+  color: #fff; 
+}
+
+.user-info {
+  font-size: 1rem;
+}
+
+.nav-links {
+  margin-bottom: 0; 
+}
+
+.nav-links .nav-item {
+  margin-left: 20px;
+}
+
+.nav-links .nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0; 
+}
+
+.nav-links .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #ff6f61;
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.nav-links .nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.menu-toggle {
+  display: none; 
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  height: 3px;
+  width: 25px;
+  background: #fff;
+  margin: 4px 0;
+}
+
+/* Custom styles for the search input */
+.custom-search-input {
+  max-width: 170px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease-in-out; 
+}
+
+.custom-search-input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+
+.custom-search-input::placeholder {
+  font-family: "Times New Roman", Times, serif;
+  color: #999;
+  font-style: italic;
+  text-align: left;
+}
+
+/* Custom styles for the search button */
+.custom-search-button {
+  background-color: rgb(0, 132, 255) !important;
+  color: #ffffff !important;
+  
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.custom-search-button:hover {
+  background-color: rgba(0, 255, 221, 0.822) !important;
+  color: #000 !important;
+}
+
+/* Media query for mobile menu */
+@media (max-width: 767.98px) { /* Bootstrap's medium breakpoint */
+  .menu-toggle {
+    display: flex;
+  }
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 1rem;
+  }
+  .nav-links .nav-item {
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+  }
+  .nav-links .nav-link::after {
+    bottom: -2px;
+  }
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .d-flex.role-search {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .custom-search-input {
+    max-width: 100%;
+  }
+}
+
+// Banner-------------------------------------------------------
+
+/* Banner Section Styling */
+.banner-area {
+  background-color: #f9f9f9;
+  height: 100px;
+  padding-top: 20px;
+}
+
+/* Single banner layout */
+.single-banner {
+  padding: 15px;
+  background: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* Banner image style */
+.banner-img {
+  flex: 0 0 50px;
+  max-width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.banner-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease-in-out;
+}
+
+.single-banner:hover .banner-img img {
+  transform: scale(1.1);
+}
+
+/* Banner text style */
+.banner-text h4 {
+  font-family: "Rufina", serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.banner-text p {
+  color: #555;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+/* Shadow on hover */
+.banner-shadow-hover {
+  position: relative;
+}
+
+.banner-shadow-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(128, 128, 128, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.banner-shadow-hover:hover::before {
+  opacity: 1;
+}
+
+
+
+/* carousel ------------------------------------------  */
+
+.carousel {
+  position: relative;
+  width: 95%;
+  max-width: 1300px;
+  height: 335px;
+  margin: 20px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Make images fill carousel and keep aspect ratio */
+.carousel img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Optional: subtle zoom effect */
+.carousel-item img:hover {
+  transform: scale(1.03);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .carousel {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel {
+    height: 150px;
+  }
+}
+
+/* project Section --------------------------------------------------*/
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+  height: 100%;
+  min-height: 420px;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-img-top {
+    object-fit: cover;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #333;
+  }
+
+  .card-text {
+    font-size: 1rem;
+    color: #666;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+
+  .btn {
+    align-self: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-top: auto; // pushes button to bottom
+  }
+}
+
+.vertical-project-card {
+  min-height: 420px;
+  margin-bottom: 20px;
+
+  .card-img-top {
+    height: 220px;
+  }
+}
+
+.wide-project-card {
+  min-height: 420px;
+
+  .card-img-top {
+    height: 280px;
+  }
+}
+
+.projects-page h1 {
+  margin: 30px 0 0 0;
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.contact-page h1 {
+  margin: 30px 0 30px 0;
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+}
+
+/* skill Section --------------------------------------------------*/
+.skills-section {
+  padding: 4rem 0;
+  background-color: #f4f6f8;
+}
+.skill-card {
+  border: none;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+.skill-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.skill-section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+
+/* Experience Section --------------------------------------------------*/
+
+/* Experience Section */
+.experience-section {
+  padding: 4rem 0;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.experience-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+  text-align: center;
+}
+
+/* Timeline Wrapper */
+.experience-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  border-left: 4px dashed #01c2ff; /* main vertical line */
+  margin-left: 40px;
+}
+
+/* Timeline Item */
+.experience-timeline li {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 60px;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.experience-timeline li:hover {
+  background: linear-gradient(90deg, rgba(1,194,255,0.05) 0%, rgba(1,194,255,0.03) 100%);
+  // border-left: 3px solid #01c2ff;
+  border-right: 6px solid #01c2ff;
+  border-radius: 5px;
+}
+
+/* Year Badge */
+.experience-timeline-date {
+  position: absolute;
+  top: 0;
+  left: -85px;
+  width: 70px;
+  text-align: right;
+  font-weight: bold;
+  color: #01c2ff;
+  background: #f0faff;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Content Block */
+.experience-timeline-content {
+  background-color: #f9f9f9;
+  border: 1px dashed #ccc;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.experience-timeline-content h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.experience-timeline-content p {
+  font-size: 0.95rem;
+  margin: 0;
+  color: #555;
+}
+
+.experience-timeline li:hover .experience-timeline-content {
+  transform: translateX(5px);
+  border-color: #01c2ff;
+}
+
+
+/* Achievement Section */
+.achievements-section {
+  padding: 5rem 2rem;
+  background: linear-gradient(180deg, #a0fdfb 0%, #49a1ff 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  font-style: italic;
+}
+
+.achievements-section::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(10, 230, 138, 0.692), transparent 60%);
+  animation: rotateGlow 30s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: #0091b1;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 10px rgba(0, 209, 255, 0.3);
+}
+
+/* Glassmorphism effect */
+.achievement-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s;
+  z-index: 1;
+  position: relative;
+}
+
+.achievement-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 0 10px #19f5e3, 0 0 20px rgba(0, 209, 255, 0.2);
+  border: 1px solid #00d1ff;
+}
+
+.achievement-card .card-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #0077ff;
+  margin-bottom: 1rem;
+}
+
+.achievement-card .card-text {
+  font-size: 1.1rem;
+  color: #00579e;
+}
+
+
+
+/* Footer ------------------------------------------------------------*/
+.footer {
+  background: #2a5c82;
+  color: white;
+  padding: 40px 0 20px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.footer-section {
+  margin-bottom: 20px;
+  /* display: flex; */
+}
+
+.footer-section a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-logo {
+  width: 45px;
+  display: flex;
+}
+
+.social-links {
+  margin-top: 20px;
+}
+
+.social-links a {
+  color: white;
+  font-size: 24px;
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(#ffc107);
+}
+
+.footer-section h4 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ffc107;
+  padding-bottom: 5px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: white;
+}
+
+.contact-inf i {
+  margin-right: 10px;
+  width: 20px;
+}
+
+.newsletter-form input {
+  padding: 7px;
+  width: 79%;
+  border: none;
+  border-radius: 15px 15px 0 0px;
+  margin-bottom: 0px;
+}
+.newsletter-form input:focus {
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.newsletter-form button {
+  align-self: center;
+  padding: 6px 10px;
+  background: #ffc107;
+  margin: 0px;
+  border: none;
+  border-radius: 0 0 15px 15px;
+  cursor: pointer;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+
+
+/* copied file contents
+------------------------------------------
+-----------------------------------------
+--------------------------------------------
+-------------------------------------- */
+
+
+.hero {
+  background: url("../assets/images/new.jpg") no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  background-attachment: fixed;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay to improve text visibility */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  margin-top: -150px;
+  padding: 2rem;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  opacity: 1;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* About Section */
+
+/* about Highlight Block */
+.about-highlight {
+  background: url("../assets/images/im2.jpg") center/cover no-repeat;
+  color: rgb(255, 255, 255);
+  padding: 60px 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  background-attachment: fixed;
+  max-width: 1220px;
+  margin: 0 auto 25px auto;
+}
+.about-highlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.about-highlight h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: bolder;
+}
+
+.about-highlight p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.about {
+  padding: 60px 20px;
+  background-color: #f5f9ff;
+  text-align: center;
+  // color: #333;
+}
+
+.about h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  color: #14213d;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.about-content {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.about-card {
+  border: none;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  background: linear-gradient(to right, #ffffff, #f8faff);
+}
+
+.about-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.about-img {
+  border-radius: 20px 20px 0 0;
+  transition: transform 0.3s ease;
+  height: 220px;
+  object-fit: cover;
+}
+
+.about-card:hover .about-img {
+  transform: scale(1.03);
+}
+
+.about-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-top: 0.5rem;
+}
+
+.about-desc {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 1rem;
+  padding: 0 10px;
+}
+
+
+
+/* Services Section */
+.services {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.service-grid {
+  padding: 20px;
+}
+
+/* Equal-height Cards */
+.service-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.service-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover img {
+  transform: scale(1.05);
+}
+
+.service-card h3,
+.service-card .card-title {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.service-card ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+  color: #444;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+/* Labor Highlight Block */
+.labor-highlight {
+  background: url("../assets/images/new2.jpg") center/cover no-repeat;
+  color: rgb(255, 255, 255);
+  padding: 60px 20px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  background-attachment: fixed;
+}
+.labor-highlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.labor-highlight h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.labor-highlight p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Blog Section */
+.blog {
+  background: linear-gradient(180deg, #a0fdfb 0%, #49a1ff 100%);  
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 10px auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.blog h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.blog-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover img {
+  transform: scale(1.05);
+}
+
+.blog-card h3 {
+  font-size: 1.5rem;
+  margin: 20px 0 10px;
+  color: #333;
+  padding: 0 20px;
+}
+
+.blog-card p {
+  padding: 0 20px 20px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  text-align: left;
+}
+
+.blog .show-more-btn {
+  display: inline-block;
+  margin: 0 20px 20px;
+  color: #ffffff;
+  background-color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 5px;
+    border-radius: 8px;
+    border-style: dashed;
+  border-color: #007bff;
+}
+
+.blog .show-more-btn:hover {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #000ba0;
+}
+
+#moreClients {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+#toggleClients {
+  padding: 12px 24px;
+  font-size: 1rem;
+}
+
+/* Testimonials Section */
+blockquote {
+  background: linear-gradient(44deg, #0c5ef3 0%, #86eaef 100%);
+  border-left: 5px solid #2600ff;
+  font-style: italic;
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin: 0 40px 1rem 40px !important;
+}
+blockquote p {
+padding-left: 0.75rem;
+margin-top: 5px;
+margin-bottom: 0;
+  line-height: 1.6;
+}
+
+blockquote footer {
+  text-align: right;
+  font-weight: bold;
+  color: #271e1e;
+  font-size: 1.2rem;
+  margin: 5px;
+  padding: 0 10px 10px 0px;
+}
+
+#testimonials h2 {
+  font-size: 2rem;
+  border-left: 5px solid #2600ff;
+  padding-left: 0.75rem;
+  margin-top: 2rem;
+  margin-left: 40px;
+  margin-bottom: 15px;
+}
+
+/* === Why Us Section === */
+.why-us {
+  background: linear-gradient(45deg, rgb(0 255 222 / 80%), rgb(0 90 255 / 80%));
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.why-us h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.why-us p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #000000;
+}
+
+.why-us ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.why-us ul li {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  color: #000000;
+}
+
+/* Contact Section ---------------------------------------------------*/
+.contact {
+  margin-bottom: 2px !important;
+}
+.contact-area {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin: 20px 2px 4px 2px;
+  height: fit-content;
+}
+
+.contact-info {
+  flex: 1;
+  background: linear-gradient(45deg, rgb(0 255 222 / 80%), rgb(0 90 255 / 80%));
+  border-radius: 10px;
+  padding: 13px;
+  color: #000000;
+  text-align: start;
+  height: fit-content;
+}
+
+.contact-info h3 {
+  font-family: sans-serif;
+  text-align: center;
+  color: #2600ff;
+  font-size: 22px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 2px 0 20px 0;
+  padding: 12px 0;
+}
+
+.contact-info table {
+  width: 100%;
+  margin-top: 0px;
+  font-size: 16px;
+}
+
+.contact-info table td {
+  padding: 8px 5px;
+  vertical-align: top;
+}
+
+.contact-info table td:first-child {
+  width: 10px;
+  text-align: center;
+}
+
+.contact-info table td a {
+  color: #2600ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info table td a:hover {
+  color: #ffee05;
+}
+
+.contact-info .map-container {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+/* Contact Section Layout-------------------------------- */
+.contact {
+  padding: 80px 20px;
+  background: linear-gradient(50deg, #6d7bfb 0%, #42ffde 100%);
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 20px 0;
+}
+
+.contact h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #4c00ff;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
+.contact p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  color: #e0e0e0;
+  font-weight: bolder;
+}
+
+/* Contact Form Container */
+.contact-form {
+  padding: 2rem 2rem 1rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.contact-form:hover {
+  transform: translateY(-4px);
+}
+
+/* Form Fields */
+.contact-form .form-label {
+  color: #000ba0;
+  font-weight: 500;
+  text-decoration: underline;
+  
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed #0011ff;
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
+  width: 100%;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-bottom: 2px solid #00ffff;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+/* Placeholder Styling */
+.contact-form ::placeholder {
+  color: #ccc;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+/* Textarea */
+.contact-form textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* Submit Button */
+.contact-form .cta-button {
+  background: linear-gradient(90deg, #00ffff, #007bff);
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  padding: 0.6rem 2rem;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+}
+
+.contact-form .cta-button:hover {
+  background: linear-gradient(90deg, #007bff, #00ffff);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+  transform: scale(1.02);
+}
+
+/* Responsive Glow Animation (optional) */
+.contact::after {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.2), transparent 70%);
+  animation: pulse 6s infinite ease-in-out;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.6;
+  }
+}
+
+
+//portfolio-frontend/src/styles/_variables.scss
+// Global SCSS variables
+$primary-color: #0d6efd;
+$secondary-color: #6c757d;
+$font-stack: 'Helvetica Neue', sans-serif;
+
+
+//portfolio-frontend/src/styles/themes/dark.scss
+$background-color: #000000;
+$text-color: #ffffff;
+
+
+//portfolio-frontend/src/styles/themes/light.scss
+$background-color: #ffffff;
+$text-color: #000000;
+
+
+//portfolio-frontend/src/__tests__/setup.js
+import '@testing-library/jest-dom';

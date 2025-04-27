@@ -1,5 +1,19 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
+.homepage-projects h2 {
+
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 2rem auto 0 auto;
+  color: #14213d;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+// --------------------
+// Basic Animations
+// --------------------
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -21,6 +35,9 @@
 .staggered-delay-3 { animation-delay: 0.6s; }
 .staggered-delay-4 { animation-delay: 0.8s; }
 
+// --------------------
+// Global Body
+// --------------------
 
 body {
   font-family: $font-stack;
@@ -37,211 +54,234 @@ body.loaded {
   opacity: 1;
 }
 
-
-.homepage-projects h2 {
-
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin: 2rem auto 0 auto;
-  color: #14213d;
-  text-align: center;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-
-// navigation------------------------------------------------
-
-/* CustomNavbar.css */
-.container {
-  width: 100%;
-  max-width: none;
-  padding: 0;
-}
+// --------------------
+// Navigation
+// --------------------
 
 .custom-header {
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Poppins", sans-serif;
   color: #fff;
   padding: 0;
   position: sticky;
   top: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0;
   z-index: 1000;
   width: 100%;
-  max-width: 100%;
-  margin: 0;
-  background: none;
+  background: transparent;
+  box-shadow: 0 2px 10px rgba(0, 255, 255, 0.15);
 }
 
 .nav2 {
   background: linear-gradient(45deg, rgb(0 255 222 / 80%), rgb(0 90 255 / 80%));
-   display: flex;
-  justify-content: space-between;
-  align-items: center; 
-  width: 100%;
-  margin: 0 auto;
+  backdrop-filter: blur(5px);
+  transition: all 0.4s ease;
+  padding: 1rem 0;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  text-decoration: none !important; 
+.nav2.scrolled {
+  background: rgba(0, 0, 0, 0.521);
+  backdrop-filter: blur(12px);
+  padding: 0.5rem 0;
 }
 
 .logo-img {
-  width: 120px;
-  height: 50px;
-  background-image: url("/logo.png"); 
+  width: 110px;
+  height: 45px;
+  background-image: url("/logo.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 0; 
   animation: floatLogo 4s ease-in-out infinite;
 }
 
 @keyframes floatLogo {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0) rotate(-3deg);
   }
   50% {
-    transform: translateY(-5px) rotate(3deg);
+    transform: translateY(-6px) rotate(3deg);
   }
 }
 
 .company-name {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-left: 0px;
-  padding-left: 0px;
-  color: #fff; 
-}
-
-.user-info {
-  font-size: 1rem;
-}
-
-.nav-links {
-  margin-bottom: 0; 
-}
-
-.nav-links .nav-item {
-  margin-left: 20px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: white;
 }
 
 .nav-links .nav-link {
+  font-weight: 500;
+  font-size: 1.05rem;
   color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
   position: relative;
-  padding: 0.5rem 0; 
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .nav-links .nav-link::after {
   content: "";
   position: absolute;
-  width: 100%;
+  width: 0%;
   height: 2px;
-  background: #ff6f61;
-  bottom: -5px;
+  bottom: -4px;
   left: 0;
-  transform: scaleX(0);
-  transform-origin: bottom right;
-  transition: transform 0.3s ease;
+  background: #00ffee;
+  transition: width 0.3s ease;
+}
+
+.nav-links .nav-link:hover {
+  color: #00ffee;
 }
 
 .nav-links .nav-link:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+  width: 100%;
 }
 
-.menu-toggle {
-  display: none; 
-  flex-direction: column;
-  cursor: pointer;
+.search-form {
+  display: flex;
+  align-items: center;
 }
 
-.menu-toggle .bar {
-  height: 3px;
-  width: 25px;
-  background: #fff;
-  margin: 4px 0;
-}
-
-/* Custom styles for the search input */
 .custom-search-input {
   max-width: 170px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   padding: 8px 12px;
-  font-size: 16px;
-  color: #333;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s ease-in-out; 
-}
-
-.custom-search-input:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background-color: rgba(255,255,255,0.1);
+  color: white;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
 }
 
 .custom-search-input::placeholder {
-  font-family: "Times New Roman", Times, serif;
-  color: #999;
+  color: rgba(255,255,255,0.6);
   font-style: italic;
-  text-align: left;
 }
 
-/* Custom styles for the search button */
+.custom-search-input:focus {
+  border-color: #00ffee;
+  background-color: rgba(255,255,255,0.2);
+  outline: none;
+}
+
 .custom-search-button {
-  background-color: rgb(0, 132, 255) !important;
-  color: #ffffff !important;
-  
+  background: linear-gradient(135deg, #00ffcc, #0099ff);
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 8px 16px;
   font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-.custom-search-button:hover {
-  background-color: rgba(0, 255, 221, 0.822) !important;
-  color: #000 !important;
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.3s ease;
 }
 
-/* Media query for mobile menu */
-@media (max-width: 767.98px) { /* Bootstrap's medium breakpoint */
-  .menu-toggle {
-    display: flex;
+.custom-search-button:hover {
+  background: linear-gradient(135deg, #00ffee, #007bff);
+  color: #000;
+}
+
+
+// --------------------
+// Hero Section
+// --------------------
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Background gradient animation */
+.animated-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #00ff95, #2c0c2b, #0093ff, #00ff95);
+  background-size: 400% 400%;
+  animation: gradientAnimation 20s ease infinite;
+  z-index: 1;
+}
+
+/* Floating circles */
+.moving-circles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.circle {
+  position: absolute;
+  background: rgba(0, 255, 255, 0.8);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: moveCircles linear infinite;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+@keyframes moveCircles {
+  from {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0.3;
   }
-  .nav-links {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 1rem;
-  }
-  .nav-links .nav-item {
-    margin-left: 0;
-    margin-bottom: 0.5rem;
-  }
-  .nav-links .nav-link::after {
-    bottom: -2px;
-  }
-  .user-info {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .d-flex.role-search {
-    width: 100%;
-    margin-top: 1rem;
-  }
-  .custom-search-input {
-    max-width: 100%;
+  to {
+    transform: translateY(-10vh) scale(1.2);
+    opacity: 1;
   }
 }
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Main content */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  padding: 2rem;
+  color: white;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: bold;
+  background: linear-gradient(45deg, #00ff88, #00ffee);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #00ffee;
+  text-shadow: 0 0 5px #003cff, 0 0 2px #00ffe7;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(45deg, #00ff88, #0099ff);
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s;
+  text-decoration: none;
+}
+
 
 // Banner-------------------------------------------------------
 
@@ -325,7 +365,7 @@ body.loaded {
   position: relative;
   width: 95%;
   max-width: 1300px;
-  height: 335px;
+  height: 460px;
   margin: 20px auto;
   border-radius: 12px;
   overflow: hidden;
@@ -734,49 +774,49 @@ body.loaded {
 -------------------------------------- */
 
 
-.hero {
-  background: url("../assets/images/new.jpg") no-repeat center center/cover;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  background-attachment: fixed;
-}
+// .hero {
+//   background: url("../assets/images/new.jpg") no-repeat center center/cover;
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   text-align: center;
+//   position: relative;
+//   background-attachment: fixed;
+// }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay to improve text visibility */
-  z-index: 1;
-}
+// .hero::before {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background: rgba(0, 0, 0, 0.5); /* Dark overlay to improve text visibility */
+//   z-index: 1;
+// }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  margin-top: -150px;
-  padding: 2rem;
-  max-width: 800px;
-}
+// .hero-content {
+//   position: relative;
+//   z-index: 2;
+//   color: #fff;
+//   margin-top: -150px;
+//   padding: 2rem;
+//   max-width: 800px;
+// }
 
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  opacity: 1;
-  line-height: 1.2;
-}
+// .hero-content h1 {
+//   font-size: 3rem;
+//   margin-bottom: 20px;
+//   opacity: 1;
+//   line-height: 1.2;
+// }
 
-.hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  line-height: 1.6;
-}
+// .hero-content p {
+//   font-size: 1.2rem;
+//   margin-bottom: 20px;
+//   line-height: 1.6;
+// }
 
 /* About Section */
 

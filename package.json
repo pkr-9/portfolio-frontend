@@ -14,12 +14,14 @@
     "aos": "2.3.4",
     "axios": "^1.8.4",
     "bootstrap": "^5.3.5",
+    "framer-motion": "12.9.2",
     "portfolio-frontend": "file:",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
     "react-i18next": "15.4.1",
     "react-router-dom": "^7.5.0",
+    "react-typed": "2.0.12",
     "tailwindcss": "4.1.4"
   },
   "devDependencies": {
