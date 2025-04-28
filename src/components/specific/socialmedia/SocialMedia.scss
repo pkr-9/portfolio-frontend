@@ -1,0 +1,101 @@
+.social-media-section {
+  padding: 160px 50px;
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  
+    .section-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 50px;
+      color: #00fff0;
+      text-shadow: 0 0 20px #00fff0, 0 0 40px #00fff0;
+    }
+  
+    .circle-wrapper {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+      margin-top: 40px;
+  
+      .outer-glass-circle,
+      .inner-glass-circle {
+        position: absolute;
+        border-radius: 50%;
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 30px #00fff0, inset 0 0 15px #00fff0;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+  
+      .outer-glass-circle {
+        width: 320px;
+        height: 320px;
+        animation: glow 6s ease-in-out infinite alternate;
+      }
+  
+      .inner-glass-circle {
+        width: 180px;
+        height: 180px;
+        animation: glow 8s ease-in-out infinite alternate-reverse;
+      }
+  
+      .icons-container {
+        position: absolute;
+        width: 100%;
+        height: 97%;
+        top: 0;
+        left: 0;
+  
+        .social-icon {
+          position: absolute;
+          font-size: 2.5rem;
+          color: white;
+          transform: translate(-50%, -50%);
+          transition: transform 0.4s ease, color 0.4s ease;
+  
+          &:hover {
+            color: #00fff0;
+            transform: translate(-50%, -50%) scale(1.3);
+          }
+        }
+      }
+    }
+  
+    @keyframes glow {
+      0% { box-shadow: 0 0 30px #00fff0, inset 0 0 10px #00fff0; }
+      100% { box-shadow: 0 0 60px #00fff0, inset 0 0 30px #00fff0; }
+    }
+  
+    /* Responsive */
+    @media (max-width: 768px) {
+      .circle-wrapper {
+        width: 260px;
+        height: 260px;
+  
+        .outer-glass-circle {
+          width: 260px;
+          height: 260px;
+        }
+  
+        .inner-glass-circle {
+          width: 150px;
+          height: 150px;
+        }
+  
+        .icons-container {
+          .social-icon {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+  

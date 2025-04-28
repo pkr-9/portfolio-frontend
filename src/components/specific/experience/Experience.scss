@@ -1,0 +1,82 @@
+.experience-section {
+    padding: 4rem 0;
+    background-color: #ffffff;
+    text-align: left;
+  }
+  
+  .experience-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Timeline Wrapper */
+  .experience-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    border-left: 4px dashed #01c2ff; /* main vertical line */
+    margin-left: 40px;
+  }
+  
+  /* Timeline Item */
+  .experience-timeline li {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 60px;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .experience-timeline li:hover {
+    background: linear-gradient(90deg, rgba(1,194,255,0.05) 0%, rgba(1,194,255,0.03) 100%);
+    // border-left: 3px solid #01c2ff;
+    border-right: 6px solid #01c2ff;
+    border-radius: 5px;
+  }
+  
+  /* Year Badge */
+  .experience-timeline-date {
+    position: absolute;
+    top: 0;
+    left: -85px;
+    width: 70px;
+    text-align: right;
+    font-weight: bold;
+    color: #01c2ff;
+    background: #f0faff;
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Content Block */
+  .experience-timeline-content {
+    background-color: #f9f9f9;
+    border: 1px dashed #ccc;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .experience-timeline-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .experience-timeline-content p {
+    font-size: 0.95rem;
+    margin: 0;
+    color: #555;
+  }
+  
+  .experience-timeline li:hover .experience-timeline-content {
+    transform: translateX(5px);
+    border-color: #01c2ff;
+  }
+  

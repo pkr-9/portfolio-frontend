@@ -1,0 +1,32 @@
+blockquote {
+  background: linear-gradient(44deg, #0c5ef3 0%, #86eaef 100%);
+  border-left: 5px solid #2600ff;
+  font-style: italic;
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin: 0 40px 1rem 40px !important;
+}
+blockquote p {
+padding-left: 0.75rem;
+margin-top: 5px;
+margin-bottom: 0;
+  line-height: 1.6;
+}
+
+blockquote footer {
+  text-align: right;
+  font-weight: bold;
+  color: #271e1e;
+  font-size: 1.2rem;
+  margin: 5px;
+  padding: 0 10px 10px 0px;
+}
+
+#testimonials h2 {
+  font-size: 2rem;
+  border-left: 5px solid #2600ff;
+  padding-left: 0.75rem;
+  margin-top: 2rem;
+  margin-left: 40px;
+  margin-bottom: 15px;
+}

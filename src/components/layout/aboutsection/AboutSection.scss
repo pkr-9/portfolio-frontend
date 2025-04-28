@@ -1,0 +1,99 @@
+
+/* About Section */
+.about {
+    padding: 60px 20px;
+    background-color: #f5f9ff;
+    text-align: center;
+  }
+  
+  .about h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    color: #14213d;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+  
+/* about Highlight Block */
+.about-highlight {
+    background: url("../../../assets/images/im2.jpg") center/cover no-repeat;
+    color: rgb(255, 255, 255);
+    padding: 35px 20px 10px 20px;
+    height: 325px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    background-attachment: fixed;
+    max-width: 1220px;
+    margin: 0 auto 25px auto;
+  }
+  .about-highlight::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  
+  .about-highlight h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: bolder;
+  }
+  
+  .about-highlight p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+
+  
+  .about-content {
+    max-width: 1220px;
+    margin: 0 auto;
+  }
+  
+  .about-card {
+    border: none;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    background: linear-gradient(to right, #ffffff, #f8faff);
+  }
+  
+  .about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .about-img {
+    border-radius: 20px 20px 0 0;
+    transition: transform 0.3s ease;
+    height: 220px;
+    object-fit: cover;
+  }
+  
+  .about-card:hover .about-img {
+    transform: scale(1.03);
+  }
+  
+  .about-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-top: 0.5rem;
+  }
+  
+  .about-desc {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 1rem;
+    padding: 0 10px;
+  }
+  
+  

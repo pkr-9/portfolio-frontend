@@ -1,0 +1,107 @@
+.homepage-projects h2 {
+
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 2rem auto 0 auto;
+    color: #14213d;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+
+  /* strengths Section */
+.homepage-strengths {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .homepage-strength-highlight {
+    background: url("../../assets/images/new2.jpg") center/cover no-repeat;
+    color: rgb(255, 255, 255);
+    padding: 35px 20px 10px 20px;
+    height: 325px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    background-attachment: fixed;
+  }
+  .homepage-strength-highlight::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  
+  .homepage-strength-highlight h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  
+  .homepage-strength-highlight p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+
+
+/* about Highlight Block */
+
+.homepage-about {
+    padding: 60px 20px;
+    background-color: #f5f9ff;
+    text-align: center;
+  }
+
+  .homepage-about h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    color: #14213d;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+
+
+.homepage-about-highlight {
+    background: url("../../assets/images/im2.jpg") center/cover no-repeat;
+    color: rgb(255, 255, 255);
+    padding: 35px 20px 10px 20px;
+    height: 325px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    background-attachment: fixed;
+    max-width: 1220px;
+    margin: 0 auto 25px auto;
+  }
+  .homepage-about-highlight::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  
+  .homepage-about-highlight h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: bolder;
+  }
+  
+  .homepage-about-highlight p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  

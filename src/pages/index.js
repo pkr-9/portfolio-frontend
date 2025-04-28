@@ -1,7 +1,6 @@
-// src/pages/index.js
-export { default as HomePage } from './HomePage';
-export { default as AboutPage } from './AboutPage';
-export { default as ContactPage } from './ContactPage';
-export { default as ProjectDetailPage } from './ProjectDetailPage';
-export { default as ProjectsPage } from './ProjectsPage';
-export { default as NotFoundPage } from './NotFoundPage';
+export { default as HomePage } from './homepage/HomePage';
+export { default as AboutPage } from './aboutpage/AboutPage';
+export { default as ContactPage } from './contactpage/ContactPage';
+export { default as ProjectDetailPage } from './projectdetailpage/ProjectDetailPage';
+export { default as ProjectsPage } from './projectpage/ProjectsPage';
+export { default as NotFoundPage } from './notfoundpage/NotFoundPage';
