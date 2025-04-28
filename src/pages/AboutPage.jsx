@@ -8,17 +8,17 @@ import Achievements from '../components/specific/Achievements';
 import AboutSection from '../components/layout/AboutSection';
 import WhyUs from '../components/layout/WhyUs';
 
-
 const AboutPage = () => {
   return (
     <div>
       <Navigation />
-      <AboutSection />
-      <Skills />
-      <Achievements />
-      <Experience />
-            <WhyUs />
-      
+      <div className="about-page">
+        <AboutSection />
+        <Skills />
+        <Achievements />
+        <Experience />
+        <WhyUs />
+      </div>
       <Footer />
     </div>
   );

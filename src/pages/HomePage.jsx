@@ -17,11 +17,23 @@ const HomePage = () => {
       <Banner />
       <CarouselComponent />
       <div className="homepage-projects fade-in-up staggered-delay-1">
-        <h2>Our Projects</h2>
+        <h2>Latest Project</h2>
         <WideProjectsSection />
       </div>
+
+      <div className="strengths">
+        <h2>Core Strengths</h2>
+        <div className="strength-highlight">
+          <h2>Springboot React Bootstrap</h2>
+          <p>
+            We specialize in skilled/semi-skilled labor for factories, events,
+            hospitals, and institutions.
+          </p>
+        </div>
+      </div>
+
       <div className="about">
-        <h2>About Us</h2>
+        <h2>About Me</h2>
         <div className="about-highlight fade-in-up staggered-delay-1">
           <h2>Our Commitment</h2>
           <p>
@@ -30,16 +42,7 @@ const HomePage = () => {
           </p>
         </div>
       </div>
-      <div className="services">
-        <h2>Our Services</h2>
-        <div className="labor-highlight">
-          <h2>Labor Supply – Our Core Strength</h2>
-          <p>
-            We specialize in skilled/semi-skilled labor for factories, events,
-            hospitals, and institutions.
-          </p>
-        </div>
-      </div>
+
       <ClientsSection />
       <Testimonials />
       <Footer />
