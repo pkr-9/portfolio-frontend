@@ -8,7 +8,7 @@ import ClientsSection from '../../components/layout/clientsection/ClientsSection
 import Testimonials from '../../components/layout/testimonials/Testimonials';
 import Hero from '../../components/layout/hero/Hero';
 import '../../styles/global.scss';
-import './Homepage.scss';
+import './HomePage.scss';
 
 const HomePage = () => {
   return (
