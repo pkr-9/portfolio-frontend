@@ -1,107 +1,294 @@
 .homepage-projects h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 2rem auto 0 auto;
+  color: #14213d;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
 
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin: 2rem auto 0 auto;
-    color: #14213d;
-    text-align: center;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  }
-
-  /* strengths Section */
+/* strengths Section */
 .homepage-strengths {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .homepage-strength-highlight {
-    background: url("../../assets/images/new2.jpg") center/cover no-repeat;
-    color: rgb(255, 255, 255);
-    padding: 35px 20px 10px 20px;
-    height: 325px;
-    border-radius: 15px;
-    text-align: center;
-    margin-bottom: 40px;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
-    background-attachment: fixed;
-  }
-  .homepage-strength-highlight::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-  }
-  
-  .homepage-strength-highlight h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #fff;
-  }
-  
-  .homepage-strength-highlight p {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
 
+.homepage-strength-highlight {
+  background: url("../../assets/images/ChatGPT.png") center/cover no-repeat;
+  color: rgb(255, 255, 255);
+  padding: 35px 20px 10px 20px;
+  height: 325px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  background-attachment: fixed;
+  position: relative;
+}
 
+.homepage-strength-highlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
 
-/* about Highlight Block */
+.homepage-strength-highlight h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
 
+.homepage-strength-highlight p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* about section----------------------------------- */
 .homepage-about {
-    padding: 60px 20px;
-    background-color: #f5f9ff;
-    text-align: center;
-  }
+  padding: 50px 10px 10px 10px;
+  background: linear-gradient(200deg, #00b7ff, #002735 50%, #00b2ff);
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
 
-  .homepage-about h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 3rem;
-    color: #14213d;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  }
+.homepage-about .neon-title {
+  font-size: 4rem;
+  margin-bottom: 80px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
 
+.homepage-about .neon-title span {
+  display: inline-block;
+  text-shadow: 0 0 10px #00fff0, 0 0 20px #00fff0, 0 0 30px #00fff0;
+  animation: neonPulse 1.5s ease-in-out infinite alternate;
+}
 
-.homepage-about-highlight {
-    background: url("../../assets/images/im2.jpg") center/cover no-repeat;
-    color: rgb(255, 255, 255);
-    padding: 35px 20px 10px 20px;
-    height: 325px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
-    background-attachment: fixed;
-    max-width: 1220px;
-    margin: 0 auto 25px auto;
+@for $i from 1 through 7 {
+  .homepage-about .neon-title span:nth-child(#{$i}) {
+    animation-delay: #{$i * 0.1}s;
   }
-  .homepage-about-highlight::before {
-    content: "";
+}
+
+.homepage-about .homepage-about-card {
+  background: linear-gradient(135deg, #0f2027, #203a43 50%, #2c5364);
+  backdrop-filter: blur(12px);
+  padding: 50px 0 30px 0;
+  border-radius: 15px;
+  max-width: 1200px;
+  margin: 0 auto 50px auto;
+  box-shadow: 0 4px 25px rgba(0, 255, 255, 0.1);
+  border-left: 5px solid #00fff0;
+  transition: all 0.3s ease;
+  // animation: gradientFlow 12s ease infinite;
+}
+
+.homepage-about .homepage-about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 30px rgba(0, 255, 255, 0.3);
+  border-left: 5px solid #007bff;
+}
+
+.homepage-about h2 {
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.homepage-about .homepage-about-card p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #cccccc;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-me-showcase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+}
+
+.homepage-about-card {
+  position: relative;
+  background: linear-gradient(135deg, #0f2027, #203a43 50%, #2c5364);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 33px 0 0 0;
+    width: 100%;
+    max-width: 1132px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.homepage-about-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x) var(--y), rgba(0,255,240,0.2) 0%, transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.homepage-about-card:hover {
+  transform: rotate3d(1, 1, 0, 5deg) scale(1.02);
+  box-shadow: 0 25px 60px rgba(0, 255, 255, 0.4);
+}
+
+.homepage-about-card:hover::before {
+  opacity: 1;
+}
+
+.homepage-about-card:hover .dynamic-gradient {
+  opacity: 0.3;
+}
+
+.homepage-about-card .particles {
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  position: absolute;
+  inset: 0;
+}
+
+@for $i from 1 through 40 {
+  .homepage-about-card .particle:nth-child(#{$i}) {
+    top: #{random(100)}%;
+    left: #{random(100)}%;
+    width: #{random(10) + 6}px; // Increased size
+    height: #{random(10) + 6}px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.9) 0%, transparent 70%);
+    filter: blur(#{random(3) + 2}px); // Sharper blur
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
+    animation: float-#{$i} #{random(15) + 10}s ease-in-out infinite;
+    animation-delay: #{random(5)}s;
+    opacity: 0.9; // More visible
+    mix-blend-mode: lighten; // Better contrast
   }
-  
-  .homepage-about-highlight h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #fff;
-    font-weight: bolder;
+}
+
+@for $i from 1 through 20 {
+  @keyframes float-#{$i} {
+    0% {
+      transform: translate(0, 0) scale(#{random(4) / 10 + 0.8});
+    }
+    50% {
+      transform: translate(#{random(50) - 25}px, #{random(100) - 50}px)
+                 scale(#{random(6) / 10 + 1});
+    }
+    100% {
+      transform: translate(0, 0) scale(#{random(4) / 10 + 0.8});
+    }
   }
-  
-  .homepage-about-highlight p {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
+}
+
+
+.dynamic-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, #00fff0, #007bff, #ff00ff, #00fff0);
+  background-size: 400% 400%;
+  // background-size: 20% 20%;
+  mix-blend-mode: overlay;
+  opacity: 0.1;
+  animation: gradientFlow 12s ease infinite;
+  transition: opacity 0.3s;
+}
+
+.homepage-about-card .content {
+  position: relative;
+  z-index: 2;
+}
+
+.homepage-about-card .content h3 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  background: linear-gradient(45deg, #00fff0, #007bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShine 3s ease infinite;
+}
+
+.homepage-about-card .content p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  transform: translateZ(30px);
+}
+
+@keyframes neonPulse {
+  from { opacity: 0.8; }
+  to { opacity: 1; }
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+@keyframes textShine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+// =========================
+// RESPONSIVE TWEAKS
+// =========================
+
+@media (max-width: 768px) {
+  .homepage-projects h2,
+  .homepage-strengths h2,
+  .homepage-about .neon-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
   }
-  
+
+  .homepage-strength-highlight h2 {
+    font-size: clamp(1.6rem, 5vw, 2rem);
+  }
+
+  .homepage-strength-highlight p,
+  .homepage-about .homepage-about-card p {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .homepage-about .content h3 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .homepage-about-card {
+    padding: 25px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage-about .neon-title {
+    font-size: clamp(1.6rem, 7vw, 2rem);
+    margin-bottom: 50px;
+  }
+
+  .homepage-strength-highlight {
+    height: auto;
+    padding: 20px;
+  }
+
+  .homepage-about-card .content p {
+    font-size: 1rem;
+  }
+}

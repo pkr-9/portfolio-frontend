@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Navigation from '../../components/layout/navbar/Navbar';
 import Banner from '../../components/specific/banner/Banner';
 import CarouselComponent from '../../components/layout/carousel/Carousel';
@@ -7,12 +7,39 @@ import Footer from '../../components/layout/footer/Footer';
 import ClientsSection from '../../components/layout/clientsection/ClientsSection';
 import Testimonials from '../../components/layout/testimonials/Testimonials';
 import Hero from '../../components/layout/hero/Hero';
+import StrengthCard from '../../components/specific/strengthcard/StrengthCard';
 import '../../styles/global.scss';
 import './HomePage.scss';
 
+const PARTICLE_COUNT = 40;
+
 const HomePage = () => {
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    let frame;
+
+    const handleMouseMove = (e) => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--x', `${x}px`);
+        card.style.setProperty('--y', `${y}px`);
+      });
+    };
+
+    if (card) card.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      if (card) card.removeEventListener('mousemove', handleMouseMove);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
-    <div>
+    <div className="homepage-wrapper">
       <Navigation />
       <Hero />
       <Banner />
@@ -33,17 +60,42 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="homepage-about">
-        <h2>About Me</h2>
-        <div className="homepage-about-highlight fade-in-up staggered-delay-1">
-          <h2>Our Commitment</h2>
-          <p>
-            At Swpris Facilities, we pride ourselves on being a dependable
-            provider of skilled professionals and facility services...
-          </p>
-        </div>
-      </div>
+      <section className="homepage-about">
+        <h2 className="neon-title">
+          <span>A</span>
+          <span>b</span>
+          <span>o</span>
+          <span>u</span>
+          <span>t</span>
+          <span>M</span>
+          <span>e</span>
+        </h2>
 
+        <div
+          className="homepage-about-card fade-in-up staggered-delay-1"
+          ref={cardRef}
+        >
+          <div className="particles">
+            {[...Array(PARTICLE_COUNT)].map((_, i) => (
+              <div key={i} className="particle"></div>
+            ))}
+          </div>
+          <div className="dynamic-gradient"></div>
+          <div className="content">
+            <h3>Creative & Committed</h3>
+            <p>
+              I'm passionate about delivering robust backend architecture, clean
+              code, and smooth user experiences. I blend logic with creativity,
+              backed by a strong foundation in Java, Spring Boot, and
+              problem-solving.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div className="strength-section">
+        <StrengthCard />
+      </div>
       <ClientsSection />
       <Testimonials />
       <Footer />

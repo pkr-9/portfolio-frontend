@@ -1,17 +1,4 @@
-//portfolio-frontend/.editorconfig
-# EditorConfig helps maintain consistent coding styles across different editors
-root = true
-
-[*]
-indent_style = space
-indent_size = 2
-end_of_line = lf
-charset = utf-8
-trim_trailing_whitespace = true
-insert_final_newline = true
-
-
-//portfolio-frontend/.eslintrc.cjs
+--- Path: portfolio-frontend/.eslintrc.cjs ---
 module.exports = {
   root: true,
   env: {
@@ -35,16 +22,13 @@ module.exports = {
 };
 
 
-//portfolio-frontend/.lintstagedrc.js
+--- Path: portfolio-frontend/.lintstagedrc.js ---
 module.exports = {
   "**/*.{js,jsx}": ["eslint --fix", "prettier --write"],
 };
 
 
-//portfolio-frontend/.npmrc
-save-exact=true
-
-//portfolio-frontend/.prettierrc.json
+--- Path: portfolio-frontend/.prettierrc.json ---
 {
   "singleQuote": true,
   "trailingComma": "es5",
@@ -53,7 +37,7 @@ save-exact=true
 }
 
 
-//portfolio-frontend/eslint.config.js
+--- Path: portfolio-frontend/eslint.config.js ---
 import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
@@ -89,7 +73,7 @@ export default [
 ]
 
 
-//portfolio-frontend/index.html
+--- Path: portfolio-frontend/index.html ---
 <!doctype html>
 <html lang="en">
   <head>
@@ -105,7 +89,7 @@ export default [
 </html>
 
 
-//portfolio-frontend/package.json
+--- Path: portfolio-frontend/package.json ---
 {
   "name": "portfolio-frontend",
   "private": true,
@@ -122,12 +106,15 @@ export default [
     "aos": "2.3.4",
     "axios": "^1.8.4",
     "bootstrap": "^5.3.5",
+    "framer-motion": "12.9.2",
     "portfolio-frontend": "file:",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
     "react-i18next": "15.4.1",
+    "react-icons": "5.5.0",
     "react-router-dom": "^7.5.0",
+    "react-typed": "2.0.12",
     "tailwindcss": "4.1.4"
   },
   "devDependencies": {
@@ -148,13 +135,13 @@ export default [
 }
 
 
-//portfolio-frontend/postcss.config.js
+--- Path: portfolio-frontend/postcss.config.js ---
 export const plugins = {
   autoprefixer: {},
 };
 
 
-//portfolio-frontend/stylelint.config.js
+--- Path: portfolio-frontend/stylelint.config.js ---
 module.exports = {
   extends: 'stylelint-config-standard',
   rules: {
@@ -174,7 +161,7 @@ module.exports = {
 };
 
 
-//portfolio-frontend/vite.config.js
+--- Path: portfolio-frontend/vite.config.js ---
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
@@ -238,7 +225,7 @@ export default defineConfig({
 });
 
 
-//portfolio-frontend/vitest.config.js
+--- Path: portfolio-frontend/vitest.config.js ---
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
@@ -250,7 +237,7 @@ export default defineConfig({
 });
 
 
-//portfolio-frontend/src/App.css
+--- Path: portfolio-frontend/src/App.css ---
 #root {
   width: 100vw;
   width: 100%;
@@ -296,7 +283,7 @@ export default defineConfig({
 }
 
 
-//portfolio-frontend/src/App.jsx
+--- Path: portfolio-frontend/src/App.jsx ---
 import React from 'react';
 import AppRoutes from './routes';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -314,8 +301,9 @@ const App = () => (
 export default App;
 
 
-//portfolio-frontend/src/index.css
+--- Path: portfolio-frontend/src/index.css ---
 :root {
+  --navbar-height: 80px;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -386,7 +374,7 @@ button:focus-visible {
 }
 
 
-//portfolio-frontend/src/main.jsx
+--- Path: portfolio-frontend/src/main.jsx ---
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -407,7 +395,7 @@ AOS.init({
   once: true 
 });
 
-//portfolio-frontend/src/api/apiClient.js
+--- Path: portfolio-frontend/src/api/apiClient.js ---
 // src/api/apiClient.js
 import axios from 'axios';
 
@@ -421,7 +409,7 @@ const apiClient = axios.create({
 export default apiClient;
 
 
-//portfolio-frontend/src/api/contactApi.js
+--- Path: portfolio-frontend/src/api/contactApi.js ---
 // src/api/contactApi.js
 import apiClient from './apiClient';
 
@@ -431,13 +419,13 @@ export const sendContactMessage = async (data) => {
 };
 
 
-//portfolio-frontend/src/api/index.js
+--- Path: portfolio-frontend/src/api/index.js ---
 // src/api/index.js
 export * from './projectApi';
 export * from './contactApi';
 
 
-//portfolio-frontend/src/api/projectApi.js
+--- Path: portfolio-frontend/src/api/projectApi.js ---
 // src/api/projectApi.js
 import apiClient from './apiClient';
 
@@ -447,7 +435,7 @@ export const getProjects = async () => {
 };
 
 
-//portfolio-frontend/src/components/common/Button.jsx
+--- Path: portfolio-frontend/src/components/common/button/Button.jsx ---
 // src/components/common/Button.jsx
 import React from 'react';
 import { Button as BootstrapButton } from 'react-bootstrap';
@@ -459,7 +447,10 @@ const Button = ({ children, ...props }) => {
 export default Button;
 
 
-//portfolio-frontend/src/components/forms/ValidatedInput.jsx
+--- Path: portfolio-frontend/src/components/common/button/Button.scss ---
+
+
+--- Path: portfolio-frontend/src/components/forms/ValidatedInput.jsx ---
 // src/components/forms/ValidatedInput.jsx
 import React from 'react';
 
@@ -474,25 +465,26 @@ const ValidatedInput = ({ label, error, ...props }) => (
 export default ValidatedInput;
 
 
-//portfolio-frontend/src/components/layout/AboutSection.jsx
-import React from "react";
-import "../../styles/global.scss";
-import { Container, Row, Col, Card } from "react-bootstrap";
+--- Path: portfolio-frontend/src/components/layout/aboutsection/AboutSection.jsx ---
+import React from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import '../../../styles/global.scss';
+import './AboutSection.scss';
 
 const aboutItems = [
   {
-    title: "Our Vision",
-    img: "https://picsum.photos/500/300",
+    title: 'Our Vision',
+    img: 'https://picsum.photos/500/300',
     desc: `We envision a future where every individual has access to dignified employment and every organization can rely on skilled professionals...`,
   },
   {
-    title: "Our Mission",
-    img: "https://picsum.photos/500/300",
+    title: 'Our Mission',
+    img: 'https://picsum.photos/500/300',
     desc: `Swpris Facilities is a people-first facility management startup providing tailored staffing solutions...`,
   },
   {
-    title: "Our Operations",
-    img: "https://picsum.photos/500/300",
+    title: 'Our Operations',
+    img: 'https://picsum.photos/500/300',
     desc: `Our operations are powered by cutting-edge tools ensuring exceptional service delivery.`,
   },
 ];
@@ -503,7 +495,8 @@ const AboutSection = () => (
     <div className="about-highlight">
       <h2>Our Commitment</h2>
       <p>
-        At Swpris Facilities, we pride ourselves on being a dependable provider of skilled professionals and facility services...
+        At Swpris Facilities, we pride ourselves on being a dependable provider
+        of skilled professionals and facility services...
       </p>
     </div>
     <Container className="about-content">
@@ -527,41 +520,190 @@ const AboutSection = () => (
 export default AboutSection;
 
 
-//portfolio-frontend/src/components/layout/Carousel.jsx
-import React from "react";
-import { Carousel } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../../styles/global.scss"
-import c1 from "../../assets/images/imggg.jpg"
-import c2 from "../../assets/images/new2.jpg";
-import c3 from "../../assets/images/im2.jpg";
+--- Path: portfolio-frontend/src/components/layout/aboutsection/AboutSection.scss ---
+
+/* About Section */
+.about {
+    padding: 60px 20px;
+    background-color: #f5f9ff;
+    text-align: center;
+  }
+  
+  .about h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    color: #14213d;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+  
+/* about Highlight Block */
+.about-highlight {
+    background: url("../../../assets/images/im2.jpg") center/cover no-repeat;
+    color: rgb(255, 255, 255);
+    padding: 35px 20px 10px 20px;
+    height: 325px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    background-attachment: fixed;
+    max-width: 1220px;
+    margin: 0 auto 25px auto;
+  }
+  .about-highlight::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  
+  .about-highlight h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: bolder;
+  }
+  
+  .about-highlight p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+
+  
+  .about-content {
+    max-width: 1220px;
+    margin: 0 auto;
+  }
+  
+  .about-card {
+    border: none;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    background: linear-gradient(to right, #ffffff, #f8faff);
+  }
+  
+  .about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .about-img {
+    border-radius: 20px 20px 0 0;
+    transition: transform 0.3s ease;
+    height: 220px;
+    object-fit: cover;
+  }
+  
+  .about-card:hover .about-img {
+    transform: scale(1.03);
+  }
+  
+  .about-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-top: 0.5rem;
+  }
+  
+  .about-desc {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 1rem;
+    padding: 0 10px;
+  }
+  
+  
+
+--- Path: portfolio-frontend/src/components/layout/carousel/Carousel.jsx ---
+import React from 'react';
+import { Carousel } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import c1 from '../../../assets/images/imggg.jpg';
+import c2 from '../../../assets/images/new2.jpg';
+import c3 from '../../../assets/images/im2.jpg';
+import '../../../styles/global.scss';
+import './Carousel.scss';
 
 const images = [c1, c2, c3];
 
 const CarouselComponent = () => {
-    return (
-        <Carousel fade interval={3000}>
-        {images.map((img, i) => (
-          <Carousel.Item key={i}>
-            <img src={img} alt={`Slide ${i + 1}`} className="d-block w-100" />
-          </Carousel.Item>
-        ))}
-      </Carousel>
-    );
-    };
+  return (
+    <Carousel fade interval={3000}>
+      {images.map((img, i) => (
+        <Carousel.Item key={i}>
+          <img src={img} alt={`Slide ${i + 1}`} className="d-block w-100" />
+        </Carousel.Item>
+      ))}
+    </Carousel>
+  );
+};
 export default CarouselComponent;
 
-//portfolio-frontend/src/components/layout/ClientsSection.jsx
-import React, { useState } from "react";
-import "../../styles/global.scss";
+
+--- Path: portfolio-frontend/src/components/layout/carousel/Carousel.scss ---
+.carousel {
+    position: relative;
+    width: 95%;
+    max-width: 1300px;
+    height: 460px;
+    margin: 20px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  .carousel img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+
+  .carousel-item img:hover {
+    transform: scale(1.03);
+  }
+  
+
+  @media (max-width: 768px) {
+    .carousel {
+      height: 180px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .carousel {
+      height: 150px;
+    }
+  }
+
+--- Path: portfolio-frontend/src/components/layout/clientsection/ClientsSection.jsx ---
+import React, { useState } from 'react';
+import '../../../styles/global.scss';
+import './ClientsSection.scss';
 
 const initialClients = [
-  "Santtukaram International School", "MJ Hospital", "OM Packaging",
-  "Yashhtej Solvent", "Galaxy Mall", "Vishweshwarayya Mahavidyalaya",
+  'Santtukaram International School',
+  'MJ Hospital',
+  'OM Packaging',
+  'Yashhtej Solvent',
+  'Galaxy Mall',
+  'Vishweshwarayya Mahavidyalaya',
 ];
 
 const extraClients = [
-  "Patil Hospital", "Akashay Hotel", "Snehshree Realty", "Bharat Hotel",
+  'Patil Hospital',
+  'Akashay Hotel',
+  'Snehshree Realty',
+  'Bharat Hotel',
 ];
 
 const ClientsSection = () => {
@@ -571,18 +713,22 @@ const ClientsSection = () => {
       <h2>Our Clients</h2>
       <div className="blog-grid">
         {initialClients.map((c, i) => (
-          <div className="blog-card fade-in-up staggered-delay-{i+1}" key={i}><h3>{c}</h3></div>
+          <div className="blog-card fade-in-up staggered-delay-{i+1}" key={i}>
+            <h3>{c}</h3>
+          </div>
         ))}
         {showMore &&
           extraClients.map((c, i) => (
-            <div className="blog-card fade-in-up staggered-delay-{i+1}" key={i}><h3>{c}</h3></div>
+            <div className="blog-card fade-in-up staggered-delay-{i+1}" key={i}>
+              <h3>{c}</h3>
+            </div>
           ))}
       </div>
       <button
         className="cta-button mt-3 show-more-btn"
         onClick={() => setShowMore((prev) => !prev)}
       >
-        {showMore ? "Show Less" : "View More"}
+        {showMore ? 'Show Less' : 'View More'}
       </button>
     </section>
   );
@@ -591,71 +737,114 @@ const ClientsSection = () => {
 export default ClientsSection;
 
 
-//portfolio-frontend/src/components/layout/Contact.jsx
-import React, { useState } from 'react';
-import { Container, Form, Button, Row, Col, Alert } from 'react-bootstrap';
-import '../../styles/global.scss';
+--- Path: portfolio-frontend/src/components/layout/clientsection/ClientsSection.scss ---
+.blog {
+    background: linear-gradient(180deg, #a0fdfb 0%, #49a1ff 100%);  
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 10px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+  
+  .blog h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+  }
+  
+  .blog-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .blog .show-more-btn {
+    display: inline-block;
+    margin: 0 20px 20px;
+    color: #ffffff;
+    background-color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 5px;
+      border-radius: 8px;
+      border-style: dashed;
+    border-color: #007bff;
+  }
+  
+  .blog .show-more-btn:hover {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #000ba0;
+  }
+  
+  #moreClients {
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+  }
+  
+  #toggleClients {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+
+  .blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .blog-card:hover img {
+    transform: scale(1.05);
+  }
+  
+  .blog-card h3 {
+    font-size: 1.5rem;
+    margin: 20px 0 10px;
+    color: #333;
+    padding: 0 20px;
+  }
+  
+  .blog-card p {
+    padding: 0 20px 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: left;
+  }
+  
+
+--- Path: portfolio-frontend/src/components/layout/contact/Contact.jsx ---
+import React from 'react';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import '../../../styles/global.scss';
+import './Contact.scss';
 
 const Contact = () => {
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
-  return (
-    <section id="contact" className="contact-section">
-      <Container>
-        <h2 className="section-title">Contact Me</h2>
-        <Row className="justify-content-center">
-          <Col md={8}>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="name" className="mb-3">
-                <Form.Label>Name</Form.Label>
-                <Form.Control type="text" placeholder="Enter your name" required />
-              </Form.Group>
-              <Form.Group controlId="email" className="mb-3">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Enter your email" required />
-              </Form.Group>
-              <Form.Group controlId="message" className="mb-3">
-                <Form.Label>Message</Form.Label>
-                <Form.Control as="textarea" rows={4} required />
-              </Form.Group>
-              <Button type="submit" variant="primary">Send Message</Button>
-            </Form>
-            {submitted && (
-              <Alert variant="success" className="mt-3">
-                Message sent successfully!
-              </Alert>
-            )}
-          </Col>
-        </Row>
-      </Container>
-    </section>
-  );
-};
-
-export default Contact;
-
-
-//portfolio-frontend/src/components/layout/ContactSection.jsx
-import React from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import "../../styles/global.scss";
-
-const ContactSection = () => {
   return (
     <section id="contact" className="contact">
       <Container>
-        <h2>Contact Us</h2>
-        <p>
-          Looking to hire reliable facility staff or need professional housekeeping services?
-          We’re here to help!
-        </p>
         <Row className="justify-content-center">
-          <Col md={8}>
+          <Col md={12}>
             <Form className="contact-form">
               <Form.Group className="mb-3" controlId="formName">
                 <Form.Label>Your Name</Form.Label>
@@ -674,10 +863,16 @@ const ContactSection = () => {
 
               <Form.Group className="mb-3" controlId="formMessage">
                 <Form.Label>Message</Form.Label>
-                <Form.Control as="textarea" rows={4} placeholder="How can we help you?" />
+                <Form.Control
+                  as="textarea"
+                  rows={4}
+                  placeholder="How can we help you?"
+                />
               </Form.Group>
 
-              <Button type="submit" className="cta-button">Send Message</Button>
+              <Button type="submit" className="cta-button">
+                Send Message
+              </Button>
             </Form>
           </Col>
         </Row>
@@ -686,154 +881,624 @@ const ContactSection = () => {
   );
 };
 
-export default ContactSection;
+export default Contact;
 
 
-//portfolio-frontend/src/components/layout/Footer.jsx
-// src/components/layout/Footer.jsx
+--- Path: portfolio-frontend/src/components/layout/contact/Contact.scss ---
+.contact {
+    margin-bottom: 2px !important;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-width: 100%;
+    max-width: 100%;
+    margin: 20px 0;
+  }
+  .contact-area {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    border-radius: 10px;
+    margin: 20px 2px 4px 2px;
+    height: fit-content;
+  }
+  
+  .contact-info {
+    flex: 1;
+    background: linear-gradient(45deg, rgb(0 255 222 / 80%), rgb(0 90 255 / 80%));
+    border-radius: 10px;
+    padding: 13px;
+    color: #000000;
+    text-align: start;
+    height: fit-content;
+  }
+  
+  .contact-info h3 {
+    font-family: sans-serif;
+    text-align: center;
+    color: #2600ff;
+    font-size: 22px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 2px 0 20px 0;
+    padding: 12px 0;
+  }
+  
+  .contact-info table {
+    margin-top: 0px;
+    font-size: 16px;
+  }
+  
+  .contact-info table td {
+    padding: 8px 5px;
+    vertical-align: top;
+  }
+  
+  .contact-info table td:first-child {
+    width: 10px;
+    text-align: center;
+  }
+  
+  .contact-info table td a {
+    color: #2600ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .contact-info table td a:hover {
+    color: #ffee05;
+  }
+  
+  .contact-info .map-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+
+  
+  /* Contact Form Container */
+  .contact-form {
+    max-width: 500px;
+  width: 100%;
+    padding: 2rem 2rem 1rem 2rem;
+    background: rgba(8, 191, 204, 0.575);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+  }
+  
+  .contact-form:hover {
+    transform: translateY(-4px);
+  }
+  
+  /* Form Fields */
+  .contact-form .form-label {
+    color: #000ba0;
+    font-weight: 500;
+    text-decoration: underline;
+    
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px dashed #0011ff;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 0;
+    width: 100%;
+    transition: all 0.3s ease;
+    border-radius: 0;
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-bottom: 2px solid #00ffff;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+    color: #ffffff;
+  }
+  
+  /* Placeholder Styling */
+  .contact-form ::placeholder {
+    color: #ccc;
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+  
+  /* Textarea */
+  .contact-form textarea {
+    height: 120px;
+    resize: none;
+  }
+  
+  /* Submit Button */
+  .contact-form .cta-button {
+    background: linear-gradient(90deg, #00ffff, #007bff);
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    padding: 0.6rem 2rem;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+  }
+  
+  .contact-form .cta-button:hover {
+    background: linear-gradient(90deg, #007bff, #00ffff);
+    color: #fff;
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+    transform: scale(1.02);
+  }
+
+--- Path: portfolio-frontend/src/components/layout/footer/Footer.jsx ---
 import React from 'react';
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import '../../../styles/global.scss';
+import './Footer.scss';
 
 const Footer = () => (
   <footer className="footer">
-  <Container className="footer-container">
-    <Row>
-      {/* Logo + About */}
-      <Col md={3} className="footer-section text-center text-md-start">
-        {/* <div className="footer-logo mx-auto"> */}
-          <img src="./logo.png" alt="PrimePark Logo" className="footer-logo mx-auto" />
-        {/* </div> */}
-        <p className="mt-3">
-          Smart Parking Solutions for Modern Cities
-        </p>
-        <div className="social-links d-flex justify-content-center justify-content-md-start mt-3">
-          <a href="#"><i className="fab fa-facebook"></i></a>
-          <a href="#"><i className="fab fa-twitter"></i></a>
-          <a href="#"><i className="fab fa-linkedin"></i></a>
-          <a href="#"><i className="fab fa-instagram"></i></a>
-        </div>
-      </Col>
+    <Container className="footer-container">
+      <Row>
+        {/* Logo + About */}
+        <Col md={3} className="footer-section text-center text-md-start">
+          {/* <div className="footer-logo mx-auto"> */}
+          <img
+            src="./logo.png"
+            alt="PrimePark Logo"
+            className="footer-logo mx-auto"
+          />
+          {/* </div> */}
+          <p className="mt-3">Smart Parking Solutions for Modern Cities</p>
+          <div className="social-links d-flex justify-content-center justify-content-md-start mt-3">
+            <a href="#">
+              <i className="fab fa-facebook"></i>
+            </a>
+            <a href="#">
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+              <i className="fab fa-linkedin"></i>
+            </a>
+            <a href="#">
+              <i className="fab fa-instagram"></i>
+            </a>
+          </div>
+        </Col>
 
-      {/* Quick Links */}
-      <Col md={3} className="footer-section">
-        <h4>Quick Links</h4>
-        <ul className="list-unstyled">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </Col>
+        {/* Quick Links */}
+        <Col md={3} className="footer-section">
+          <h4>Quick Links</h4>
+          <ul className="list-unstyled">
+            <li>
+              <a href="#services">Services</a>
+            </li>
+            <li>
+              <a href="#products">Products</a>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#contact">Contact</a>
+            </li>
+          </ul>
+        </Col>
 
-      {/* Contact Info */}
-      <Col md={3} className="footer-section">
-        <h4>Contact Info</h4>
-        <ul className="contact-inf list-unstyled">
-          <li><i className="fas fa-map-marker-alt"></i> 123 Parking St, Pune, India</li>
-          <li><i className="fas fa-phone"></i> +91 12345 67890</li>
-          <li><i className="fas fa-envelope"></i> info@primepark.com</li>
-        </ul>
-      </Col>
+        {/* Contact Info */}
+        <Col md={3} className="footer-section">
+          <h4>Contact Info</h4>
+          <ul className="contact-inf list-unstyled">
+            <li>
+              <i className="fas fa-map-marker-alt"></i> 123 Parking St, Pune,
+              India
+            </li>
+            <li>
+              <i className="fas fa-phone"></i> +91 12345 67890
+            </li>
+            <li>
+              <i className="fas fa-envelope"></i> info@primepark.com
+            </li>
+          </ul>
+        </Col>
 
-      {/* Newsletter */}
-      <Col md={3} className="footer-section">
-        <h4>Newsletter</h4>
-        <Form className="newsletter-form">
-          <Form.Control type="email" placeholder="Enter your email" />
-          <Button type="submit" className="mt-2">Subscribe</Button>
-        </Form>
-      </Col>
-    </Row>
-  </Container>
+        {/* Newsletter */}
+        <Col md={3} className="footer-section">
+          <h4>Newsletter</h4>
+          <Form className="newsletter-form">
+            <Form.Control type="email" placeholder="Enter your email" />
+            <Button type="submit" className="mt-2">
+              Subscribe
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
 
-  <div className="footer-bottom text-center mt-4">
-    <p>&copy; 2024 PrimePark. All rights reserved.</p>
-  </div>
-</footer>
+    <div className="footer-bottom text-center mt-4">
+      <p>&copy; 2024 PrimePark. All rights reserved.</p>
+    </div>
+  </footer>
 );
 
 export default Footer;
 
 
-//portfolio-frontend/src/components/layout/FooterSection.jsx
-import React from "react";
-import { Container } from "react-bootstrap";
-import "./Footer.css"; // optional if separated
+--- Path: portfolio-frontend/src/components/layout/footer/Footer.scss ---
+.footer {
+    background: #2a5c82;
+    color: white;
+    padding: 40px 0 20px;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+  }
+  
+  .footer-section {
+    margin-bottom: 20px;
+    /* display: flex; */
+  }
+  
+  .footer-section a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-logo {
+    width: 45px;
+    display: flex;
+  }
+  
+  .social-links {
+    margin-top: 20px;
+  }
+  
+  .social-links a {
+    color: white;
+    font-size: 24px;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    color: var(#ffc107);
+  }
+  
+  .footer-section h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ffc107;
+    padding-bottom: 5px;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .contact-inf i {
+    margin-right: 10px;
+    width: 20px;
+  }
+  
+  .newsletter-form input {
+    padding: 7px;
+    width: 79%;
+    border: none;
+    border-radius: 15px 15px 0 0px;
+    margin-bottom: 0px;
+  }
+  .newsletter-form input:focus {
+    outline: none;
+    transition: 0.3s ease;
+  }
+  
+  .newsletter-form button {
+    align-self: center;
+    padding: 6px 10px;
+    background: #ffc107;
+    margin: 0px;
+    border: none;
+    border-radius: 0 0 15px 15px;
+    cursor: pointer;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .footer-bottom p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  
+  
 
-const Footer = () => {
+--- Path: portfolio-frontend/src/components/layout/hero/Hero.jsx ---
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import '../../../styles/global.scss';
+import './Hero.scss';
+
+const Hero = () => {
+  const text = 'Turning Ideas into Scalable Web Solutions.';
+  const letters = text.split('');
+  useEffect(() => {
+    const container = document.querySelector('.moving-circles');
+    if (container) {
+      for (let i = 0; i < 20; i++) {
+        const circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.style.left = `${Math.random() * 100}%`;
+        circle.style.animationDuration = `${4 + Math.random() * 3}s`;
+        const size = 10 + Math.random() * 20;
+        circle.style.width = `${size}px`;
+        circle.style.height = `${size}px`;
+        container.appendChild(circle);
+      }
+    }
+  }, []);
+
   return (
-    <footer className="footer">
-      <Container className="text-center">
-        <p>&copy; {new Date().getFullYear()} Swpris Facilities. All rights reserved.</p>
-        <p>Website developed by Pappu Kumar</p>
-      </Container>
-    </footer>
+    <section id="home" className="hero">
+      {/* Animated gradient background */}
+      <div className="animated-gradient" />
+
+      {/* Moving circles */}
+      <div className="moving-circles" />
+
+      {/* Main content */}
+      <div className="hero-content">
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="hero-title"
+        >
+          {letters.map((letter, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: index * 0.05 }}
+            >
+              {letter}
+            </motion.span>
+          ))}
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 1 }}
+          className="hero-subtitle"
+        >
+          Pappu Kumar | Full-Stack Developer
+        </motion.p>
+
+        <motion.a
+          href="#about"
+          className="cta-button"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Learn More
+        </motion.a>
+      </div>
+    </section>
   );
 };
-
-export default Footer;
-
-
-//portfolio-frontend/src/components/layout/Hero.jsx
-import React from "react";
-
-const Hero = () => (
-  <section id="home" className="hero">
-    <div className="hero-content fade-in-up staggered-delay-1">
-      <h1>Staffing & Facility Services You Can Rely On</h1>
-      <p>
-        Supplying skilled and semi-skilled professionals across industries with a commitment to quality service.
-      </p>
-      <a href="#about" className="cta-button">
-        Learn More
-      </a>
-    </div>
-  </section>
-);
 
 export default Hero;
 
 
-//portfolio-frontend/src/components/layout/Navbar.jsx
-import React from 'react';
-import { Container, Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+--- Path: portfolio-frontend/src/components/layout/hero/Hero.scss ---
+.hero {
+    padding-top: var(--navbar-height, 80px);
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Background gradient animation */
+  .animated-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #00ff95, #2c0c2b, #0093ff, #00ff95);
+    background-size: 400% 400%;
+    animation: gradientAnimation 20s ease infinite;
+    z-index: 1;
+  }
+  
+  /* Floating circles */
+  .moving-circles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 2;
+  }
+  
+  .circle {
+    position: absolute;
+    background: rgba(0, 255, 255, 0.8);
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: moveCircles linear infinite;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  }
+  
+  @keyframes moveCircles {
+    from {
+      transform: translateY(100vh) scale(0.5);
+      opacity: 0.3;
+    }
+    to {
+      transform: translateY(-10vh) scale(1.2);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Main content */
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    padding: 2rem;
+    color: white;
+  }
+  
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: bold;
+    background: linear-gradient(45deg, #00ff88, #00ffee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #00ffee;
+    text-shadow: 0 0 5px #003cff, 0 0 2px #00ffe7;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, #00ff88, #0099ff);
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s;
+    text-decoration: none;
+  }
+  
+
+--- Path: portfolio-frontend/src/components/layout/navbar/Navbar.jsx ---
+import React, { useEffect, useState } from 'react';
+import {
+  Container,
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  Button,
+} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import '../../styles/global.scss';
+import '../../../styles/global.scss';
+import './Navbar.scss';
 
 const Navigation = () => {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 30);
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="custom-header" fluid-width="true">
-      <Navbar expand="lg" className="nav2 px-3" bg="dark" variant="dark">
-        <Container fluid className="d-flex justify-content-between align-items-center">
-          {/* Brand Logo and Name */}
-          <Navbar.Brand as={Link} to="/" className="d-flex align-items-center gap-2">
+    <header className="custom-header">
+      <Navbar
+        expand="lg"
+        className={`nav2 ${scrolled ? 'scrolled' : ''}`}
+        fixed="top"
+      >
+        <Container
+          fluid
+          className="d-flex justify-content-between align-items-center px-3"
+        >
+          <Navbar.Brand
+            as={Link}
+            to="/"
+            className="d-flex align-items-center gap-2"
+          >
             <div className="logo-img" />
             <span className="company-name">My Portfolio</span>
           </Navbar.Brand>
-          <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end user-info d-flex align-items-center gap-2">
-            <Nav className="nav-links d-flex list-unstyled mb-0">
-              <Nav.Item>
-                <Nav.Link as={Link} to="/">Home</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={Link} to="/about">About</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={Link} to="/projects">Projects</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-              </Nav.Item>
+
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            className="border-0"
+          />
+
+          <Navbar.Collapse
+            id="responsive-navbar-nav"
+            className="justify-content-end align-items-center gap-3"
+          >
+            <Nav className="nav-links d-flex align-items-center gap-3">
+              <Nav.Link as={Link} to="/">
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/about">
+                About
+              </Nav.Link>
+              <Nav.Link as={Link} to="/projects">
+                Projects
+              </Nav.Link>
+              <Nav.Link as={Link} to="/contact">
+                Contact
+              </Nav.Link>
             </Nav>
-            <Form className="d-flex" role="search">
+
+            <Form className="d-flex search-form" role="search">
               <FormControl
                 type="search"
-                placeholder="Search"
+                placeholder="Search..."
                 className="custom-search-input me-2"
                 aria-label="Search"
               />
               <Button className="custom-search-button" type="submit">
-                Search
+                Go
               </Button>
             </Form>
           </Navbar.Collapse>
@@ -846,34 +1511,159 @@ const Navigation = () => {
 export default Navigation;
 
 
-//portfolio-frontend/src/components/layout/ServicesSection.jsx
-import React from "react";
-import "../../styles/global.scss";
-import { Container, Row, Col, Card } from "react-bootstrap";
+--- Path: portfolio-frontend/src/components/layout/navbar/Navbar.scss ---
+.custom-header {
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: transparent;
+    box-shadow: 0 2px 10px rgba(0, 255, 255, 0.15);
+  }
+  
+  .nav2 {
+    background: linear-gradient(45deg, rgb(0 255 222 / 80%), rgb(0 90 255 / 80%));
+    backdrop-filter: blur(5px);
+    transition: all 0.4s ease;
+    padding: 1rem 0;
+  }
+  
+  .nav2.scrolled {
+    background: rgba(0, 0, 0, 0.521);
+    backdrop-filter: blur(12px);
+    padding: 0.5rem 0;
+  }
+  
+  .logo-img {
+    width: 110px;
+    height: 45px;
+    background-image: url("/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: floatLogo 4s ease-in-out infinite;
+  }
+  
+  @keyframes floatLogo {
+    0%, 100% {
+      transform: translateY(0) rotate(-3deg);
+    }
+    50% {
+      transform: translateY(-6px) rotate(3deg);
+    }
+  }
+  
+  .company-name {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: white;
+  }
+  
+  .nav-links .nav-link {
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: #fff;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links .nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: #00ffee;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-links .nav-link:hover {
+    color: #00ffee;
+  }
+  
+  .nav-links .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .search-form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-search-input {
+    max-width: 170px;
+    padding: 8px 12px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s ease;
+  }
+  
+  .custom-search-input::placeholder {
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+  }
+  
+  .custom-search-input:focus {
+    border-color: #00ffee;
+    background-color: rgba(255,255,255,0.2);
+    outline: none;
+  }
+  
+  .custom-search-button {
+    background: linear-gradient(135deg, #00ffcc, #0099ff);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .custom-search-button:hover {
+    background: linear-gradient(135deg, #00ffee, #007bff);
+    color: #000;
+  }
+  
+
+--- Path: portfolio-frontend/src/components/layout/ServicesSection/ServicesSection.jsx ---
+import React from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import '../../../styles/global.scss';
+import './ServicesSection.scss';
 
 const services = [
   {
-    title: "Housekeeping Services",
-    img: "https://picsum.photos/400/300?1",
+    title: 'Housekeeping Services',
+    img: 'https://picsum.photos/400/300?1',
     list: [
-      "Office, hospital, mall, and school cleaning",
-      "Sanitization and deep cleaning",
+      'Office, hospital, mall, and school cleaning',
+      'Sanitization and deep cleaning',
     ],
   },
   {
-    title: "Ward Boy / Patient Care",
-    img: "https://picsum.photos/400/300?2",
-    list: ["Bed bath, feeding, patient hygiene", "24/7 Elderly care"],
+    title: 'Ward Boy / Patient Care',
+    img: 'https://picsum.photos/400/300?2',
+    list: ['Bed bath, feeding, patient hygiene', '24/7 Elderly care'],
   },
   {
-    title: "Security Services",
-    img: "https://picsum.photos/400/300?3",
-    list: ["Patrolling, fire drills, log management"],
+    title: 'Security Services',
+    img: 'https://picsum.photos/400/300?3',
+    list: ['Patrolling, fire drills, log management'],
   },
   {
-    title: "Gardening",
-    img: "https://picsum.photos/400/300?4",
-    list: ["Landscaping, seasonal gardening", "Hedge trimming"],
+    title: 'Gardening',
+    img: 'https://picsum.photos/400/300?4',
+    list: ['Landscaping, seasonal gardening', 'Hedge trimming'],
   },
 ];
 
@@ -883,7 +1673,8 @@ const ServicesSection = () => (
     <div className="labor-highlight">
       <h2>Labor Supply – Our Core Strength</h2>
       <p>
-        We specialize in skilled/semi-skilled labor for factories, events, hospitals, and institutions.
+        We specialize in skilled/semi-skilled labor for factories, events,
+        hospitals, and institutions.
       </p>
     </div>
     <Container className="service-grid">
@@ -911,22 +1702,124 @@ const ServicesSection = () => (
 export default ServicesSection;
 
 
-//portfolio-frontend/src/components/layout/Testimonials.jsx
-import React from "react";
-import "../../styles/global.scss";
+--- Path: portfolio-frontend/src/components/layout/ServicesSection/ServicesSection.scss ---
+/* Services Section */
+.services {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .services h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+  }
+  
+  .service-grid {
+    padding: 20px;
+  }
+  
+  /* Equal-height Cards */
+  .service-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+  .service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .service-card:hover img {
+    transform: scale(1.05);
+  }
+  
+  .service-card h3,
+  .service-card .card-title {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .service-card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
+    color: #444;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+  
+  /* Labor Highlight Block */
+  .labor-highlight {
+    background: url("../assets/images/new2.jpg") center/cover no-repeat;
+    color: rgb(255, 255, 255);
+    padding: 35px 20px 10px 20px;
+    height: 325px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    background-attachment: fixed;
+  }
+  .labor-highlight::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  
+  .labor-highlight h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  
+  .labor-highlight p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+
+--- Path: portfolio-frontend/src/components/layout/testimonials/Testimonials.jsx ---
+import React from 'react';
+import '../../../styles/global.scss';
+import './Testimonials.scss';
 
 const testimonials = [
   {
-    text: "Swpris has transformed our hygiene standards.",
-    author: "Santtukaram International School",
+    text: 'Swpris has transformed our hygiene standards.',
+    author: 'Santtukaram International School',
   },
   {
-    text: "Prompt labor supply and excellent support.",
-    author: "MJ Hospital",
+    text: 'Prompt labor supply and excellent support.',
+    author: 'MJ Hospital',
   },
   {
-    text: "They handle security and cleaning professionally.",
-    author: "Galaxy Mall",
+    text: 'They handle security and cleaning professionally.',
+    author: 'Galaxy Mall',
   },
 ];
 
@@ -945,18 +1838,54 @@ const Testimonials = () => (
 export default Testimonials;
 
 
-//portfolio-frontend/src/components/layout/VerticalProjectsSection.jsx
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import projects from "../../data/projects.json";
-import VerticalProjectCard from "../specific/VerticalProjectCard";
+--- Path: portfolio-frontend/src/components/layout/testimonials/Testimonials.scss ---
+blockquote {
+  background: linear-gradient(44deg, #0c5ef3 0%, #86eaef 100%);
+  border-left: 5px solid #2600ff;
+  font-style: italic;
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin: 0 40px 1rem 40px !important;
+}
+blockquote p {
+padding-left: 0.75rem;
+margin-top: 5px;
+margin-bottom: 0;
+  line-height: 1.6;
+}
+
+blockquote footer {
+  text-align: right;
+  font-weight: bold;
+  color: #271e1e;
+  font-size: 1.2rem;
+  margin: 5px;
+  padding: 0 10px 10px 0px;
+}
+
+#testimonials h2 {
+  font-size: 2rem;
+  border-left: 5px solid #2600ff;
+  padding-left: 0.75rem;
+  margin-top: 2rem;
+  margin-left: 40px;
+  margin-bottom: 15px;
+}
+
+--- Path: portfolio-frontend/src/components/layout/verticalprojectssection/VerticalProjectsSection.jsx ---
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import projects from '../../../data/projects.json';
+import VerticalProjectCard from '../../specific/verticalprojectcard/VerticalProjectCard';
+import '../../../styles/global.scss';
+import './VerticalProjectsSection.scss';
 
 const VerticalProjectsSection = () => (
   <section className="pt-5 pb-5">
     <Container>
       <Row>
         {projects.slice(0, 4).map((project) => {
-          const imgFile = project.img.split("/").pop();
+          const imgFile = project.img.split('/').pop();
           return (
             <Col md={4} key={project.id}>
               <VerticalProjectCard
@@ -976,15 +1905,24 @@ const VerticalProjectsSection = () => (
 export default VerticalProjectsSection;
 
 
-//portfolio-frontend/src/components/layout/WhyUs.jsx
-import React from "react";
-import "../../styles/global.scss";
+--- Path: portfolio-frontend/src/components/layout/verticalprojectssection/VerticalProjectsSection.scss ---
+
+
+--- Path: portfolio-frontend/src/components/layout/whyus/WhyUs.jsx ---
+import React from 'react';
+import '../../../styles/global.scss';
+import './WhyUs.scss';
 
 const WhyUs = () => (
   <section className="why-us">
     <h2>Why Choose Us?</h2>
-    <p>Swpris Facilities is your trusted partner for all staffing and facility service needs.</p>
-    <p>We deliver quality with precision and tailored care for all industries.</p>
+    <p>
+      Swpris Facilities is your trusted partner for all staffing and facility
+      service needs.
+    </p>
+    <p>
+      We deliver quality with precision and tailored care for all industries.
+    </p>
     <ul>
       <li>🌟 Aligned with Startup India – Innovation & Impact</li>
       <li>🧹 Professional Housekeeping & Patient Care</li>
@@ -996,18 +1934,58 @@ const WhyUs = () => (
 export default WhyUs;
 
 
-//portfolio-frontend/src/components/layout/WideProjectsSection.jsx
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import projects from "../../data/projects.json";
-import WideProjectCard from "../specific/WideProjectCard";
+--- Path: portfolio-frontend/src/components/layout/whyus/WhyUs.scss ---
+.why-us {
+    background: linear-gradient(1deg, rgb(0 255 222 / 20%), rgb(0 90 255 / 48%));
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+  
+  .why-us h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .why-us p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #000000;
+  }
+  
+  .why-us ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  
+  .why-us ul li {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    color: #000000;
+  }
+  
+  
+  
+
+--- Path: portfolio-frontend/src/components/layout/wideprojectssection/WideProjectsSection.jsx ---
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import projects from '../../../data/projects.json';
+import WideProjectCard from '../../specific/wideprojectcard/WideProjectCard';
+import '../../../styles/global.scss';
+import './WideProjectsSection.scss';
 
 const WideProjectsSection = () => (
   <section className="pt-5 pb-5">
     <Container>
       <Row>
         {projects.slice(0, 1).map((project) => {
-          const imgFile = project.img.split("/").pop();
+          const imgFile = project.img.split('/').pop();
           return (
             <Col md={12} key={project.id}>
               <WideProjectCard
@@ -1027,10 +2005,14 @@ const WideProjectsSection = () => (
 export default WideProjectsSection;
 
 
-//portfolio-frontend/src/components/specific/Achievements.jsx
+--- Path: portfolio-frontend/src/components/layout/wideprojectssection/WideProjectsSection.scss ---
+
+
+--- Path: portfolio-frontend/src/components/specific/achievements/Achievements.jsx ---
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import '../../styles/global.scss';
+import '../../../styles/global.scss';
+import './Achievements.scss';
 
 const certifications = [
   { title: 'Java Backend', provider: 'Udemy', date: '2024' },
@@ -1049,7 +2031,8 @@ const Achievements = () => (
               <Card.Body>
                 <Card.Title>{cert.title}</Card.Title>
                 <Card.Text>
-                  <strong>Provider:</strong> {cert.provider}<br />
+                  <strong>Provider:</strong> {cert.provider}
+                  <br />
                   <strong>Year:</strong> {cert.date}
                 </Card.Text>
               </Card.Body>
@@ -1064,74 +2047,234 @@ const Achievements = () => (
 export default Achievements;
 
 
-//portfolio-frontend/src/components/specific/Banner.jsx
-import React from "react";
-import { Container, Row, Col, Image } from "react-bootstrap";
-import bannerData from "../../data/bannerData.json";
-import im1 from "../../assets/images/im1.jpg";
-import im2 from "../../assets/images/im2.jpg";
-import im3 from "../../assets/images/im3.jpg";
-import im4 from "../../assets/images/im4.jpg";
-import "../../styles/global.scss";
+--- Path: portfolio-frontend/src/components/specific/achievements/Achievements.scss ---
+
+/* Achievement Section */
+.achievements-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, #a0fdfb 0%, #49a1ff 100%);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    font-style: italic;
+  }
+  
+  .achievements-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(10, 230, 138, 0.692), transparent 60%);
+    animation: rotateGlow 30s linear infinite;
+    z-index: 0;
+  }
+  
+  @keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: #0091b1;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 10px rgba(0, 209, 255, 0.3);
+  }
+  
+  /* Glassmorphism effect */
+  .achievement-card {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s;
+    z-index: 1;
+    position: relative;
+  }
+  
+  .achievement-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 0 10px #19f5e3, 0 0 20px rgba(0, 209, 255, 0.2);
+    border: 1px solid #00d1ff;
+  }
+  
+  .achievement-card .card-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #0077ff;
+    margin-bottom: 1rem;
+  }
+  
+  .achievement-card .card-text {
+    font-size: 1.1rem;
+    color: #00579e;
+  }
+  
+  
+  
+
+--- Path: portfolio-frontend/src/components/specific/banner/Banner.jsx ---
+import React from 'react';
+import { Container, Row, Col, Image } from 'react-bootstrap';
+import bannerData from '../../../data/bannerData.json';
+import springIcon from '../../../assets/images/spring_icon.png';
+import reactIcon from '../../../assets/images/React_icon.png';
+import bootstrapIcon from '../../../assets/images/bootstrap_icon.png';
+import gitIcon from '../../../assets/images/git_icon.png';
+import '../../../styles/global.scss';
+import './Banner.scss';
 
 // Static map for image lookup
 const imageMap = {
-  "im1.jpg": im1,
-  "im2.jpg": im2,
-  "im3.jpg": im3,
-  "im4.jpg": im4,
+  'spring_icon.png': springIcon,
+  'React_icon.png': reactIcon,
+  'bootstrap_icon.png': bootstrapIcon,
+  'git_icon.png': gitIcon,
 };
-
-const getBannerData = (key) => bannerData[key] || "";
 
 const Banner = () => {
   return (
-      <section className="banner-area">
-        <Container>
-          <Row>
-            {bannerData.map((banner, i) => {
-              const fileName = banner.img.split("/").pop();
-              const imageSrc = imageMap[fileName] || im1;
+    <section className="banner-area">
+      <Container>
+        <Row>
+          {bannerData.map((banner, i) => {
+            const fileName = banner.img.split('/').pop();
+            const imageSrc = imageMap[fileName] || springIcon; // Fallback to springIcon if not found
 
-              return (
-                // <Col key={i} lg={3} md={6} sm={6} xs={12} className="mb-4">
-                <Col key={i} lg={3} md={6} sm={6} xs={12} className={`mb-4 fade-in-up staggered-delay-${i + 1}`}>
-                  <div className="single-banner d-flex align-items-start banner-shadow-hover">
-                    <div className="banner-img me-3">
-                      <a href="#">
-                        <Image
-                          src={imageSrc}
-                          alt={`banner-${i}`}
-                          fluid
-                        />
-                      </a>
-                    </div>
-                    <div className="banner-text">
-                      <h4>{banner.title}</h4>
-                      <p>{banner.desc}</p>
-                    </div>
+            return (
+              <Col
+                key={i}
+                lg={3}
+                md={6}
+                sm={6}
+                xs={12}
+                className={`mb-4 fade-in-up staggered-delay-${i + 1}`}
+              >
+                <div className="single-banner d-flex align-items-start banner-shadow-hover">
+                  <div className="banner-img me-3">
+                    <a href="#">
+                      <Image src={imageSrc} alt={`banner-${i}`} fluid />
+                    </a>
                   </div>
-                </Col>
-              );
-            })}
-          </Row>
-        </Container>
-      </section>
+                  <div className="banner-text">
+                    <h4>{banner.title}</h4>
+                    <p>{banner.desc}</p>
+                  </div>
+                </div>
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
+    </section>
   );
 };
 
 export default Banner;
 
 
-//portfolio-frontend/src/components/specific/Experience.jsx
+--- Path: portfolio-frontend/src/components/specific/banner/Banner.scss ---
+.banner-area {
+    background-color: #f9f9f9;
+    height: 100px;
+    padding-top: 20px;
+  }
+  
+  /* Single banner layout */
+  .single-banner {
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  }
+  
+  /* Banner image style */
+  .banner-img {
+    flex: 0 0 50px;
+    max-width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .banner-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .single-banner:hover .banner-img img {
+    transform: scale(1.1);
+  }
+  
+  /* Banner text style */
+  .banner-text h4 {
+    font-family: "Rufina", serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 4px;
+  }
+  
+  .banner-text p {
+    color: #555;
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+  
+  /* Shadow on hover */
+  .banner-shadow-hover {
+    position: relative;
+  }
+  
+  .banner-shadow-hover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  
+  .banner-shadow-hover:hover::before {
+    opacity: 1;
+  }
+
+--- Path: portfolio-frontend/src/components/specific/experience/Experience.jsx ---
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import '../../styles/global.scss';
+import '../../../styles/global.scss';
+import './Experience.scss';
 
 const experiences = [
-  { year: '2024', title: 'Spring Boot Internship', desc: 'Built REST APIs and JWT-secured systems.' },
-  { year: '2023', title: 'Portfolio Project', desc: 'Created full-stack app using MERN + Tailwind.' },
-  { year: '2022', title: 'Graduation - B.Tech', desc: 'Major in CSE. Explored Java, DBMS, and OS.' },
+  {
+    year: '2024',
+    title: 'Spring Boot Internship',
+    desc: 'Built REST APIs and JWT-secured systems.',
+  },
+  {
+    year: '2023',
+    title: 'Portfolio Project',
+    desc: 'Created full-stack app using MERN + Tailwind.',
+  },
+  {
+    year: '2022',
+    title: 'Graduation - B.Tech',
+    desc: 'Major in CSE. Explored Java, DBMS, and OS.',
+  },
 ];
 
 const Experience = () => (
@@ -1160,23 +2303,116 @@ const Experience = () => (
 export default Experience;
 
 
-//portfolio-frontend/src/components/specific/ProjectCard.jsx
-import React from "react";
-import { Card, Button } from "react-bootstrap";
-import "../../styles/global.scss";
-import im1 from "../../assets/images/im1.jpg";
-import im2 from "../../assets/images/im2.jpg";
-import im3 from "../../assets/images/im3.jpg";
-import im4 from "../../assets/images/im4.jpg";
+--- Path: portfolio-frontend/src/components/specific/experience/Experience.scss ---
+.experience-section {
+    padding: 4rem 0;
+    background-color: #ffffff;
+    text-align: left;
+  }
+  
+  .experience-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Timeline Wrapper */
+  .experience-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    border-left: 4px dashed #01c2ff; /* main vertical line */
+    margin-left: 40px;
+  }
+  
+  /* Timeline Item */
+  .experience-timeline li {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 60px;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .experience-timeline li:hover {
+    background: linear-gradient(90deg, rgba(1,194,255,0.05) 0%, rgba(1,194,255,0.03) 100%);
+    // border-left: 3px solid #01c2ff;
+    border-right: 6px solid #01c2ff;
+    border-radius: 5px;
+  }
+  
+  /* Year Badge */
+  .experience-timeline-date {
+    position: absolute;
+    top: 0;
+    left: -85px;
+    width: 70px;
+    text-align: right;
+    font-weight: bold;
+    color: #01c2ff;
+    background: #f0faff;
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Content Block */
+  .experience-timeline-content {
+    background-color: #f9f9f9;
+    border: 1px dashed #ccc;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .experience-timeline-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .experience-timeline-content p {
+    font-size: 0.95rem;
+    margin: 0;
+    color: #555;
+  }
+  
+  .experience-timeline li:hover .experience-timeline-content {
+    transform: translateX(5px);
+    border-color: #01c2ff;
+  }
+  
+
+--- Path: portfolio-frontend/src/components/specific/projectcard/ProjectCard.jsx ---
+import React from 'react';
+import { Card, Button } from 'react-bootstrap';
+import im1 from '../../../assets/images/im1.jpg';
+import im2 from '../../../assets/images/im2.jpg';
+import im3 from '../../../assets/images/im3.jpg';
+import im4 from '../../../assets/images/im4.jpg';
+import '../../../styles/global.scss';
+import './ProjectCard.scss';
 
 const imageMap = {
-  "im1.jpg": im1,
-  "im2.jpg": im2,
-  "im3.jpg": im3,
-  "im4.jpg": im4,
+  'im1.jpg': im1,
+  'im2.jpg': im2,
+  'im3.jpg': im3,
+  'im4.jpg': im4,
 };
 
-const ProjectCard = ({ imgName, title, description, link, className = "", imgStyle = {}, bodyStyle = {} }) => {
+const ProjectCard = ({
+  imgName,
+  title,
+  description,
+  link,
+  className = '',
+  imgStyle = {},
+  bodyStyle = {},
+}) => {
   const imgSrc = imageMap[imgName] || im1;
 
   return (
@@ -1196,10 +2432,62 @@ const ProjectCard = ({ imgName, title, description, link, className = "", imgSty
 export default ProjectCard;
 
 
-//portfolio-frontend/src/components/specific/Skills.jsx
+--- Path: portfolio-frontend/src/components/specific/projectcard/ProjectCard.scss ---
+.project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+    height: 100%;
+    min-height: 420px;
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+  
+    .card-img-top {
+      object-fit: cover;
+    }
+  
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+    }
+  
+    .card-title {
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #333;
+    }
+  
+    .card-text {
+      font-size: 1rem;
+      color: #666;
+      flex-grow: 1;
+      margin-bottom: 1rem;
+    }
+  
+    .btn {
+      align-self: center;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-top: auto; 
+    }
+  }
+  
+
+--- Path: portfolio-frontend/src/components/specific/skills/Skills.jsx ---
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import '../../styles/global.scss';
+import '../../../styles/global.scss';
+import './Skills.scss';
 
 const techSkills = [
   { title: 'React', icon: '⚛️' },
@@ -1235,38 +2523,418 @@ const Skills = () => (
 export default Skills;
 
 
-//portfolio-frontend/src/components/specific/VerticalProjectCard.jsx
-import React from "react";
-import ProjectCard from "./ProjectCard";
+--- Path: portfolio-frontend/src/components/specific/skills/Skills.scss ---
+.skills-section {
+    padding: 4rem 0;
+    background-color: #f4f6f8;
+  }
+  .skill-card {
+    border: none;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  .skill-card:hover {
+    transform: translateY(-5px);
+  }
+  .skill-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+  .skill-section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: bold;
+  }
+  
+
+--- Path: portfolio-frontend/src/components/specific/socialmedia/SocialMedia.jsx ---
+import '../../../styles/global.scss';
+import './SocialMedia.scss';
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import { motion } from 'framer-motion';
+import {
+  FaLinkedin,
+  FaGithub,
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+} from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
+
+const socialLinks = [
+  {
+    icon: <FaLinkedin />,
+    url: 'https://www.linkedin.com/in/yourprofile',
+    name: 'LinkedIn',
+  },
+  { icon: <FaGithub />, url: 'https://github.com/yourprofile', name: 'GitHub' },
+  {
+    icon: <SiLeetcode />,
+    url: 'https://leetcode.com/yourprofile',
+    name: 'LeetCode',
+  },
+  {
+    icon: <FaTwitter />,
+    url: 'https://twitter.com/yourprofile',
+    name: 'Twitter',
+  },
+  {
+    icon: <FaInstagram />,
+    url: 'https://instagram.com/yourprofile',
+    name: 'Instagram',
+  },
+  {
+    icon: <FaYoutube />,
+    url: 'https://youtube.com/yourchannel',
+    name: 'YouTube',
+  },
+];
+
+const SocialMedia = () => {
+  const totalIcons = socialLinks.length;
+  const radius = 122;
+
+  return (
+    <section id="social-media" className="social-media-section">
+      <Container className="d-flex flex-column justify-content-center align-items-center">
+        <motion.h2
+          className="section-title"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Connect with Me */}
+        </motion.h2>
+
+        <motion.div
+          className="circle-wrapper"
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 50, ease: 'linear' }}
+          whileHover={{ rotate: 0, transition: { duration: 0.6 } }}
+        >
+          <div className="outer-glass-circle"></div>
+          <div className="inner-glass-circle"></div>
+
+          {/* Icons */}
+          <div className="icons-container">
+            {socialLinks.map((link, index) => {
+              const angle = (index / totalIcons) * 2 * Math.PI;
+              const x = radius * Math.cos(angle);
+              const y = radius * Math.sin(angle);
+
+              return (
+                <a
+                  key={index}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon"
+                  title={link.name}
+                  style={{
+                    top: `calc(50% + ${y}px)`,
+                    left: `calc(50% + ${x}px)`,
+                  }}
+                >
+                  {link.icon}
+                </a>
+              );
+            })}
+          </div>
+        </motion.div>
+      </Container>
+    </section>
+  );
+};
+
+export default SocialMedia;
+
+
+--- Path: portfolio-frontend/src/components/specific/socialmedia/SocialMedia.scss ---
+.social-media-section {
+  padding: 160px 50px;
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  
+    .section-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 50px;
+      color: #00fff0;
+      text-shadow: 0 0 20px #00fff0, 0 0 40px #00fff0;
+    }
+  
+    .circle-wrapper {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+      margin-top: 40px;
+  
+      .outer-glass-circle,
+      .inner-glass-circle {
+        position: absolute;
+        border-radius: 50%;
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 30px #00fff0, inset 0 0 15px #00fff0;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+  
+      .outer-glass-circle {
+        width: 320px;
+        height: 320px;
+        animation: glow 6s ease-in-out infinite alternate;
+      }
+  
+      .inner-glass-circle {
+        width: 180px;
+        height: 180px;
+        animation: glow 8s ease-in-out infinite alternate-reverse;
+      }
+  
+      .icons-container {
+        position: absolute;
+        width: 100%;
+        height: 97%;
+        top: 0;
+        left: 0;
+  
+        .social-icon {
+          position: absolute;
+          font-size: 2.5rem;
+          color: white;
+          transform: translate(-50%, -50%);
+          transition: transform 0.4s ease, color 0.4s ease;
+  
+          &:hover {
+            color: #00fff0;
+            transform: translate(-50%, -50%) scale(1.3);
+          }
+        }
+      }
+    }
+  
+    @keyframes glow {
+      0% { box-shadow: 0 0 30px #00fff0, inset 0 0 10px #00fff0; }
+      100% { box-shadow: 0 0 60px #00fff0, inset 0 0 30px #00fff0; }
+    }
+  
+    /* Responsive */
+    @media (max-width: 768px) {
+      .circle-wrapper {
+        width: 260px;
+        height: 260px;
+  
+        .outer-glass-circle {
+          width: 260px;
+          height: 260px;
+        }
+  
+        .inner-glass-circle {
+          width: 150px;
+          height: 150px;
+        }
+  
+        .icons-container {
+          .social-icon {
+            font-size: 2rem;
+          }
+        }
+      }
+    }
+  }
+  
+
+--- Path: portfolio-frontend/src/components/specific/strengthcard/StrengthCard.jsx ---
+import React from 'react';
+import './StrengthCard.scss';
+import { Container, Row, Col } from 'react-bootstrap';
+import { FaCheckCircle } from 'react-icons/fa';
+
+const strengths = [
+  {
+    title: 'Problem Solving',
+    description:
+      'Strong analytical skills to debug, optimize, and deliver scalable backend solutions.',
+  },
+  {
+    title: 'Clean Code',
+    description:
+      'Focus on writing maintainable, readable, and testable code following SOLID principles.',
+  },
+  {
+    title: 'Spring Boot Mastery',
+    description:
+      'Hands-on experience building RESTful APIs, integrating databases, and configuring microservices.',
+  },
+  {
+    title: 'Team Collaboration',
+    description:
+      'Excellent communication and collaboration skills in agile development environments.',
+  },
+];
+
+const StrengthCard = () => {
+  return (
+    <section className="strength-section">
+      <Container>
+        <h2 className="section-heading">My Strengths</h2>
+        {strengths.map((item, index) => (
+          <Row key={index} className="strength-card align-items-center">
+            <Col md={2} className="icon-col">
+              <FaCheckCircle className="strength-icon" />
+            </Col>
+            <Col md={10}>
+              <h4 className="strength-title">{item.title}</h4>
+              <p className="strength-desc">{item.description}</p>
+            </Col>
+          </Row>
+        ))}
+      </Container>
+    </section>
+  );
+};
+
+export default StrengthCard;
+
+
+--- Path: portfolio-frontend/src/components/specific/strengthcard/StrengthCard.scss ---
+.strength-section {
+    padding: 80px 20px;
+    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    color: #ffffff;
+  
+    .section-heading {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 50px;
+      color: #00fff0;
+      text-shadow: 0 0 15px #00fff0;
+    }
+  
+    .strength-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      padding: 25px 30px;
+      margin-bottom: 25px;
+      border-left: 5px solid #00fff0;
+      border-radius: 15px;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 25px rgba(0, 255, 255, 0.1);
+  
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 30px rgba(0, 255, 255, 0.3);
+        border-left: 5px solid #007bff;
+      }
+  
+      .icon-col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        .strength-icon {
+          font-size: 3rem;
+          color: #00fff0;
+          transition: color 0.3s ease;
+  
+          &:hover {
+            color: #007bff;
+          }
+        }
+      }
+  
+      .strength-title {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #ffffff;
+      }
+  
+      .strength-desc {
+        color: #cccccc;
+        font-size: 1rem;
+        margin-top: 5px;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .strength-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+  
+        .icon-col {
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+  
+
+--- Path: portfolio-frontend/src/components/specific/verticalprojectcard/VerticalProjectCard.jsx ---
+import React from 'react';
+import ProjectCard from '../projectcard/ProjectCard';
+import '../../../styles/global.scss';
+import './VerticalProjectCard.scss';
 
 const VerticalProjectCard = (props) => (
   <ProjectCard
     {...props}
     className="vertical-project-card"
-    imgStyle={{ height: "220px", objectFit: "cover" }}
+    imgStyle={{ height: '220px', objectFit: 'cover' }}
   />
 );
 
 export default VerticalProjectCard;
 
 
-//portfolio-frontend/src/components/specific/WideProjectCard.jsx
-import React from "react";
-import ProjectCard from "./ProjectCard";
+--- Path: portfolio-frontend/src/components/specific/verticalprojectcard/VerticalProjectCard.scss ---
+.vertical-project-card {
+    min-height: 420px;
+    margin-bottom: 20px;
+  
+    .card-img-top {
+      height: 220px;
+    }
+  }
+
+--- Path: portfolio-frontend/src/components/specific/wideprojectcard/WideProjectCard.jsx ---
+import React from 'react';
+import ProjectCard from '../projectcard/ProjectCard';
+import '../../../styles/global.scss';
+import './WideProjectCard.scss';
 
 const WideProjectCard = (props) => (
   <ProjectCard
     {...props}
     className="wide-project-card"
-    imgStyle={{ height: "280px", objectFit: "cover" }}
-    bodyStyle={{ textAlign: "center" }}
+    imgStyle={{ height: '280px', objectFit: 'cover' }}
+    bodyStyle={{ textAlign: 'center' }}
   />
 );
 
 export default WideProjectCard;
 
 
-//portfolio-frontend/src/config/constants.js
+--- Path: portfolio-frontend/src/components/specific/wideprojectcard/WideProjectCard.scss ---
+.wide-project-card {
+    min-height: 420px;
+  
+    .card-img-top {
+      height: 280px;
+    }
+  }
+
+--- Path: portfolio-frontend/src/config/constants.js ---
 // src/config/constants.js
 export const ROUTES = {
   HOME: '/',
@@ -1276,13 +2944,13 @@ export const ROUTES = {
 };
 
 
-//portfolio-frontend/src/config/index.js
+--- Path: portfolio-frontend/src/config/index.js ---
 // src/config/index.js
 export * from './constants';
 export * from './siteConfig';
 
 
-//portfolio-frontend/src/config/siteConfig.js
+--- Path: portfolio-frontend/src/config/siteConfig.js ---
 // src/config/siteConfig.js
 export const SITE_CONFIG = {
   title: 'My Portfolio',
@@ -1291,13 +2959,13 @@ export const SITE_CONFIG = {
 };
 
 
-//portfolio-frontend/src/contexts/index.js
+--- Path: portfolio-frontend/src/contexts/index.js ---
 // src/contexts/index.js
 export * from './ThemeContext';
 export * from './SettingsContext';
 
 
-//portfolio-frontend/src/contexts/SettingsContext.jsx
+--- Path: portfolio-frontend/src/contexts/SettingsContext.jsx ---
 // src/contexts/SettingsContext.jsx
 import React, { createContext, useState } from 'react';
 
@@ -1316,7 +2984,7 @@ export const SettingsProvider = ({ children }) => {
 };
 
 
-//portfolio-frontend/src/contexts/ThemeContext.jsx
+--- Path: portfolio-frontend/src/contexts/ThemeContext.jsx ---
 // src/contexts/ThemeContext.jsx
 import React, { createContext, useState } from 'react';
 
@@ -1336,32 +3004,32 @@ export const ThemeProvider = ({ children }) => {
 };
 
 
-//portfolio-frontend/src/data/bannerData.json
+--- Path: portfolio-frontend/src/data/bannerData.json ---
 [
   {
-    "img": "../../assets/images/im1.jpg",
-    "title": "frontend",
-    "desc": "JavaScript"
+    "img": "../../assets/images/spring_icon.png",
+    "title": "Robust Backend",
+    "desc": "Spring Boot"
   },
   {
-    "img": "../../assets/images/im2.jpg",
-    "title": "dynamic frontend",
+    "img": "../../assets/images/React_icon.png",
+    "title": "Dynamic Frontend",
     "desc": "React"
   },
   {
-    "img": "../../assets/images/im3.jpg",
-    "title": "styling",
-    "desc": "CSS"
+    "img": "../../assets/images/bootstrap_icon.png",
+    "title": "Smooth Styling",
+    "desc": "Bootstrap"
   },
   {
-    "img": "../../assets/images/im4.jpg",
-    "title": "backend",
-    "desc": "Spring Boot"
+    "img": "../../assets/images/git_icon.png",
+    "title": "VCS",
+    "desc": "GIT"
   }
 ]
 
 
-//portfolio-frontend/src/data/projects.json
+--- Path: portfolio-frontend/src/data/projects.json ---
 [
   {
     "id": 1,
@@ -1394,18 +3062,18 @@ export const ThemeProvider = ({ children }) => {
 ]
 
 
-//portfolio-frontend/src/data/skills.js
+--- Path: portfolio-frontend/src/data/skills.js ---
 // src/data/skills.js
 export const skills = ['JavaScript', 'React', 'CSS', 'Node.js', 'Spring Boot'];
 
 
-//portfolio-frontend/src/hooks/index.js
+--- Path: portfolio-frontend/src/hooks/index.js ---
 export { default as useAnalytics } from './useAnalytics';
 export { default as useFetch } from './useFetch';
 export { default as useLocalStorage } from './useLocalStorage';
 
 
-//portfolio-frontend/src/hooks/useAnalytics.js
+--- Path: portfolio-frontend/src/hooks/useAnalytics.js ---
 // src/hooks/useAnalytics.js
 import { useEffect } from 'react';
 
@@ -1419,7 +3087,7 @@ const useAnalytics = (page) => {
 export default useAnalytics;
 
 
-//portfolio-frontend/src/hooks/useFetch.js
+--- Path: portfolio-frontend/src/hooks/useFetch.js ---
 // src/hooks/useFetch.js
 import { useState, useEffect } from 'react';
 
@@ -1447,7 +3115,7 @@ const useFetch = (url) => {
 export default useFetch;
 
 
-//portfolio-frontend/src/hooks/useLocalStorage.js
+--- Path: portfolio-frontend/src/hooks/useLocalStorage.js ---
 // src/hooks/useLocalStorage.js
 import { useState } from 'react';
 
@@ -1477,7 +3145,7 @@ function useLocalStorage(key, initialValue) {
 export default useLocalStorage;
 
 
-//portfolio-frontend/src/i18n/config.js
+--- Path: portfolio-frontend/src/i18n/config.js ---
 // src/i18n/config.js
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
@@ -1499,12 +3167,12 @@ i18n.use(initReactI18next).init({
 export default i18n;
 
 
-//portfolio-frontend/src/i18n/index.js
+--- Path: portfolio-frontend/src/i18n/index.js ---
 // src/i18n/index.js
 import './config';
 
 
-//portfolio-frontend/src/i18n/locales/en.json
+--- Path: portfolio-frontend/src/i18n/locales/en.json ---
 {
   "header": {
     "nav": {
@@ -1544,11 +3212,11 @@ import './config';
 }
 
 
-//portfolio-frontend/src/layouts/index.js
+--- Path: portfolio-frontend/src/layouts/index.js ---
 export { default as MainLayout } from './MainLayout';
 
 
-//portfolio-frontend/src/layouts/MainLayout.jsx
+--- Path: portfolio-frontend/src/layouts/MainLayout.jsx ---
 // src/layouts/MainLayout.jsx
 import React from 'react';
 import Navigation from '../components/layout/Navbar';
@@ -1565,7 +3233,7 @@ const MainLayout = ({ children }) => (
 export default MainLayout;
 
 
-//portfolio-frontend/src/lib/formatDate.js
+--- Path: portfolio-frontend/src/lib/formatDate.js ---
 // src/lib/formatDate.js
 export const formatDate = (date) => {
   const d = new Date(date);
@@ -1573,25 +3241,25 @@ export const formatDate = (date) => {
 };
 
 
-//portfolio-frontend/src/lib/index.js
+--- Path: portfolio-frontend/src/lib/index.js ---
 export * from './formatDate';
 export * from './validation';
 
 
-//portfolio-frontend/src/lib/validation.js
+--- Path: portfolio-frontend/src/lib/validation.js ---
 // src/lib/validation.js
 export const isEmailValid = (email) => /\S+@\S+\.\S+/.test(email);
 export const isPhoneValid = (phone) => /^\+?[1-9]\d{1,14}$/.test(phone);
 
 
-//portfolio-frontend/src/mocks/browser.js
+--- Path: portfolio-frontend/src/mocks/browser.js ---
 import { setupWorker } from 'msw';
 import { handlers } from './handlers';
 
 export const worker = setupWorker(...handlers);
 
 
-//portfolio-frontend/src/mocks/handlers.js
+--- Path: portfolio-frontend/src/mocks/handlers.js ---
 import { rest } from 'msw';
 
 export const handlers = [
@@ -1606,35 +3274,45 @@ export const handlers = [
 ];
 
 
-//portfolio-frontend/src/mocks/server.js
+--- Path: portfolio-frontend/src/mocks/server.js ---
 import { setupServer } from 'msw/node';
 import { handlers } from './handlers';
 
 export const server = setupServer(...handlers);
 
 
-//portfolio-frontend/src/pages/AboutPage.jsx
-import React from 'react';
-import Navigation from '../components/layout/Navbar';
-import Footer from '../components/layout/Footer';
-import '../styles/global.scss';
-import Skills from '../components/specific/Skills';
-import Experience from '../components/specific/Experience';
-import Achievements from '../components/specific/Achievements';
-import AboutSection from '../components/layout/AboutSection';
-import WhyUs from '../components/layout/WhyUs';
+--- Path: portfolio-frontend/src/pages/index.js ---
+export { default as HomePage } from './homepage/HomePage';
+export { default as AboutPage } from './aboutpage/AboutPage';
+export { default as ContactPage } from './contactpage/ContactPage';
+export { default as ProjectDetailPage } from './projectdetailpage/ProjectDetailPage';
+export { default as ProjectsPage } from './projectpage/ProjectsPage';
+export { default as NotFoundPage } from './notfoundpage/NotFoundPage';
 
+
+--- Path: portfolio-frontend/src/pages/aboutpage/AboutPage.jsx ---
+import React from 'react';
+import Navigation from '../../components/layout/navbar/Navbar';
+import Footer from '../../components/layout/footer/Footer';
+import Skills from '../../components/specific/skills/Skills';
+import Experience from '../../components/specific/experience/Experience';
+import Achievements from '../../components/specific/achievements/Achievements';
+import AboutSection from '../../components/layout/aboutsection/AboutSection';
+import WhyUs from '../../components/layout/whyus/WhyUs';
+import '../../styles/global.scss';
+import './AboutPage.scss';
 
 const AboutPage = () => {
   return (
     <div>
       <Navigation />
-      <AboutSection />
-      <Skills />
-      <Achievements />
-      <Experience />
-            <WhyUs />
-      
+      <div className="about-page">
+        <AboutSection />
+        <Achievements />
+        <Skills />
+        <Experience />
+        <WhyUs />
+      </div>
       <Footer />
     </div>
   );
@@ -1643,26 +3321,52 @@ const AboutPage = () => {
 export default AboutPage;
 
 
-//portfolio-frontend/src/pages/ContactPage.jsx
-// src/pages/ContactPage.jsx
-import React, { useState } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
-import Navigation from '../components/layout/Navbar';
-import Footer from '../components/layout/Footer';
-import WhyUs from '../components/layout/WhyUs';
-import Testimonials from '../components/layout/Testimonials';
-import ContactSection from '../components/layout/ContactSection';
-import '../styles/global.scss';
+--- Path: portfolio-frontend/src/pages/aboutpage/AboutPage.scss ---
+
+
+--- Path: portfolio-frontend/src/pages/contactpage/ContactPage.jsx ---
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import Navigation from '../../components/layout/navbar/Navbar';
+import Footer from '../../components/layout/footer/Footer';
+import WhyUs from '../../components/layout/whyus/WhyUs';
+import Testimonials from '../../components/layout/testimonials/Testimonials';
+import Contact from '../../components/layout/contact/Contact';
+import SocialMedia from '../../components/specific/socialmedia/SocialMedia';
+
+import '../../styles/global.scss';
+import './ContactPage.scss';
+
 const ContactPage = () => {
   return (
     <>
       <Navigation />
+
       <div className="contact-page">
-      <h1>Contact Me</h1>
-      <WhyUs />
-      <Testimonials />
-      <ContactSection />
+        <h1 className="contact-main-title">Contact Me</h1>
+        <WhyUs />
+
+        <section className="social-contact-section">
+          <Container>
+            <h2>Contact Me</h2>
+            <p>
+              Looking to hire reliable facility staff or need professional
+              housekeeping services? We’re here to help!
+            </p>
+            <Row className="align-items-center">
+              <Col lg={6} md={12} className="social-side">
+                <SocialMedia />
+              </Col>
+              <Col lg={6} md={12} className="contact-side">
+                <Contact />
+              </Col>
+            </Row>
+          </Container>
+        </section>
+
+        <Testimonials />
       </div>
+
       <Footer />
     </>
   );
@@ -1671,19 +3375,109 @@ const ContactPage = () => {
 export default ContactPage;
 
 
-//portfolio-frontend/src/pages/HomePage.jsx
-import React from 'react';
-import Navigation from '../components/layout/Navbar';
-import Banner from '../components/specific/Banner';
-import CarouselComponent from '../components/layout/Carousel';
-import WideProjectsSection from '../components/layout/WideProjectsSection';
-import Footer from '../components/layout/Footer';
-import '../styles/global.scss';
-import ClientsSection from '../components/layout/ClientsSection';
-import Testimonials from '../components/layout/Testimonials';
-import Hero from '../components/layout/Hero';
+--- Path: portfolio-frontend/src/pages/contactpage/ContactPage.scss ---
+.contact-page {
+  padding-top: 20px;
+
+  .contact-main-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #00fff0;
+    text-shadow: 0 0 15px #00fff0;
+  }
+
+  .social-contact-section {
+    padding: 20px 30px;
+    background: linear-gradient(146deg, #3dc2f9a6, #000000, #3dc2f9a6);
+    border-radius: 20px;
+    margin: 10px auto;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+
+    h2 {
+      font-size: 2.7rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #00fff0;
+      text-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      color: #d0d0d0;
+      font-weight: 500;
+    }
+
+    .social-side, .contact-side {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    .social-contact-section {
+      padding: 50px 15px;
+    }
+    .social-contact-card {
+      padding: 20px;
+    }
+    .social-side, .contact-side {
+      padding: 10px;
+    }
+  }
+}
+
+
+--- Path: portfolio-frontend/src/pages/homepage/HomePage.jsx ---
+import React, { useRef, useEffect } from 'react';
+import Navigation from '../../components/layout/navbar/Navbar';
+import Banner from '../../components/specific/banner/Banner';
+import CarouselComponent from '../../components/layout/carousel/Carousel';
+import WideProjectsSection from '../../components/layout/wideprojectssection/WideProjectsSection';
+import Footer from '../../components/layout/footer/Footer';
+import ClientsSection from '../../components/layout/clientsection/ClientsSection';
+import Testimonials from '../../components/layout/testimonials/Testimonials';
+import Hero from '../../components/layout/hero/Hero';
+import StrengthCard from '../../components/specific/strengthcard/StrengthCard';
+import '../../styles/global.scss';
+import './HomePage.scss';
+
+const PARTICLE_COUNT = 40;
 
 const HomePage = () => {
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    let frame;
+
+    const handleMouseMove = (e) => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--x', `${x}px`);
+        card.style.setProperty('--y', `${y}px`);
+      });
+    };
+
+    if (card) card.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      if (card) card.removeEventListener('mousemove', handleMouseMove);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
     <div>
       <Navigation />
@@ -1691,29 +3485,55 @@ const HomePage = () => {
       <Banner />
       <CarouselComponent />
       <div className="homepage-projects fade-in-up staggered-delay-1">
-        <h2>Our Projects</h2>
+        <h2>Latest Project</h2>
         <WideProjectsSection />
       </div>
-      <div className="about">
-        <h2>About Us</h2>
-        <div className="about-highlight fade-in-up staggered-delay-1">
-          <h2>Our Commitment</h2>
-          <p>
-            At Swpris Facilities, we pride ourselves on being a dependable
-            provider of skilled professionals and facility services...
-          </p>
-        </div>
-      </div>
-      <div className="services">
-        <h2>Our Services</h2>
-        <div className="labor-highlight">
-          <h2>Labor Supply – Our Core Strength</h2>
+
+      <div className="homepage-strengths">
+        <h2>Core Strengths</h2>
+        <div className="homepage-strength-highlight">
+          <h2>Springboot React Bootstrap</h2>
           <p>
             We specialize in skilled/semi-skilled labor for factories, events,
             hospitals, and institutions.
           </p>
         </div>
       </div>
+
+      <section className="homepage-about">
+        <h2 className="neon-title">
+          <span>A</span>
+          <span>b</span>
+          <span>o</span>
+          <span>u</span>
+          <span>t</span>
+          <span>M</span>
+          <span>e</span>
+        </h2>
+
+        <div
+          className="homepage-about-card fade-in-up staggered-delay-1"
+          ref={cardRef}
+        >
+          <div className="particles">
+            {[...Array(PARTICLE_COUNT)].map((_, i) => (
+              <div key={i} className="particle"></div>
+            ))}
+          </div>
+          <div className="dynamic-gradient"></div>
+          <div className="content">
+            <h3>Creative & Committed</h3>
+            <p>
+              I'm passionate about delivering robust backend architecture, clean
+              code, and smooth user experiences. I blend logic with creativity,
+              backed by a strong foundation in Java, Spring Boot, and
+              problem-solving.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <StrengthCard />
       <ClientsSection />
       <Testimonials />
       <Footer />
@@ -1724,18 +3544,305 @@ const HomePage = () => {
 export default HomePage;
 
 
-//portfolio-frontend/src/pages/index.js
-// src/pages/index.js
-export { default as HomePage } from './HomePage';
-export { default as AboutPage } from './AboutPage';
-export { default as ContactPage } from './ContactPage';
-export { default as ProjectDetailPage } from './ProjectDetailPage';
-export { default as ProjectsPage } from './ProjectsPage';
-export { default as NotFoundPage } from './NotFoundPage';
+--- Path: portfolio-frontend/src/pages/homepage/HomePage.scss ---
+.homepage-projects h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 2rem auto 0 auto;
+  color: #14213d;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* strengths Section */
+.homepage-strengths {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.homepage-strength-highlight {
+  background: url("../../assets/images/new2.jpg") center/cover no-repeat;
+  color: rgb(255, 255, 255);
+  padding: 35px 20px 10px 20px;
+  height: 325px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  background-attachment: fixed;
+  position: relative;
+}
+
+.homepage-strength-highlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.homepage-strength-highlight h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.homepage-strength-highlight p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* about section----------------------------------- */
+.homepage-about {
+  padding: 50px 10px 10px 10px;
+  background: linear-gradient(200deg, #00b7ff, #002735 50%, #00b2ff);
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
+
+.homepage-about .neon-title {
+  font-size: 4rem;
+  margin-bottom: 80px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.homepage-about .neon-title span {
+  display: inline-block;
+  text-shadow: 0 0 10px #00fff0, 0 0 20px #00fff0, 0 0 30px #00fff0;
+  animation: neonPulse 1.5s ease-in-out infinite alternate;
+}
+
+@for $i from 1 through 7 {
+  .homepage-about .neon-title span:nth-child(#{$i}) {
+    animation-delay: #{$i * 0.1}s;
+  }
+}
+
+.homepage-about .homepage-about-card {
+  background: linear-gradient(135deg, #0f2027, #203a43 50%, #2c5364);
+  backdrop-filter: blur(12px);
+  padding: 50px 0 30px 0;
+  border-radius: 15px;
+  max-width: 1200px;
+  margin: 0 auto 50px auto;
+  box-shadow: 0 4px 25px rgba(0, 255, 255, 0.1);
+  border-left: 5px solid #00fff0;
+  transition: all 0.3s ease;
+  // animation: gradientFlow 12s ease infinite;
+}
+
+.homepage-about .homepage-about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 30px rgba(0, 255, 255, 0.3);
+  border-left: 5px solid #007bff;
+}
+
+.homepage-about h2 {
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.homepage-about .homepage-about-card p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #cccccc;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-me-showcase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+}
+
+.homepage-about-card {
+  position: relative;
+  background: linear-gradient(135deg, #0f2027, #203a43 50%, #2c5364);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 33px 0 0 0;
+    width: 100%;
+    max-width: 1132px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.homepage-about-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x) var(--y), rgba(0,255,240,0.2) 0%, transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.homepage-about-card:hover {
+  transform: rotate3d(1, 1, 0, 5deg) scale(1.02);
+  box-shadow: 0 25px 60px rgba(0, 255, 255, 0.4);
+}
+
+.homepage-about-card:hover::before {
+  opacity: 1;
+}
+
+.homepage-about-card:hover .dynamic-gradient {
+  opacity: 0.3;
+}
+
+.homepage-about-card .particles {
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  position: absolute;
+  inset: 0;
+}
+
+@for $i from 1 through 40 {
+  .homepage-about-card .particle:nth-child(#{$i}) {
+    top: #{random(100)}%;
+    left: #{random(100)}%;
+    width: #{random(10) + 6}px; // Increased size
+    height: #{random(10) + 6}px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.9) 0%, transparent 70%);
+    filter: blur(#{random(3) + 2}px); // Sharper blur
+    position: absolute;
+    animation: float-#{$i} #{random(15) + 10}s ease-in-out infinite;
+    animation-delay: #{random(5)}s;
+    opacity: 0.9; // More visible
+    mix-blend-mode: lighten; // Better contrast
+  }
+}
+
+@for $i from 1 through 20 {
+  @keyframes float-#{$i} {
+    0% {
+      transform: translate(0, 0) scale(#{random(4) / 10 + 0.8});
+    }
+    50% {
+      transform: translate(#{random(50) - 25}px, #{random(100) - 50}px)
+                 scale(#{random(6) / 10 + 1});
+    }
+    100% {
+      transform: translate(0, 0) scale(#{random(4) / 10 + 0.8});
+    }
+  }
+}
 
 
-//portfolio-frontend/src/pages/NotFoundPage.jsx
-// src/pages/NotFoundPage.jsx
+.dynamic-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, #00fff0, #007bff, #ff00ff, #00fff0);
+  background-size: 400% 400%;
+  // background-size: 20% 20%;
+  mix-blend-mode: overlay;
+  opacity: 0.1;
+  animation: gradientFlow 12s ease infinite;
+  transition: opacity 0.3s;
+}
+
+.homepage-about-card .content {
+  position: relative;
+  z-index: 2;
+}
+
+.homepage-about-card .content h3 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  background: linear-gradient(45deg, #00fff0, #007bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShine 3s ease infinite;
+}
+
+.homepage-about-card .content p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  transform: translateZ(30px);
+}
+
+@keyframes neonPulse {
+  from { opacity: 0.8; }
+  to { opacity: 1; }
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+@keyframes textShine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+// =========================
+// RESPONSIVE TWEAKS
+// =========================
+
+@media (max-width: 768px) {
+  .homepage-projects h2,
+  .homepage-strengths h2,
+  .homepage-about .neon-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+  }
+
+  .homepage-strength-highlight h2 {
+    font-size: clamp(1.6rem, 5vw, 2rem);
+  }
+
+  .homepage-strength-highlight p,
+  .homepage-about .homepage-about-card p {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .homepage-about .content h3 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+
+  .homepage-about-card {
+    padding: 25px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage-about .neon-title {
+    font-size: clamp(1.6rem, 7vw, 2rem);
+    margin-bottom: 50px;
+  }
+
+  .homepage-strength-highlight {
+    height: auto;
+    padding: 20px;
+  }
+
+  .homepage-about-card .content p {
+    font-size: 1rem;
+  }
+}
+
+
+--- Path: portfolio-frontend/src/pages/notfoundpage/NotFoundPage.jsx ---
+import '../../styles/global.scss';
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
@@ -1749,8 +3856,11 @@ const NotFoundPage = () => (
 export default NotFoundPage;
 
 
-//portfolio-frontend/src/pages/ProjectDetailPage.jsx
-// src/pages/ProjectDetailPage.jsx
+--- Path: portfolio-frontend/src/pages/notfoundpage/NotFoundPage.scss ---
+
+
+--- Path: portfolio-frontend/src/pages/projectdetailpage/ProjectDetailPage.jsx ---
+import '../../styles/global.scss';
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
@@ -1764,22 +3874,25 @@ const ProjectDetailPage = () => (
 export default ProjectDetailPage;
 
 
-//portfolio-frontend/src/pages/ProjectsPage.jsx
-// src/pages/ProjectsPage.jsx
-import '../styles/global.scss';
-import Navigation from '../components/layout/Navbar';
-import VerticalProjectsSection from '../components/layout/VerticalProjectsSection';
-import Footer from '../components/layout/Footer';
+--- Path: portfolio-frontend/src/pages/projectdetailpage/ProjectDetailPage.scss ---
+
+
+--- Path: portfolio-frontend/src/pages/projectpage/ProjectsPage.jsx ---
+import Navigation from '../../components/layout/navbar/Navbar';
+import VerticalProjectsSection from '../../components/layout/verticalprojectssection/VerticalProjectsSection';
+import Footer from '../../components/layout/footer/Footer';
+import '../../styles/global.scss';
+import './ProjectsPage.scss';
 
 const ProjectsPage = () => {
   return (
     <>
       <Navigation />
-    <div className="projects-page">
-      <h1>Projects</h1>
-      <VerticalProjectsSection />
-      <Footer />
-    </div>
+      <div className="projects-page">
+        <h1>Projects</h1>
+        <VerticalProjectsSection />
+        <Footer />
+      </div>
     </>
   );
 };
@@ -1787,7 +3900,16 @@ const ProjectsPage = () => {
 export default ProjectsPage;
 
 
-//portfolio-frontend/src/routes/index.jsx
+--- Path: portfolio-frontend/src/pages/projectpage/ProjectsPage.scss ---
+.projects-page h1 {
+    margin: 30px 0 0 0;
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+  }
+  
+
+--- Path: portfolio-frontend/src/routes/index.jsx ---
 // src/routes/index.jsx
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -1814,7 +3936,7 @@ const AppRoutes = () => (
 export default AppRoutes;
 
 
-//portfolio-frontend/src/routes/ProtectedRoute.jsx
+--- Path: portfolio-frontend/src/routes/ProtectedRoute.jsx ---
 // src/routes/ProtectedRoute.jsx
 import React from 'react';
 import { Navigate } from 'react-router-dom';
@@ -1829,12 +3951,12 @@ const ProtectedRoute = ({ isAuthenticated, children }) => {
 export default ProtectedRoute;
 
 
-//portfolio-frontend/src/store/index.js
+--- Path: portfolio-frontend/src/store/index.js ---
 export * from './projectStore';
 export * from './uiStore';
 
 
-//portfolio-frontend/src/store/projectStore.js
+--- Path: portfolio-frontend/src/store/projectStore.js ---
 // A simple example using React's useState or Context can be provided here.
 // For a full state management solution, integrate Redux, Zustand, or another library.
 export const projectsStore = {
@@ -1843,7 +3965,7 @@ export const projectsStore = {
 };
 
 
-//portfolio-frontend/src/store/uiStore.js
+--- Path: portfolio-frontend/src/store/uiStore.js ---
 // Similar dummy store for UI related states.
 export const uiStore = {
   loading: false,
@@ -1851,8 +3973,18 @@ export const uiStore = {
 };
 
 
-//portfolio-frontend/src/styles/global.scss
+--- Path: portfolio-frontend/src/styles/global.scss ---
 @import "bootstrap/dist/css/bootstrap.min.css";
+
+
+
+.projects-page, .about-page, .contact-page {
+  padding-top: var(--navbar-height, 80px);
+}
+
+// --------------------
+// Basic Animations
+// --------------------
 
 @keyframes fadeInUp {
   from {
@@ -1875,6 +4007,9 @@ export const uiStore = {
 .staggered-delay-3 { animation-delay: 0.6s; }
 .staggered-delay-4 { animation-delay: 0.8s; }
 
+// --------------------
+// Global Body
+// --------------------
 
 body {
   font-family: $font-stack;
@@ -1892,1327 +4027,25 @@ body.loaded {
 }
 
 
-.homepage-projects h2 {
 
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin: 2rem auto 0 auto;
-  color: #14213d;
-  text-align: center;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-
-// navigation------------------------------------------------
-
-/* CustomNavbar.css */
-.container {
-  width: 100%;
-  max-width: none;
-  padding: 0;
-}
-
-.custom-header {
-  font-family: "Times New Roman", Times, serif;
-  color: #fff;
-  padding: 0;
-  position: sticky;
-  top: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0;
-  z-index: 1000;
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  background: none;
-}
-
-.nav2 {
-  background: linear-gradient(45deg, rgb(0 255 222 / 80%), rgb(0 90 255 / 80%));
-   display: flex;
-  justify-content: space-between;
-  align-items: center; 
-  width: 100%;
-  margin: 0 auto;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  text-decoration: none !important; 
-}
-
-.logo-img {
-  width: 120px;
-  height: 50px;
-  background-image: url("/logo.png"); 
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin: 0; 
-  animation: floatLogo 4s ease-in-out infinite;
-}
-
-@keyframes floatLogo {
-  0%,
-  100% {
-    transform: translateY(0) rotate(-3deg);
-  }
-  50% {
-    transform: translateY(-5px) rotate(3deg);
-  }
-}
-
-.company-name {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-left: 0px;
-  padding-left: 0px;
-  color: #fff; 
-}
-
-.user-info {
-  font-size: 1rem;
-}
-
-.nav-links {
-  margin-bottom: 0; 
-}
-
-.nav-links .nav-item {
-  margin-left: 20px;
-}
-
-.nav-links .nav-link {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-  position: relative;
-  padding: 0.5rem 0; 
-}
-
-.nav-links .nav-link::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background: #ff6f61;
-  bottom: -5px;
-  left: 0;
-  transform: scaleX(0);
-  transform-origin: bottom right;
-  transition: transform 0.3s ease;
-}
-
-.nav-links .nav-link:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-.menu-toggle {
-  display: none; 
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.menu-toggle .bar {
-  height: 3px;
-  width: 25px;
-  background: #fff;
-  margin: 4px 0;
-}
-
-/* Custom styles for the search input */
-.custom-search-input {
-  max-width: 170px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 8px 12px;
-  font-size: 16px;
-  color: #333;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s ease-in-out; 
-}
-
-.custom-search-input:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
-}
-
-.custom-search-input::placeholder {
-  font-family: "Times New Roman", Times, serif;
-  color: #999;
-  font-style: italic;
-  text-align: left;
-}
-
-/* Custom styles for the search button */
-.custom-search-button {
-  background-color: rgb(0, 132, 255) !important;
-  color: #ffffff !important;
-  
-  border: none;
-  border-radius: 5px;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-.custom-search-button:hover {
-  background-color: rgba(0, 255, 221, 0.822) !important;
-  color: #000 !important;
-}
-
-/* Media query for mobile menu */
-@media (max-width: 767.98px) { /* Bootstrap's medium breakpoint */
-  .menu-toggle {
-    display: flex;
-  }
-  .nav-links {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 1rem;
-  }
-  .nav-links .nav-item {
-    margin-left: 0;
-    margin-bottom: 0.5rem;
-  }
-  .nav-links .nav-link::after {
-    bottom: -2px;
-  }
-  .user-info {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .d-flex.role-search {
-    width: 100%;
-    margin-top: 1rem;
-  }
-  .custom-search-input {
-    max-width: 100%;
-  }
-}
-
-// Banner-------------------------------------------------------
-
-/* Banner Section Styling */
-.banner-area {
-  background-color: #f9f9f9;
-  height: 100px;
-  padding-top: 20px;
-}
-
-/* Single banner layout */
-.single-banner {
-  padding: 15px;
-  background: #fff;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  position: relative;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-}
-
-/* Banner image style */
-.banner-img {
-  flex: 0 0 50px;
-  max-width: 50px;
-  height: 50px;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.banner-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transition: transform 0.4s ease-in-out;
-}
-
-.single-banner:hover .banner-img img {
-  transform: scale(1.1);
-}
-
-/* Banner text style */
-.banner-text h4 {
-  font-family: "Rufina", serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 4px;
-}
-
-.banner-text p {
-  color: #555;
-  font-size: 12px;
-  margin-bottom: 0;
-}
-
-/* Shadow on hover */
-.banner-shadow-hover {
-  position: relative;
-}
-
-.banner-shadow-hover::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(128, 128, 128, 0.4);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-}
-
-.banner-shadow-hover:hover::before {
-  opacity: 1;
-}
-
-
-
-/* carousel ------------------------------------------  */
-
-.carousel {
-  position: relative;
-  width: 95%;
-  max-width: 1300px;
-  height: 335px;
-  margin: 20px auto;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Make images fill carousel and keep aspect ratio */
-.carousel img {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-  transition: transform 0.5s ease-in-out;
-}
-
-/* Optional: subtle zoom effect */
-.carousel-item img:hover {
-  transform: scale(1.03);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .carousel {
-    height: 180px;
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel {
-    height: 150px;
-  }
-}
-
-/* project Section --------------------------------------------------*/
-.project-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: #fff;
-  height: 100%;
-  min-height: 420px;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  }
-
-  .card-img-top {
-    object-fit: cover;
-  }
-
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
-  }
-
-  .card-title {
-    font-weight: 600;
-    font-size: 1.25rem;
-    color: #333;
-  }
-
-  .card-text {
-    font-size: 1rem;
-    color: #666;
-    flex-grow: 1;
-    margin-bottom: 1rem;
-  }
-
-  .btn {
-    align-self: center;
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    margin-top: auto; // pushes button to bottom
-  }
-}
-
-.vertical-project-card {
-  min-height: 420px;
-  margin-bottom: 20px;
-
-  .card-img-top {
-    height: 220px;
-  }
-}
-
-.wide-project-card {
-  min-height: 420px;
-
-  .card-img-top {
-    height: 280px;
-  }
-}
-
-.projects-page h1 {
-  margin: 30px 0 0 0;
-  font-size: 2.5rem;
-  color: #333;
-  text-align: center;
-}
-
-.contact-page h1 {
-  margin: 30px 0 30px 0;
-  font-size: 2.5rem;
-  color: #333;
-  text-align: center;
-}
-
-/* skill Section --------------------------------------------------*/
-.skills-section {
-  padding: 4rem 0;
-  background-color: #f4f6f8;
-}
-.skill-card {
-  border: none;
-  background: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-}
-.skill-card:hover {
-  transform: translateY(-5px);
-}
-.skill-icon {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-.skill-section-title {
-  text-align: center;
-  margin-bottom: 3rem;
-  font-weight: bold;
-}
-
-
-/* Experience Section --------------------------------------------------*/
-
-/* Experience Section */
-.experience-section {
-  padding: 4rem 0;
-  background-color: #ffffff;
-  text-align: left;
-}
-
-.experience-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #333;
-  text-align: center;
-}
-
-/* Timeline Wrapper */
-.experience-timeline {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: relative;
-  border-left: 4px dashed #01c2ff; /* main vertical line */
-  margin-left: 40px;
-}
-
-/* Timeline Item */
-.experience-timeline li {
-  position: relative;
-  margin-bottom: 2rem;
-  padding-left: 60px;
-  border-left: 3px solid transparent;
-  transition: all 0.3s ease;
-}
-
-.experience-timeline li:hover {
-  background: linear-gradient(90deg, rgba(1,194,255,0.05) 0%, rgba(1,194,255,0.03) 100%);
-  // border-left: 3px solid #01c2ff;
-  border-right: 6px solid #01c2ff;
-  border-radius: 5px;
-}
-
-/* Year Badge */
-.experience-timeline-date {
-  position: absolute;
-  top: 0;
-  left: -85px;
-  width: 70px;
-  text-align: right;
-  font-weight: bold;
-  color: #01c2ff;
-  background: #f0faff;
-  padding: 0.3rem 0.5rem;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
-}
-
-/* Content Block */
-.experience-timeline-content {
-  background-color: #f9f9f9;
-  border: 1px dashed #ccc;
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-}
-
-.experience-timeline-content h4 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: #333;
-}
-
-.experience-timeline-content p {
-  font-size: 0.95rem;
-  margin: 0;
-  color: #555;
-}
-
-.experience-timeline li:hover .experience-timeline-content {
-  transform: translateX(5px);
-  border-color: #01c2ff;
-}
-
-
-/* Achievement Section */
-.achievements-section {
-  padding: 5rem 2rem;
-  background: linear-gradient(180deg, #a0fdfb 0%, #49a1ff 100%);
-  color: #ffffff;
-  position: relative;
-  overflow: hidden;
-  font-style: italic;
-}
-
-.achievements-section::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: -50px;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 30% 30%, rgba(10, 230, 138, 0.692), transparent 60%);
-  animation: rotateGlow 30s linear infinite;
-  z-index: 0;
-}
-
-@keyframes rotateGlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 3rem;
-  text-align: center;
-  color: #0091b1;
-  position: relative;
-  z-index: 1;
-  text-shadow: 0 0 10px rgba(0, 209, 255, 0.3);
-}
-
-/* Glassmorphism effect */
-.achievement-card {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 15px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  color: #fff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s;
-  z-index: 1;
-  position: relative;
-}
-
-.achievement-card:hover {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 0 10px #19f5e3, 0 0 20px rgba(0, 209, 255, 0.2);
-  border: 1px solid #00d1ff;
-}
-
-.achievement-card .card-title {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #0077ff;
-  margin-bottom: 1rem;
-}
-
-.achievement-card .card-text {
-  font-size: 1.1rem;
-  color: #00579e;
-}
-
-
-
-/* Footer ------------------------------------------------------------*/
-.footer {
-  background: #2a5c82;
-  color: white;
-  padding: 40px 0 20px;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  padding: 0 20px;
-}
-
-.footer-section {
-  margin-bottom: 20px;
-  /* display: flex; */
-}
-
-.footer-section a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-logo {
-  width: 45px;
-  display: flex;
-}
-
-.social-links {
-  margin-top: 20px;
-}
-
-.social-links a {
-  color: white;
-  font-size: 24px;
-  margin-right: 15px;
-  transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-  color: var(#ffc107);
-}
-
-.footer-section h4 {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-  border-bottom: 2px solid #ffc107;
-  padding-bottom: 5px;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 8px;
-  text-decoration: none;
-  color: white;
-}
-
-.contact-inf i {
-  margin-right: 10px;
-  width: 20px;
-}
-
-.newsletter-form input {
-  padding: 7px;
-  width: 79%;
-  border: none;
-  border-radius: 15px 15px 0 0px;
-  margin-bottom: 0px;
-}
-.newsletter-form input:focus {
-  outline: none;
-  transition: 0.3s ease;
-}
-
-.newsletter-form button {
-  align-self: center;
-  padding: 6px 10px;
-  background: #ffc107;
-  margin: 0px;
-  border: none;
-  border-radius: 0 0 15px 15px;
-  cursor: pointer;
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 20px;
-  margin-top: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-bottom p {
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-
-
-/* copied file contents
-------------------------------------------
------------------------------------------
---------------------------------------------
--------------------------------------- */
-
-
-.hero {
-  background: url("../assets/images/new.jpg") no-repeat center center/cover;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  background-attachment: fixed;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Dark overlay to improve text visibility */
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  margin-top: -150px;
-  padding: 2rem;
-  max-width: 800px;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  opacity: 1;
-  line-height: 1.2;
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  line-height: 1.6;
-}
-
-/* About Section */
-
-/* about Highlight Block */
-.about-highlight {
-  background: url("../assets/images/im2.jpg") center/cover no-repeat;
-  color: rgb(255, 255, 255);
-  padding: 60px 20px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
-  background-attachment: fixed;
-  max-width: 1220px;
-  margin: 0 auto 25px auto;
-}
-.about-highlight::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-}
-
-.about-highlight h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #fff;
-  font-weight: bolder;
-}
-
-.about-highlight p {
-  font-size: 1.2rem;
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-.about {
-  padding: 60px 20px;
-  background-color: #f5f9ff;
-  text-align: center;
-  // color: #333;
-}
-
-.about h2 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 3rem;
-  color: #14213d;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-.about-content {
-  max-width: 1220px;
-  margin: 0 auto;
-}
-
-.about-card {
-  border: none;
-  border-radius: 20px;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  background: linear-gradient(to right, #ffffff, #f8faff);
-}
-
-.about-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.about-img {
-  border-radius: 20px 20px 0 0;
-  transition: transform 0.3s ease;
-  height: 220px;
-  object-fit: cover;
-}
-
-.about-card:hover .about-img {
-  transform: scale(1.03);
-}
-
-.about-title {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #1a1a1a;
-  margin-top: 0.5rem;
-}
-
-.about-desc {
-  font-size: 1rem;
-  color: #555;
-  margin-top: 1rem;
-  padding: 0 10px;
-}
-
-
-
-/* Services Section */
-.services {
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.services h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #333;
-}
-
-.service-grid {
-  padding: 20px;
-}
-
-/* Equal-height Cards */
-.service-card {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-}
-
-.service-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 15px 15px 0 0;
-  transition: transform 0.3s ease;
-}
-
-.service-card:hover img {
-  transform: scale(1.05);
-}
-
-.service-card h3,
-.service-card .card-title {
-  font-size: 1.3rem;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.service-card ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  margin: 0;
-  color: #444;
-  line-height: 1.6;
-  font-size: 1rem;
-  margin-bottom: 0;
-}
-
-/* Labor Highlight Block */
-.labor-highlight {
-  background: url("../assets/images/new2.jpg") center/cover no-repeat;
-  color: rgb(255, 255, 255);
-  padding: 60px 20px;
-  border-radius: 15px;
-  text-align: center;
-  margin-bottom: 40px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
-  background-attachment: fixed;
-}
-.labor-highlight::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-}
-
-.labor-highlight h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #fff;
-}
-
-.labor-highlight p {
-  font-size: 1.2rem;
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-/* Blog Section */
-.blog {
-  background: linear-gradient(180deg, #a0fdfb 0%, #49a1ff 100%);  
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: 10px auto;
-  border-radius: 15px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-  text-align: center;
-}
-
-.blog h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #333;
-}
-
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  padding: 20px;
-}
-
-.blog-card {
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.blog-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-}
-
-.blog-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 15px 15px 0 0;
-  transition: transform 0.3s ease;
-}
-
-.blog-card:hover img {
-  transform: scale(1.05);
-}
-
-.blog-card h3 {
-  font-size: 1.5rem;
-  margin: 20px 0 10px;
-  color: #333;
-  padding: 0 20px;
-}
-
-.blog-card p {
-  padding: 0 20px 20px;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #555;
-  text-align: left;
-}
-
-.blog .show-more-btn {
-  display: inline-block;
-  margin: 0 20px 20px;
-  color: #ffffff;
-  background-color: #007bff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  padding: 5px;
-    border-radius: 8px;
-    border-style: dashed;
-  border-color: #007bff;
-}
-
-.blog .show-more-btn:hover {
-  color: #ffffff;
-  font-weight: bold;
-  background-color: #000ba0;
-}
-
-#moreClients {
-  display: none;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  padding: 20px;
-}
-
-#toggleClients {
-  padding: 12px 24px;
-  font-size: 1rem;
-}
-
-/* Testimonials Section */
-blockquote {
-  background: linear-gradient(44deg, #0c5ef3 0%, #86eaef 100%);
-  border-left: 5px solid #2600ff;
-  font-style: italic;
-  color: #ffffff;
-  font-size: 1.3rem;
-  margin: 0 40px 1rem 40px !important;
-}
-blockquote p {
-padding-left: 0.75rem;
-margin-top: 5px;
-margin-bottom: 0;
-  line-height: 1.6;
-}
-
-blockquote footer {
-  text-align: right;
-  font-weight: bold;
-  color: #271e1e;
-  font-size: 1.2rem;
-  margin: 5px;
-  padding: 0 10px 10px 0px;
-}
-
-#testimonials h2 {
-  font-size: 2rem;
-  border-left: 5px solid #2600ff;
-  padding-left: 0.75rem;
-  margin-top: 2rem;
-  margin-left: 40px;
-  margin-bottom: 15px;
-}
-
-/* === Why Us Section === */
-.why-us {
-  background: linear-gradient(45deg, rgb(0 255 222 / 80%), rgb(0 90 255 / 80%));
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 15px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-  text-align: center;
-}
-
-.why-us h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.why-us p {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  color: #000000;
-}
-
-.why-us ul {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 1rem;
-}
-
-.why-us ul li {
-  font-size: 1.1rem;
-  margin: 0.5rem 0;
-  color: #000000;
-}
-
-/* Contact Section ---------------------------------------------------*/
-.contact {
-  margin-bottom: 2px !important;
-}
-.contact-area {
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
-  border-radius: 10px;
-  margin: 20px 2px 4px 2px;
-  height: fit-content;
-}
-
-.contact-info {
-  flex: 1;
-  background: linear-gradient(45deg, rgb(0 255 222 / 80%), rgb(0 90 255 / 80%));
-  border-radius: 10px;
-  padding: 13px;
-  color: #000000;
-  text-align: start;
-  height: fit-content;
-}
-
-.contact-info h3 {
-  font-family: sans-serif;
-  text-align: center;
-  color: #2600ff;
-  font-size: 22px;
-  background-color: #fff;
-  border-radius: 10px;
-  margin: 2px 0 20px 0;
-  padding: 12px 0;
-}
-
-.contact-info table {
-  width: 100%;
-  margin-top: 0px;
-  font-size: 16px;
-}
-
-.contact-info table td {
-  padding: 8px 5px;
-  vertical-align: top;
-}
-
-.contact-info table td:first-child {
-  width: 10px;
-  text-align: center;
-}
-
-.contact-info table td a {
-  color: #2600ff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.contact-info table td a:hover {
-  color: #ffee05;
-}
-
-.contact-info .map-container {
-  width: 100%;
-  height: 300px;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 20px;
-}
-
-/* Contact Section Layout-------------------------------- */
-.contact {
-  padding: 80px 20px;
-  background: linear-gradient(50deg, #6d7bfb 0%, #42ffde 100%);
-  color: #ffffff;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  max-width: 100%;
-  margin: 20px 0;
-}
-
-.contact h2 {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #4c00ff;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
-}
-
-.contact p {
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto 3rem;
-  color: #e0e0e0;
-  font-weight: bolder;
-}
-
-/* Contact Form Container */
-.contact-form {
-  padding: 2rem 2rem 1rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-  position: relative;
-  z-index: 2;
-  transition: transform 0.3s ease;
-}
-
-.contact-form:hover {
-  transform: translateY(-4px);
-}
-
-/* Form Fields */
-.contact-form .form-label {
-  color: #000ba0;
-  font-weight: 500;
-  text-decoration: underline;
-  
-}
-
-.contact-form input,
-.contact-form textarea {
-  background: transparent;
-  border: none;
-  border-bottom: 1px dashed #0011ff;
-  color: #fff;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  padding: 0.5rem 0;
-  width: 100%;
-  transition: all 0.3s ease;
-  border-radius: 0;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-bottom: 2px solid #00ffff;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
-  color: #ffffff;
-}
-
-/* Placeholder Styling */
-.contact-form ::placeholder {
-  color: #ccc;
-  font-style: italic;
-  font-size: 0.95rem;
-}
-
-/* Textarea */
-.contact-form textarea {
-  height: 120px;
-  resize: none;
-}
-
-/* Submit Button */
-.contact-form .cta-button {
-  background: linear-gradient(90deg, #00ffff, #007bff);
-  color: #000;
-  font-weight: bold;
-  border: none;
-  border-radius: 25px;
-  padding: 0.6rem 2rem;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  width: 100%;
-  text-transform: uppercase;
-  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
-}
-
-.contact-form .cta-button:hover {
-  background: linear-gradient(90deg, #007bff, #00ffff);
-  color: #fff;
-  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
-  transform: scale(1.02);
-}
-
-/* Responsive Glow Animation (optional) */
-.contact::after {
-  content: "";
-  position: absolute;
-  top: -100px;
-  left: -100px;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(0, 255, 255, 0.2), transparent 70%);
-  animation: pulse 6s infinite ease-in-out;
-  z-index: 0;
-  border-radius: 50%;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1.5);
-    opacity: 0.6;
-  }
-}
-
-
-//portfolio-frontend/src/styles/_variables.scss
+--- Path: portfolio-frontend/src/styles/_variables.scss ---
 // Global SCSS variables
 $primary-color: #0d6efd;
 $secondary-color: #6c757d;
 $font-stack: 'Helvetica Neue', sans-serif;
 
 
-//portfolio-frontend/src/styles/themes/dark.scss
+--- Path: portfolio-frontend/src/styles/themes/dark.scss ---
 $background-color: #000000;
 $text-color: #ffffff;
 
 
-//portfolio-frontend/src/styles/themes/light.scss
+--- Path: portfolio-frontend/src/styles/themes/light.scss ---
 $background-color: #ffffff;
 $text-color: #000000;
 
 
-//portfolio-frontend/src/__tests__/setup.js
+--- Path: portfolio-frontend/src/__tests__/setup.js ---
 import '@testing-library/jest-dom';
+
+
