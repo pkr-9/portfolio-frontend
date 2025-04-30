@@ -155,3 +155,11 @@
     box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
     transform: scale(1.02);
   }
+
+  @media (max-width: 768px) {
+    .contact-form {
+      padding: 1.5rem;
+      width: 100%;
+    }
+  }
+  

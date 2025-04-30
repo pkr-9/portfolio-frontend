@@ -20,4 +20,15 @@
     margin-bottom: 3rem;
     font-weight: bold;
   }
+  @media (max-width: 768px) {
+    .project-card.expanded {
+      flex-direction: column !important;
+      min-height: auto;
+    }
+  
+    .project-card .card-img-top {
+      width: 100% !important;
+      height: auto;
+    }
+  }
   

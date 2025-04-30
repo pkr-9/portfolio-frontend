@@ -120,3 +120,17 @@
     color: #000;
   }
   
+  @media (max-width: 768px) {
+    .nav-links {
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+      padding-left: 1rem;
+    }
+  
+    .search-form {
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+  

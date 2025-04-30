@@ -102,4 +102,20 @@
   }
   
   
+  @media (max-width: 768px) {
+    .footer-container {
+      grid-template-columns: 1fr !important;
+      text-align: center;
+    }
+  
+    .newsletter-form input {
+      width: 100%;
+      border-radius: 8px;
+    }
+  
+    .newsletter-form button {
+      width: 100%;
+      border-radius: 8px;
+    }
+  }
   
