@@ -9,7 +9,7 @@ const ProjectsPage = () => {
     <>
       <Navigation />
       <div className="projects-page">
-        <h1>Projects</h1>
+        {/* <h1>Projects</h1> */}
         <VerticalProjectsSection />
         <Footer />
       </div>

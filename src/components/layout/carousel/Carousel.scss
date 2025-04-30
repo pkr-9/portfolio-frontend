@@ -1,36 +1,66 @@
 .carousel {
+  position: relative;
+  width: 95%;
+  max-width: 1300px;
+  height: 460px;
+  margin: 40px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 30px rgba(0, 255, 255, 0.1);
+  background: #000;
+
+  .carousel-image-wrapper {
     position: relative;
-    width: 95%;
-    max-width: 1300px;
-    height: 460px;
-    margin: 20px auto;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-
-  .carousel img {
-    object-fit: cover;
-    height: 100%;
     width: 100%;
-    transition: transform 0.5s ease-in-out;
-  }
-  
+    height: 100%;
+    overflow: hidden;
 
-  .carousel-item img:hover {
-    transform: scale(1.03);
-  }
-  
+    .carousel-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform-origin: center;
+      animation: kenBurnsZoom 6s ease-in-out infinite alternate;
+      filter: brightness(1.1) saturate(1.2);
+      transition: transform 0.5s ease;
+    }
 
-  @media (max-width: 768px) {
-    .carousel {
-      height: 180px;
+    &:hover .carousel-img {
+      transform: scale(1.05);
+    }
+
+    // Glow layer
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: 0 0 60px rgba(0, 255, 255, 0.2);
+      mix-blend-mode: overlay;
+      pointer-events: none;
     }
   }
-  
-  @media (max-width: 480px) {
-    .carousel {
-      height: 150px;
-    }
+}
+
+@keyframes kenBurnsZoom {
+  0% {
+    transform: scale(1.05) translate(0, 0);
   }
+  100% {
+    transform: scale(1.15) translate(-5px, -5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    height: 200px;
+  }
+  .carousel-img {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel {
+    height: 160px;
+  }
+}

@@ -11,10 +11,12 @@ const images = [c1, c2, c3];
 
 const CarouselComponent = () => {
   return (
-    <Carousel fade interval={3000}>
+    <Carousel fade interval={3000} pause="hover">
       {images.map((img, i) => (
         <Carousel.Item key={i}>
-          <img src={img} alt={`Slide ${i + 1}`} className="d-block w-100" />
+          <div className="carousel-image-wrapper">
+            <img src={img} alt={`Slide ${i + 1}`} className="carousel-img" />
+          </div>
         </Carousel.Item>
       ))}
     </Carousel>

@@ -22,11 +22,16 @@ const ProjectCard = ({
   className = '',
   imgStyle = {},
   bodyStyle = {},
+  isExpanded = false,
 }) => {
   const imgSrc = imageMap[imgName] || im1;
 
   return (
-    <Card className={`project-card shadow-sm ${className}`}>
+    <Card
+      className={`project-card shadow-sm ${
+        isExpanded ? 'expanded' : ''
+      } ${className}`}
+    >
       <Card.Img variant="top" src={imgSrc} alt={title} style={imgStyle} />
       <Card.Body style={bodyStyle}>
         <Card.Title>{title}</Card.Title>
