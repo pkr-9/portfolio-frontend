@@ -64,6 +64,18 @@ const Navigation = () => {
                 Contact
               </Nav.Link>
             </Nav>
+
+            <Form className="d-flex search-form" role="search">
+              <FormControl
+                type="search"
+                placeholder="Search..."
+                className="custom-search-input me-2"
+                aria-label="Search"
+              />
+              <Button className="custom-search-button" type="submit">
+                Go
+              </Button>
+            </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>
