@@ -4,30 +4,36 @@
   border-radius: 18px;
   overflow: hidden;
   background: linear-gradient(90deg, #ffffff 0%, #f8faff 100%);
-  transition: all 0.5s ease;
-  height: 100%;
-  min-height: 420px;
+  transition: all 0.5s ease, box-shadow 0.5s ease; /* Keep existing transition */
+  height: 100%; /* Ensure card fills its container */
+  min-height: 420px; /* Keep minimum height for vertical */
+  width: 100%; /* Ensure card fills its container */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Add base shadow */
 
   &.expanded {
     flex-direction: row;
-    min-height: 260px;
-    box-shadow: 0 12px 30px rgba(0, 123, 255, 0.25);
+    min-height: 260px; /* Adjust expanded height if needed */
+    /* Enhance shadow when expanded */
+    box-shadow: 0 12px 30px rgba(0, 123, 255, 0.25); 
+    /* Styles for horizontal layout remain the same */
+
   }
 
   .card-img-top {
     width: 100%;
-    height: 220px;
+    height: 220px; /* Initial height */
     object-fit: cover;
     transition: all 0.4s ease;
   }
 
   &.expanded .card-img-top {
-    width: 45%;
-    height: 100%;
+    width: 40%; /* Adjust image width in expanded row layout */
+    height: 100%; /* Image takes full height of the row card */
+    min-height: 260px; /* Match card's min-height */
   }
 
   .card-body {
-    flex: 1;
+    flex: 1; /* Take remaining space */
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -44,7 +50,7 @@
       font-size: 1rem;
       color: #333;
       margin: 10px 0 1.2rem;
-      flex-grow: 1;
+      flex-grow: 1; /* Allow text to take available space */
     }
 
     .btn {
@@ -55,7 +61,7 @@
       transition: all 0.3s ease;
 
       &:hover {
-        background: #00c6ff;
+        background: #00c6ff; /* Example hover color */
         color: white;
         border-color: transparent;
       }
@@ -64,13 +70,26 @@
 }
 
 @media (max-width: 768px) {
+  /* Keep the mobile override if needed, but the absolute positioning might need adjustment */
+  /* You might want to disable the absolute positioning trick on mobile */
+  .project-col.expanded .project-card-container {
+    position: relative; /* Revert on mobile */
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    z-index: 1;
+    transform: none;
+  }
   .project-card.expanded {
-    flex-direction: column !important;
+    flex-direction: column !important; /* Force column layout */
     min-height: auto;
   }
 
-  .project-card .card-img-top {
+  .project-card .card-img-top,
+  .project-card.expanded .card-img-top {
     width: 100% !important;
-    height: auto;
+    height: auto; /* Auto height for image */
+    min-height: unset;
   }
 }
