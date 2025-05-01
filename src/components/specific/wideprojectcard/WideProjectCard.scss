@@ -25,11 +25,13 @@
     position: absolute;
     inset: 0;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    // backdrop-filter: blur(10px);
     clip-path: polygon(0 0, 100% 0, 75% 100%, 0% 100%);
     z-index: 2;
     pointer-events: none;
     overflow: hidden;
+    transition: all 0.5s ease;
+    backdrop-filter: none;
 
     &::before {
       content: "";
@@ -99,6 +101,7 @@
 
   &:hover .glass-peel {
     clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+    backdrop-filter: blur(10px);
   }
 }
 

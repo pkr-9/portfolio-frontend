@@ -1,95 +1,83 @@
-.project-card {
-  display: flex;
-  flex-direction: column;
-  border-radius: 18px;
-  overflow: hidden;
-  background: linear-gradient(90deg, #ffffff 0%, #f8faff 100%);
-  transition: all 0.5s ease, box-shadow 0.5s ease; /* Keep existing transition */
-  height: 100%; /* Ensure card fills its container */
-  min-height: 420px; /* Keep minimum height for vertical */
-  width: 100%; /* Ensure card fills its container */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Add base shadow */
-
-  &.expanded {
-    flex-direction: row;
-    min-height: 260px; /* Adjust expanded height if needed */
-    /* Enhance shadow when expanded */
-    box-shadow: 0 12px 30px rgba(0, 123, 255, 0.25); 
-    /* Styles for horizontal layout remain the same */
-
-  }
-
-  .card-img-top {
-    width: 100%;
-    height: 220px; /* Initial height */
-    object-fit: cover;
-    transition: all 0.4s ease;
-  }
-
-  &.expanded .card-img-top {
-    width: 40%; /* Adjust image width in expanded row layout */
-    height: 100%; /* Image takes full height of the row card */
-    min-height: 260px; /* Match card's min-height */
-  }
-
-  .card-body {
-    flex: 1; /* Take remaining space */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: all 0.4s ease;
-
-    .card-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: #007bff;
-    }
-
-    .card-text {
-      font-size: 1rem;
-      color: #333;
-      margin: 10px 0 1.2rem;
-      flex-grow: 1; /* Allow text to take available space */
-    }
-
-    .btn {
-      align-self: flex-start;
-      font-weight: 600;
-      border-radius: 25px;
-      padding: 8px 20px;
-      transition: all 0.3s ease;
-
-      &:hover {
-        background: #00c6ff; /* Example hover color */
-        color: white;
-        border-color: transparent;
-      }
-    }
-  }
+.custom-project-card {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  height: 360px; // total card height
 }
 
-@media (max-width: 768px) {
-  /* Keep the mobile override if needed, but the absolute positioning might need adjustment */
-  /* You might want to disable the absolute positioning trick on mobile */
-  .project-col.expanded .project-card-container {
-    position: relative; /* Revert on mobile */
-    top: auto;
-    left: auto;
-    right: auto;
-    width: 100%;
-    z-index: 1;
-    transform: none;
-  }
-  .project-card.expanded {
-    flex-direction: column !important; /* Force column layout */
-    min-height: auto;
-  }
+.card-tilt {
+  height: 100%;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
 
-  .project-card .card-img-top,
-  .project-card.expanded .card-img-top {
-    width: 100% !important;
-    height: auto; /* Auto height for image */
-    min-height: unset;
-  }
+.card-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(to right bottom, #1a1a1a, #2a2a2a);
+}
+
+.card-image {
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  flex-shrink: 0;
+}
+
+.card-inner:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-content {
+  flex: 1;
+  padding: 16px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-description {
+  font-size: 13px;
+  color: #cccccc;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; // limit to 3 lines
+  -webkit-box-orient: vertical;
+}
+
+.card-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: #00d8ff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  margin-top: 12px;
+  flex-shrink: 0;
+}
+
+.card-link:hover {
+  color: #ffffff;
 }

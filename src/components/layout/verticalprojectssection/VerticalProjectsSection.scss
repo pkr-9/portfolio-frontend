@@ -1,57 +1,19 @@
-.vertical-projects-section {
-  padding: 60px 20px; 
-  overflow: visible; /* Allow potential overflow if needed, but pushing should handle it */
-
+.vertical-projects {
+  padding: 60px 20px;
+  background: linear-gradient(to bottom, #f3f4f6, #ffffff);
+  text-align: center;
 }
 
-.project-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Center columns horizontally */
+.section-heading {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #333;
 }
 
-.project-col {
-  padding-left: 15px; /* Standard Bootstrap gutter */
-  padding-right: 15px; /* Standard Bootstrap gutter */
-  margin-bottom: 30px; /* Space between rows */
-  transition: flex 0.4s ease 0.15s, max-width 0.4s ease 0.15s, opacity 0.4s ease; 
-}
-
-.project-col.expanded {
-  flex-grow: 0; /* Prevent growing beyond basis */
-  flex-shrink: 0; /* Prevent shrinking below basis */
-  flex-basis: 80%; /* Set desired width */
-  max-width: 80%;  /* Match flex-basis */
-  z-index: 10; /* Bring to front */
-  transition: flex 0.4s ease, max-width 0.4s ease, opacity 0.4s ease; 
-}
-
-.project-col .project-card {
-  height: 100%; /* Make sure card fills column height */
-  transition: box-shadow 0.4s ease; /* Card's own transitions */
-}
-
-/* Sibling fade effect (optional) */
-.project-row:hover .project-col:not(.expanded) {
-   opacity: 0.6;
-   transition: opacity 0.4s ease; /* Ensure fade transitions */
-}
-
-/* --- Mobile Adjustments --- */
-@media (max-width: 768px) {
-   .project-col.expanded {
-     /* Disable expansion on mobile, revert to default column behaviour */
-     flex-basis: auto; /* Revert basis */
-     max-width: 100%; /* Allow normal Col width */
-     z-index: 1; /* Reset z-index */
-     /* Explicitly reset transitions if needed */
-      transition: none; 
-   }
-   /* Ensure card inside also reverts if ProjectCard.scss doesn't handle it */
-   .project-col.expanded .project-card {
-       /* Styles from ProjectCard.scss for mobile should take precedence */
-   }
-    .project-row:hover .project-col:not(.expanded) {
-       opacity: 1; /* Disable sibling fade */
-    }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-items: center;
 }
