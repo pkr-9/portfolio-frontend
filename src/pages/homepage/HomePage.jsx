@@ -5,8 +5,6 @@ import Banner from '../../components/specific/banner/Banner';
 import CarouselComponent from '../../components/layout/carousel/Carousel';
 import WideProjectsSection from '../../components/layout/wideprojectssection/WideProjectsSection';
 import Footer from '../../components/layout/footer/Footer';
-import ClientsSection from '../../components/layout/clientsection/ClientsSection';
-import Testimonials from '../../components/layout/testimonials/Testimonials';
 import Hero from '../../components/layout/hero/Hero';
 import StrengthCard from '../../components/specific/strengthcard/StrengthCard';
 
@@ -148,24 +146,6 @@ const HomePage = () => {
         <div className="strength-section">
           <StrengthCard />
         </div>
-      </motion.div>
-
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        animate="visible"
-        custom={5}
-      >
-        <ClientsSection />
-      </motion.div>
-
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        animate="visible"
-        custom={6}
-      >
-        <Testimonials />
       </motion.div>
 
       <Footer />

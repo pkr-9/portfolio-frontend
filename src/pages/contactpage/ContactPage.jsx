@@ -3,7 +3,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Navigation from '../../components/layout/navbar/Navbar';
 import Footer from '../../components/layout/footer/Footer';
 import WhyUs from '../../components/layout/whyus/WhyUs';
-import Testimonials from '../../components/layout/testimonials/Testimonials';
 import Contact from '../../components/layout/contact/Contact';
 import SocialMedia from '../../components/specific/socialmedia/SocialMedia';
 
@@ -36,8 +35,6 @@ const ContactPage = () => {
             </Row>
           </Container>
         </section>
-
-        <Testimonials />
       </div>
 
       <Footer />
