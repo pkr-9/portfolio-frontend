@@ -1,324 +1,161 @@
+
+
 .homepage-wrapper {
+  // background: radial-gradient(circle at top left, #00fff0, #00313c, #0f0f0f);
+  background-size: 400% 400%;
+  animation: gradientShift 30s ease infinite;
+  min-height: 100vh;
   overflow-x: hidden;
-  background: linear-gradient(to bottom, #f8fbff 0%, #e0ecff 100%);
+  color: #000; // default text color for light theme
+  transition: background 0.5s ease, color 0.5s ease;
+
+  &.dark {
+    color: #f0f0f0;
+
+    .homepage-about {
+      color: #b7fffb;
+
+      h2 {
+        color: #00fff0;
+        text-shadow: 0 0 5px #00fff0;
+      }
+
+      .homepage-about-card {
+        border-color: #00fff0;
+
+        h3 {
+          color: #ffffff;
+        }
+
+        p {
+          color: #e0f7f7;
+        }
+      }
+    }
+  }
 }
 
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 .homepage-projects {
-  padding: 80px 20px;
-
-  // h2 {
-  //   font-size: 2.6rem;
-  //   font-weight: 600;
-  //   text-align: center;
-  //   color: #14213d;
-  //   text-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
-  //   margin-bottom: 40px;
-  // }
-}
-
-/* strengths Section */
-.homepage-strengths {
-  text-align: center;
-  padding: 80px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-
-  h2 {
-    font-size: 2.5rem;
-    color: #00b4ff;
-    margin-bottom: 30px;
-  }
-
-  .homepage-strength-highlight {
-    transition: transform 0.4s ease;
-    &:hover {
-      transform: scale(1.02);
-    }
-  }
-}
-
-.homepage-strength-highlight {
-  background: url("../../assets/images/im2.jpg") center/cover no-repeat;
-  color: rgb(255, 255, 255);
-  padding: 35px 20px 10px 20px;
-  height: 325px;
-  border-radius: 15px;
-  text-align: center;
-  margin-bottom: 40px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
-  background-attachment: fixed;
-  position: relative;
-}
-
-.homepage-strength-highlight::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-}
-
-.homepage-strength-highlight h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #fff;
-}
-
-.homepage-strength-highlight p {
-  font-size: 1.2rem;
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-.neon-title span {
-  display: inline-block;
-  font-size: 4rem;
-  font-weight: bold;
-  text-shadow: 0 0 12px #00fff0, 0 0 24px #00fff0;
-}
-
-/* about section----------------------------------- */
-.homepage-about {
-  padding: 50px 10px 10px 10px;
-  background: linear-gradient(200deg, #00b7ff, #002735 50%, #00b2ff);
-  text-align: center;
-  color: #ffffff;
-  overflow: hidden;
-  position: relative;
-}
-
-.homepage-about .neon-title {
-  font-size: 4rem;
-  margin-bottom: 80px;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-}
-
-.homepage-about .neon-title span {
-  display: inline-block;
-  text-shadow: 0 0 10px #00fff0, 0 0 20px #00fff0, 0 0 30px #00fff0;
-  animation: neonPulse 1.5s ease-in-out infinite alternate;
-}
-
-@for $i from 1 through 7 {
-  .homepage-about .neon-title span:nth-child(#{$i}) {
-    animation-delay: #{$i * 0.1}s;
-  }
-}
-
-.homepage-about .homepage-about-card {
-  background: linear-gradient(135deg, #0f2027, #203a43 50%, #2c5364);
-  backdrop-filter: blur(12px);
-  padding: 50px 0 30px 0;
-  border-radius: 15px;
-  max-width: 1200px;
-  margin: 0 auto 50px auto;
-  box-shadow: 0 4px 25px rgba(0, 255, 255, 0.1);
-  border-left: 5px solid #00fff0;
-  transition: all 0.3s ease;
-  // animation: gradientFlow 12s ease infinite;
-}
-
-.homepage-about .homepage-about-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 30px rgba(0, 255, 255, 0.3);
-  border-left: 5px solid #007bff;
-}
-
-.homepage-about h2 {
-  font-size: 2.3rem;
-  margin-bottom: 20px;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.homepage-about .homepage-about-card p {
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: #cccccc;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.about-me-showcase {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 1200px;
-}
-
-.homepage-about-card {
-  position: relative;
-  background: linear-gradient(135deg, #0f2027, #203a43 50%, #2c5364);
-  backdrop-filter: blur(14px);
-  border-radius: 20px;
-  padding: 33px 0 0 0;
-    width: 100%;
-    max-width: 1132px;
-  transform-style: preserve-3d;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.homepage-about-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at var(--x) var(--y), rgba(0,255,240,0.2) 0%, transparent 40%);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.homepage-about-card:hover {
-  transform: rotate3d(1, 1, 0, 5deg) scale(1.02);
-  box-shadow: 0 25px 60px rgba(0, 255, 255, 0.4);
-}
-
-.homepage-about-card:hover::before {
-  opacity: 1;
-}
-
-.homepage-about-card:hover .dynamic-gradient {
-  opacity: 0.3;
-}
-
-.homepage-about-card .particles {
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-  position: absolute;
-  inset: 0;
-}
-
-@for $i from 1 through 40 {
-  .homepage-about-card .particle:nth-child(#{$i}) {
-    top: #{random(100)}%;
-    left: #{random(100)}%;
-    width: #{random(10) + 6}px;
-    height: #{random(10) + 6}px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 255, 255, 0.9) 0%, transparent 70%);
-    filter: blur(#{random(3) + 2}px);
-    position: absolute;
-    animation: float-#{$i} #{random(15) + 10}s ease-in-out infinite;
-    animation-delay: #{random(5)}s;
-    opacity: 0.9;
-    mix-blend-mode: lighten;
-  }
-}
-
-@for $i from 1 through 20 {
-  @keyframes float-#{$i} {
-    0% {
-      transform: translate(0, 0) scale(#{(random(4) / 10) + 0.8});
-    }
-    50% {
-      transform: translate(#{random(50) - 25}px, #{random(100) - 50}px)
-                 scale(#{(random(6) / 10) + 1});
-    }
-    100% {
-      transform: translate(0, 0) scale(#{(random(4) / 10) + 0.8});
-    }
-  }
-}
-
-
-.dynamic-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(45deg, #00fff0, #007bff, #ff00ff, #00fff0);
-  background-size: 400% 400%;
-  // background-size: 20% 20%;
-  mix-blend-mode: overlay;
-  opacity: 0.1;
-  animation: gradientFlow 12s ease infinite;
-  transition: opacity 0.3s;
-}
-
-.homepage-about-card .content {
+  padding: 40px 20px;
   position: relative;
   z-index: 2;
 }
 
-.homepage-about-card .content h3 {
-  font-size: 2.5rem;
-  margin-bottom: 25px;
-  background: linear-gradient(45deg, #00fff0, #007bff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textShine 3s ease infinite;
-}
+/* ======= About Section ======= */
+.homepage-about {
+  padding: 60px 20px 50px 20px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  color: #0a3b3a;
 
-.homepage-about-card .content p {
-  font-size: 1.3rem;
-  line-height: 1.8;
-  max-width: 800px;
-  margin: 0 auto;
-  transform: translateZ(30px);
-}
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+    color: #000000;
+    text-shadow: 0 0 5px #00fff0;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 
-@keyframes neonPulse {
-  from { opacity: 0.8; }
-  to { opacity: 1; }
-}
-
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-
-@keyframes textShine {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-// =========================
-// RESPONSIVE TWEAKS
-// =========================
-
-@media (max-width: 768px) {
-  .homepage-projects h2,
-  .homepage-strengths h2,
-  .homepage-about .neon-title {
-    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    &.dark {
+      color: #00fff0;
+      text-shadow: 0 0 5px #00fff0;
+    }
   }
+  .homepage-about-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    margin: 40px auto 20px auto;
+    padding: 50px 30px;
+    max-width: 1200px;
+    height: 375px;
 
-  .homepage-strength-highlight h2 {
-    font-size: clamp(1.6rem, 5vw, 2rem);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(0, 255, 255, 0.3);
+          border-left: 5px solid #00fff0;
+    border-right: 5px solid #00fff0;
+      border-color: #007bff;
+    }
+
+    .content {
+      z-index: 2;
+      position: relative;
+
+      h3 {
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: #000;
+      }
+
+      p {
+        font-size: 1.25rem;
+        line-height: 1.75;
+        color: #011211;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    }
   }
+}
 
-  .homepage-strength-highlight p,
-  .homepage-about .homepage-about-card p {
-    font-size: 1rem;
-    padding: 0 10px;
+/* ======= Strength Section Wrapper ======= */
+.strength-section {
+  padding: 60px 20px;
+  z-index: 1;
+  position: relative;
+}
+
+/* ======= Responsive Styles ======= */
+@media (max-width: 992px) {
+  .homepage-about h2 {
+    font-size: 2.5rem;
   }
 
   .homepage-about .content h3 {
-    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-size: 2rem;
   }
 
+  .homepage-about .homepage-about-card p {
+    font-size: 1.1rem;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 768px) {
   .homepage-about-card {
-    padding: 25px 10px;
+    padding: 30px 20px;
+  }
+
+  .homepage-about .content h3 {
+    font-size: 1.8rem;
+  }
+
+  .homepage-about .homepage-about-card p {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .homepage-about .neon-title {
-    font-size: clamp(1.6rem, 7vw, 2rem);
-    margin-bottom: 50px;
+  .homepage-about h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
   }
 
-  .homepage-strength-highlight {
-    height: auto;
-    padding: 20px;
+  .homepage-about .homepage-about-card {
+    padding: 25px 15px;
   }
 
-  .homepage-about-card .content p {
-    font-size: 1rem;
+  .homepage-about .content p {
+    font-size: 0.95rem;
   }
 }

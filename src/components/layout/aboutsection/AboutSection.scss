@@ -2,7 +2,7 @@
 /* About Section */
 .about {
     padding: 60px 20px;
-    background-color: #f5f9ff;
+    background: transparent;
     text-align: center;
   }
   
@@ -63,7 +63,7 @@
     border-radius: 20px;
     transition: all 0.3s ease;
     overflow: hidden;
-    background: linear-gradient(to right, #ffffff, #f8faff);
+    background: linear-gradient(to right, #88baf5, #00f1ff);
   }
   
   .about-card:hover {
@@ -91,7 +91,7 @@
   
   .about-desc {
     font-size: 1rem;
-    color: #555;
+    color: #2f2828;
     margin-top: 1rem;
     padding: 0 10px;
   }

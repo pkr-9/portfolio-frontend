@@ -2,7 +2,8 @@
 /* Achievement Section */
 .achievements-section {
     padding: 5rem 2rem;
-    background: linear-gradient(180deg, #a0fdfb 0%, #49a1ff 100%);
+    // background: linear-gradient(180deg, #a0fdfb 0%, #49a1ff 100%);
+    background: transparent;
     color: #ffffff;
     position: relative;
     overflow: hidden;
@@ -16,7 +17,7 @@
     left: -50px;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at 30% 30%, rgba(10, 230, 138, 0.692), transparent 60%);
+    background: radial-gradient(circle at 30% 30%, rgba(74, 253, 179, 0.692), transparent 60%);
     animation: rotateGlow 30s linear infinite;
     z-index: 0;
   }

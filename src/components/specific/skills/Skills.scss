@@ -1,14 +1,17 @@
 .skills-section {
     padding: 4rem 0;
-    background-color: #f4f6f8;
+    background: transparent;
   }
   .skill-card {
     border: none;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: transparent;
+    box-shadow: 0 13px 14px rgb(35 117 145);
     transition: transform 0.2s;
   }
   .skill-card:hover {
+    background: whitesmoke;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+
     transform: translateY(-5px);
   }
   .skill-icon {

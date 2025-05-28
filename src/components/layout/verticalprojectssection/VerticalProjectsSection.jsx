@@ -6,7 +6,7 @@ import './VerticalProjectsSection.scss';
 const VerticalProjectsSection = () => {
   return (
     <section className="vertical-projects">
-      <h2 className="section-heading">My Projects</h2>
+      {/* <h2 className="section-heading">My Projects</h2> */}
       <div className="projects-grid">
         {projects.map((project) => {
           const imgFile = project.img.split('/').pop();

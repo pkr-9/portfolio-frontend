@@ -38,8 +38,6 @@ const WideProjectCard = ({ imgName, title, description, link }) => {
         style={{ backgroundImage: `url(${imgSrc})` }}
       />
 
-      <div className="glass-peel" />
-
       <motion.div
         className="content"
         variants={{

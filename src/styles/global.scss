@@ -1,6 +1,8 @@
+@use 'variables';
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 html {
+  scroll-behavior: smooth;
   font-size: 16px;
 
   @media (max-width: 768px) {
@@ -11,53 +13,134 @@ html {
     font-size: 14px;
   }
 }
+:root {
+  --bg-color: rgb(255, 255, 255);
+  --text-color: #ffffff;
+  --primary-color: #ff00ff;
 
-
-.projects-page, .about-page, .contact-page {
-  padding-top: var(--navbar-height, 80px);
 }
 
-// --------------------
-// Basic Animations
-// --------------------
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ====== THEME VARIABLES ====== */
+[data-theme='neon'] {
+  --nav-bg: linear-gradient(180deg, rgb(0 255 222 / 98%), rgb(0 253 255 / 45%));
+  --nav-link-color: #000000;
+  --nav-link-hover: #005eff;
+  --nav-glow: 0 0 10px rgba(0, 94, 255, 0.5);
+  --icon-color: #1100ff;
 }
 
-.fade-in-up {
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
+[data-theme='glass'] {
+  --nav-bg: linear-gradient(180deg, rgb(30 0 255 / 98%), rgba(0, 195, 255, 0.664));
+  --nav-link-color: #ffffff;
+  --nav-link-hover: #00ffee;
+  --nav-glow: 0 0 10px rgba(0, 255, 255, 0.6);
+  --icon-color: #00ffee;
 }
 
-.staggered-delay-1 { animation-delay: 0.2s; }
-.staggered-delay-2 { animation-delay: 0.4s; }
-.staggered-delay-3 { animation-delay: 0.6s; }
-.staggered-delay-4 { animation-delay: 0.8s; }
-
-// --------------------
-// Global Body
-// --------------------
-
-body {
-  font-family: $font-stack;
-  background-color: #f8f9fa;
+/* ====== CSS RESET ====== */
+* {
   margin: 0;
   padding: 0;
-  color: $secondary-color;
+  box-sizing: border-box;
+}
+
+/* ====== BASE STYLES ====== */
+html, body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+body {
+  // background: linear-gradient(
+  //   to bottom,
+  //   #ffffff 0%,         // Top: Hero / Banner
+  //   #e0fffd98 35%,        // Mid: About Section
+  //   hsla(175, 51%, 19%, 0.658) 65%,        // Lower-mid transition
+  //   #00a6afb4 100%        // Bottom: Strength section
+  // );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  scroll-behavior: smooth;
+padding-top: 60px;
+}
+
+
+/* ====== TYPOGRAPHY ====== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* ====== UTILITY CLASSES ====== */
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+
+/* ====== BUTTONS ====== */
+button {
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-color);
+opacity: 0.9;
+}
+
+/* ====== NAVBAR (override) ====== */
+.navbar {
+  background-color: var(--nav-bg);
+  color: var(--text-color);
+  position: fixed;
   width: 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  top: 0;
+  z-index: 1000;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
 }
 
-body.loaded {
-  opacity: 1;
+/* ====== FOCUS STYLES ====== */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
 }
 
+/* ====== FORM ELEMENTS ====== */
+input, textarea, select {
+  font-family: inherit;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 4px;
+  width: 100%;
+}
+
+/* ====== TRANSITIONS ====== */
+body, input, button, textarea {
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}

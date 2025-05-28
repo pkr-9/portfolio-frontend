@@ -1,84 +1,104 @@
 import React, { useEffect, useState } from 'react';
+import { useTheme } from '../../../contexts/ThemeContext';
+import { BsMoonStars, BsSun } from 'react-icons/bs';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 import {
-  Container,
-  Navbar,
-  Nav,
-  Form,
-  FormControl,
-  Button,
-} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import '../../../styles/global.scss';
+  RiHome5Line,
+  RiUser3Line,
+  RiProjectorLine,
+  RiMailLine,
+} from 'react-icons/ri';
 import './Navbar.scss';
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === 'glass'; // glass = dark theme
+  const isNeon = theme === 'neon'; // neon = light theme
+
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 30);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const navLinks = [
+    { label: 'Home', path: '/', icon: <RiHome5Line /> },
+    { label: 'About', path: '/about', icon: <RiUser3Line /> },
+    { label: 'Projects', path: '/projects', icon: <RiProjectorLine /> },
+    { label: 'Contact', path: '/contact', icon: <RiMailLine /> },
+  ];
+
   return (
-    <header className="custom-header">
-      <Navbar
-        expand="lg"
-        className={`nav2 ${scrolled ? 'scrolled' : ''}`}
-        fixed="top"
-      >
-        <Container
-          fluid
-          className="d-flex justify-content-between align-items-center px-3"
-        >
-          <Navbar.Brand
-            as={Link}
-            to="/"
-            className="d-flex align-items-center gap-2"
+    <header className={`aurora-header ${scrolled ? 'scrolled' : ''}`}>
+      <div className="nav-container">
+        <div className="logo-section" onClick={() => setMobileOpen(false)}>
+          <div className="logo-img" />
+          <Link to="/" className="company-name">
+            My Portfolio
+          </Link>
+        </div>
+
+        <div className="hamburger" onClick={() => setMobileOpen(!mobileOpen)}>
+          <span className={mobileOpen ? 'open' : ''}></span>
+          <span className={mobileOpen ? 'open' : ''}></span>
+          <span className={mobileOpen ? 'open' : ''}></span>
+        </div>
+
+        <nav className="desktop-nav">
+          {navLinks.map((link) => (
+            <motion.div
+              key={link.label}
+              className="nav-item"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link
+                to={link.path}
+                className={`nav-link d-flex align-items-center gap-2 ${
+                  location.pathname === link.path ? 'active-link' : ''
+                }`}
+              >
+                <span className="nav-icon">{link.icon}</span>
+                {link.label}
+              </Link>
+            </motion.div>
+          ))}
+        </nav>
+        <button className="theme-toggle-btn" onClick={toggleTheme}>
+          {/* {isDark ? <BsSun /> : <BsMoonStars />} */}
+          {isDark ? <BsSun size={20} /> : <BsMoonStars size={20} />}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.nav
+            className="mobile-nav"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4 }}
           >
-            <div className="logo-img" />
-            <span className="company-name">My Portfolio</span>
-          </Navbar.Brand>
-
-          <Navbar.Toggle
-            aria-controls="responsive-navbar-nav"
-            className="border-0"
-          />
-
-          <Navbar.Collapse
-            id="responsive-navbar-nav"
-            className="justify-content-end align-items-center gap-3"
-          >
-            <Nav className="nav-links d-flex align-items-center gap-3">
-              <Nav.Link as={Link} to="/">
-                Home
-              </Nav.Link>
-              <Nav.Link as={Link} to="/about">
-                About
-              </Nav.Link>
-              <Nav.Link as={Link} to="/projects">
-                Projects
-              </Nav.Link>
-              <Nav.Link as={Link} to="/contact">
-                Contact
-              </Nav.Link>
-            </Nav>
-
-            <Form className="d-flex search-form" role="search">
-              <FormControl
-                type="search"
-                placeholder="Search..."
-                className="custom-search-input me-2"
-                aria-label="Search"
-              />
-              <Button className="custom-search-button" type="submit">
-                Go
-              </Button>
-            </Form>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                to={link.path}
+                className={`mobile-nav-link d-flex align-items-center gap-2 ${
+                  location.pathname === link.path ? 'active-link' : ''
+                }`}
+                onClick={() => setMobileOpen(false)}
+              >
+                <span className="nav-icon">{link.icon}</span>
+                {link.label}
+              </Link>
+            ))}
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

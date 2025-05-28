@@ -1,18 +1,20 @@
 .strength-section {
-    padding: 80px 20px;
-    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    padding: 40px 20px;
+    background:transparent;
     color: #ffffff;
+    border: none;
   
     .section-heading {
       text-align: center;
       font-size: 2.8rem;
       margin-bottom: 50px;
-      color: #00fff0;
-      text-shadow: 0 0 15px #00fff0;
+      color: #001210;
+      text-shadow: 0 0 4px #00fff0;
     }
   
     .strength-card {
-      background: rgba(255, 255, 255, 0.05);
+      background: linear-gradient(#00313c);
+      // background: transparent;
       backdrop-filter: blur(12px);
       padding: 25px 30px;
       margin-bottom: 25px;

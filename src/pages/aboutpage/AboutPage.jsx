@@ -18,7 +18,7 @@ const AboutPage = () => {
         <Achievements />
         <Skills />
         <Experience />
-        <WhyUs />
+        {/* <WhyUs /> */}
       </div>
       <Footer />
     </div>
