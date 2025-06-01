@@ -26,7 +26,9 @@ const HomePage = () => {
   return (
     <div className={`homepage-wrapper ${theme}`}>
       <Navigation />
-      <Hero />
+      <div className="min-h-screen">
+        <Hero />
+      </div>
 
       <motion.div variants={fadeUp} initial="hidden" animate="visible">
         <Banner />
