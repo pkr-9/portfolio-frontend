@@ -1,0 +1,91 @@
+.academic-section {
+  padding: 4rem 1rem;
+  background: linear-gradient(to right, #f8fafc, #eef2ff);
+  position: relative;
+  overflow: hidden;
+
+  .section-heading {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 1.125rem;
+      color: #64748b;
+    }
+  }
+
+  .education-card {
+    background: #ffffff;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+      padding: 2rem;
+
+      .degree-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 0.25rem;
+      }
+
+      .institution {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #475569;
+      }
+
+      .year {
+        font-size: 0.95rem;
+        color: #94a3b8;
+        margin-bottom: 1rem;
+      }
+
+      .details {
+        font-size: 0.95rem;
+        color: #334155;
+        line-height: 1.6;
+      }
+    }
+  }
+
+  // Optional: Animated floating gradient shapes
+  .background-decor {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+
+    &.blue {
+      background: #2563eb;
+      top: -50px;
+      left: -50px;
+    }
+
+    &.purple {
+      background: #7c3aed;
+      bottom: -60px;
+      right: -60px;
+    }
+  }
+}

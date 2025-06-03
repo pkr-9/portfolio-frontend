@@ -25,10 +25,12 @@ const AboutSection = () => (
   <section id="about" className="about">
     <h2>About Us</h2>
     <div className="about-highlight">
-      <h2>Our Commitment</h2>
+      <h2>My Commitment</h2>
       <p>
-        At Swpris Facilities, we pride ourselves on being a dependable provider
-        of skilled professionals and facility services...
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut, cumque? Ex
+        eaque quasi similique? Quibusdam laboriosam maiores vel aperiam
+        necessitatibus illum quae vitae, dolor, perspiciatis cupiditate
+        laudantium rerum reprehenderit expedita!
       </p>
     </div>
     <Container className="about-content">

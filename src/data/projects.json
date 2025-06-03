@@ -3,8 +3,8 @@
     "id": 1,
     "img": "../../assets/images/im1.jpg",
     "title": "Project One",
-    "description": "Description for project one. lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "link": "http://example.com/project-one"
+    "description": "Description for project one. lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.....",
+    "link": "../pages/projectdetailpage/ProjectDetailPage.jsx"
   },
   {
     "id": 2,

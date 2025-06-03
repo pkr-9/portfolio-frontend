@@ -1,0 +1,94 @@
+.certification-section {
+  padding: 4rem 0;
+  background: transparent;
+  text-align: left;
+}
+
+.certification-section-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+  text-align: center;
+}
+
+// Timeline Wrapper
+.certification-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  border-left: 4px dashed #01c2ff;
+  margin-left: 40px;
+}
+
+// Timeline Item
+.certification-timeline li {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 60px;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.certification-timeline li:hover {
+  background: linear-gradient(90deg, rgba(1, 194, 255, 0.05), rgba(1, 194, 255, 0.03));
+  border-right: 6px solid #01c2ff;
+  border-radius: 5px;
+}
+
+// Year Badge
+.certification-timeline-date {
+  position: absolute;
+  top: 0;
+  left: -85px;
+  width: 70px;
+  text-align: right;
+  font-weight: bold;
+  color: #01c2ff;
+  background: #f0faff;
+  padding: 0.3rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+}
+
+// Content Block
+.certification-timeline-content {
+  background-color: #f9f9f9;
+  border: 1px dashed #ccc;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.certification-timeline-content h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.certification-timeline-content p {
+  font-size: 0.95rem;
+  margin: 0;
+  color: #555;
+}
+
+.certification-timeline li:hover .certification-timeline-content {
+  transform: translateX(5px);
+  border-color: #01c2ff;
+}
+
+// Toggle Button
+.view-toggle-button {
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #01c2ff;
+    color: white;
+    border-color: #01c2ff;
+  }
+}

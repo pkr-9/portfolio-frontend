@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "slug": "portfolio-website",
+    "name": "Portfolio Website",
+    "category": "personal",
+    "techStack": ["React", "Bootstrap", "SCSS", "Framer Motion"],
+    "start": "Jan 2023",
+    "end": "Mar 2023",
+    "status": "completed",
+    "features": [
+      "Responsive design with React-Bootstrap grid",
+      "Dark/light theme toggle",
+      "Animated page transitions using Framer Motion",
+      "Contact form integrated with email API"
+    ],
+    "live": true,
+    "demoLink": "https://example.com/portfolio",
+    "repoLink": "https://github.com/username/portfolio",
+    "description": "A modern, responsive portfolio to showcase my skills, projects, and blog posts.",
+    "images": [
+      "../../assets/images/im1.jpg",
+      "../../assets/images/im1.jpg",
+      "../../assets/images/im1.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "E-Commerce Platform",
+    "category": "company",
+    "techStack": ["Node.js", "Express", "MongoDB", "React", "Stripe"],
+    "start": "Apr 2023",
+    "end": null,
+    "status": "ongoing",
+    "features": [
+      "User authentication and role-based access (Admin, Vendor, Customer)",
+      "Product catalog with search and filtering",
+      "Shopping cart with real-time inventory checks",
+      "Stripe integration for secure payments",
+      "Admin dashboard for order management"
+    ],
+    "live": false,
+    "demoLink": null,
+    "repoLink": "https://github.com/company/ecommerce-platform",
+    "description": "A full-stack e-commerce platform built for small businesses to sell products online.",
+    "images": [
+      "../../assets/images/im1.jpg",
+      "../../assets/images/im1.jpg",
+      "../../assets/images/im1.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "University Management System",
+    "category": "academic",
+    "techStack": ["Java", "Spring Boot", "Hibernate", "MySQL"],
+    "start": "Sep 2022",
+    "end": "Dec 2022",
+    "status": "completed",
+    "features": [
+      "Faculty and student modules with CRUD operations",
+      "Course enrollment workflow",
+      "Automated grade calculation",
+      "Report generation in PDF format"
+    ],
+    "live": false,
+    "demoLink": null,
+    "repoLink": "https://github.com/username/university-management",
+    "description": "A desktop/web hybrid application to manage student enrollments, grades, and faculty records.",
+    "images": ["../../assets/images/im1.jpg", "../../assets/images/im1.jpg"]
+  }
+]

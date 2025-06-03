@@ -1,7 +1,14 @@
 // src/routes/index.jsx
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { HomePage, AboutPage, ContactPage, ProjectsPage, ProjectDetailPage, NotFoundPage } from '../pages';
+import {
+  HomePage,
+  AboutPage,
+  ContactPage,
+  ProjectsPage,
+  ProjectDetailPage,
+  NotFoundPage,
+} from '../pages';
 
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
@@ -9,7 +16,7 @@ window.addEventListener('load', () => {
 
 const AppRoutes = () => (
   // <BrowserRouter  basename="/portfolio-pappu">
-   <BrowserRouter>
+  <BrowserRouter>
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
