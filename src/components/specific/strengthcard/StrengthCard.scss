@@ -1,73 +1,158 @@
 .strength-section {
-    padding: 40px 20px;
-    background:transparent;
-    color: #ffffff;
-    border: none;
+  background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-wrapper {
+  transition: transform 0.3s ease-in-out;
+}
+
+.strength-card {
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 1rem;
+  margin: 0 auto 1rem auto;
+  color: white;
+  transition: transform 0.3s;
+}
+
+// Gradient classes
+.gradient-emerald-teal {
+  background: linear-gradient(to right, #10b981, #14b8a6);
+}
+
+.gradient-blue-indigo {
+  background: linear-gradient(to right, #3b82f6, #6366f1);
+}
+
+.gradient-purple-pink {
+  background: linear-gradient(to right, #8b5cf6, #ec4899);
+}
+
+.gradient-orange-red {
+  background: linear-gradient(to right, #f97316, #ef4444);
+}
+
+// Hover Effects
+.hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  border-radius: 1.5rem;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-wrapper:hover .hover-overlay {
+  opacity: 0.05;
+}
+
+.hover-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  width: 0;
+  border-radius: 0 0 1.5rem 1.5rem;
+  z-index: 2;
+  transition: width 0.4s ease;
+}
+
+.card-wrapper:hover .hover-bar {
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+// .strength-section {
+//     padding: 40px 20px;
+//     background:transparent;
+//     color: #ffffff;
+//     border: none;
   
-    .section-heading {
-      text-align: center;
-      font-size: 2.8rem;
-      margin-bottom: 50px;
-      color: #001210;
-      text-shadow: 0 0 4px #00fff0;
-    }
+//     .section-heading {
+//       text-align: center;
+//       font-size: 2.8rem;
+//       margin-bottom: 50px;
+//       color: #001210;
+//       text-shadow: 0 0 4px #00fff0;
+//     }
   
-    .strength-card {
-      background: linear-gradient(#00313c);
-      // background: transparent;
-      backdrop-filter: blur(12px);
-      padding: 25px 30px;
-      margin-bottom: 25px;
-      border-left: 5px solid #00fff0;
-      border-radius: 15px;
-      transition: all 0.3s ease-in-out;
-      box-shadow: 0 4px 25px rgba(0, 255, 255, 0.1);
+//     .strength-card {
+//       background: linear-gradient(#00313c);
+//       // background: transparent;
+//       backdrop-filter: blur(12px);
+//       padding: 25px 30px;
+//       margin-bottom: 25px;
+//       border-left: 5px solid #00fff0;
+//       border-radius: 15px;
+//       transition: all 0.3s ease-in-out;
+//       box-shadow: 0 4px 25px rgba(0, 255, 255, 0.1);
   
-      &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 6px 30px rgba(0, 255, 255, 0.3);
-        border-left: 5px solid #007bff;
-      }
+//       &:hover {
+//         transform: translateY(-4px);
+//         box-shadow: 0 6px 30px rgba(0, 255, 255, 0.3);
+//         border-left: 5px solid #007bff;
+//       }
   
-      .icon-col {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+//       .icon-col {
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
   
-        .strength-icon {
-          font-size: 3rem;
-          color: #00fff0;
-          transition: color 0.3s ease;
+//         .strength-icon {
+//           font-size: 3rem;
+//           color: #00fff0;
+//           transition: color 0.3s ease;
   
-          &:hover {
-            color: #007bff;
-          }
-        }
-      }
+//           &:hover {
+//             color: #007bff;
+//           }
+//         }
+//       }
   
-      .strength-title {
-        font-size: 1.6rem;
-        font-weight: 600;
-        color: #ffffff;
-      }
+//       .strength-title {
+//         font-size: 1.6rem;
+//         font-weight: 600;
+//         color: #ffffff;
+//       }
   
-      .strength-desc {
-        color: #cccccc;
-        font-size: 1rem;
-        margin-top: 5px;
-      }
-    }
+//       .strength-desc {
+//         color: #cccccc;
+//         font-size: 1rem;
+//         margin-top: 5px;
+//       }
+//     }
   
-    @media (max-width: 768px) {
-      .strength-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
+//     @media (max-width: 768px) {
+//       .strength-card {
+//         flex-direction: column;
+//         text-align: center;
+//         padding: 20px;
   
-        .icon-col {
-          margin-bottom: 15px;
-        }
-      }
-    }
-  }
+//         .icon-col {
+//           margin-bottom: 15px;
+//         }
+//       }
+//     }
+//   }
   

@@ -48,65 +48,65 @@
 }
 
 /* ======= About Section ======= */
-.homepage-about {
-  padding: 60px 20px 50px 20px;
-  text-align: center;
-  overflow: hidden;
-  position: relative;
-  color: #0a3b3a;
+// .homepage-about {
+//   padding: 60px 20px 50px 20px;
+//   text-align: center;
+//   overflow: hidden;
+//   position: relative;
+//   color: #0a3b3a;
 
-  h2 {
-    font-size: 3rem;
-    margin-bottom: 40px;
-    color: #000000;
-    text-shadow: 0 0 5px #00fff0;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+//   h2 {
+//     font-size: 3rem;
+//     margin-bottom: 40px;
+//     color: #000000;
+//     text-shadow: 0 0 5px #00fff0;
+//     transition: color 0.3s ease, text-shadow 0.3s ease;
 
-    &.dark {
-      color: #00fff0;
-      text-shadow: 0 0 5px #00fff0;
-    }
-  }
-  .homepage-about-card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    margin: 40px auto 20px auto;
-    padding: 50px 30px;
-    max-width: 1200px;
-    height: 375px;
+//     &.dark {
+//       color: #00fff0;
+//       text-shadow: 0 0 5px #00fff0;
+//     }
+//   }
+//   .homepage-about-card {
+//     position: relative;
+//     background: rgba(255, 255, 255, 0.05);
+//     border-radius: 15px;
+//     margin: 40px auto 20px auto;
+//     padding: 50px 30px;
+//     max-width: 1200px;
+//     height: 375px;
 
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s ease;
+//     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+//     transition: all 0.4s ease;
 
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 40px rgba(0, 255, 255, 0.3);
-          border-left: 5px solid #00fff0;
-    border-right: 5px solid #00fff0;
-      border-color: #007bff;
-    }
+//     &:hover {
+//       transform: translateY(-5px);
+//       box-shadow: 0 10px 40px rgba(0, 255, 255, 0.3);
+//           border-left: 5px solid #00fff0;
+//     border-right: 5px solid #00fff0;
+//       border-color: #007bff;
+//     }
 
-    .content {
-      z-index: 2;
-      position: relative;
+//     .content {
+//       z-index: 2;
+//       position: relative;
 
-      h3 {
-        font-size: 2.5rem;
-        margin-bottom: 50px;
-        color: #000;
-      }
+//       h3 {
+//         font-size: 2.5rem;
+//         margin-bottom: 50px;
+//         color: #000;
+//       }
 
-      p {
-        font-size: 1.25rem;
-        line-height: 1.75;
-        color: #011211;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-    }
-  }
-}
+//       p {
+//         font-size: 1.25rem;
+//         line-height: 1.75;
+//         color: #011211;
+//         max-width: 800px;
+//         margin: 0 auto;
+//       }
+//     }
+//   }
+// }
 
 /* ======= Strength Section Wrapper ======= */
 .strength-section {

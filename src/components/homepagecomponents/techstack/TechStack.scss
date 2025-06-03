@@ -1,0 +1,81 @@
+.techstack-section {
+  background-color: #ffffff;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 1rem;
+  }
+
+  .tech-card {
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    text-align: center;
+
+    .icon-container {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      border-radius: 1rem;
+      color: #fff;
+      transition: transform 0.3s;
+      font-size: 2rem;
+    }
+
+    .gradient-blue-cyan {
+      background: linear-gradient(to right, #3b82f6, #06b6d4);
+    }
+
+    .gradient-green-emerald {
+      background: linear-gradient(to right, #22c55e, #10b981);
+    }
+
+    .gradient-purple-pink {
+      background: linear-gradient(to right, #8b5cf6, #ec4899);
+    }
+
+    .gradient-orange-red {
+      background: linear-gradient(to right, #f97316, #ef4444);
+    }
+
+    .hover-overlay {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 1rem;
+      z-index: 1;
+    }
+
+    &:hover .hover-overlay {
+      opacity: 0.05;
+    }
+
+    .card-body {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card-title {
+      margin-bottom: 0.75rem;
+    }
+
+    .card-text {
+      font-size: 0.95rem;
+    }
+  }
+}

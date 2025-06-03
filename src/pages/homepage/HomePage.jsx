@@ -1,13 +1,12 @@
-import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Navigation from '../../components/layout/navbar/Navbar';
-import Banner from '../../components/specific/banner/Banner';
+import TechStack from '../../components/homepagecomponents/techstack/TechStack';
 import CarouselComponent from '../../components/layout/carousel/Carousel';
 import WideProjectsSection from '../../components/layout/wideprojectssection/WideProjectsSection';
 import Footer from '../../components/layout/footer/Footer';
 import Hero from '../../components/layout/hero/Hero';
 import StrengthCard from '../../components/specific/strengthcard/StrengthCard';
-import { useContext } from 'react';
+import HomepageAbout from '../../components/homepagecomponents/about/HomepageAbout';
 import { useTheme } from '../../contexts/ThemeContext';
 import '../../styles/global.scss';
 import './HomePage.scss';
@@ -31,7 +30,7 @@ const HomePage = () => {
       </div>
 
       <motion.div variants={fadeUp} initial="hidden" animate="visible">
-        <Banner />
+        <TechStack />
       </motion.div>
 
       <motion.div
@@ -53,28 +52,15 @@ const HomePage = () => {
         <WideProjectsSection />
       </motion.div>
 
-      <motion.section
+      <motion.div
         className="homepage-about"
-        initial={{ opacity: 0, y: 80 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeUp}
+        initial="hidden"
+        animate="visible"
+        custom={3}
       >
-        <h2>About Me</h2>
-
-        <motion.div className="homepage-about-card">
-          <div className="dynamic-gradient" />
-          <div className="content">
-            <h3>Creative & Committed</h3>
-            <p>
-              I'm passionate about delivering robust backend architecture, clean
-              code, and smooth user experiences. I blend logic with creativity,
-              backed by a strong foundation in Java, Spring Boot, and
-              problem-solving.
-            </p>
-          </div>
-        </motion.div>
-      </motion.section>
+        <HomepageAbout />
+      </motion.div>
 
       <motion.div
         variants={fadeUp}
