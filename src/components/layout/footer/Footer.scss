@@ -211,19 +211,20 @@ footer {
     }
   }
 
-  .scroll-to-top {
+  .scroll-top {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    padding: 0.75rem;
+    padding: 0.7rem;
     background: linear-gradient(to right, #2563eb, #7c3aed);
     border-radius: 9999px;
-    color: #f80303;
+    color: #000000;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
     z-index: 1050;
     transition: all 0.3s ease;
 
     &:hover {
+      color: #fff;
       box-shadow: 0 12px 20px -2px rgba(0, 0, 0, 0.5);
     }
 

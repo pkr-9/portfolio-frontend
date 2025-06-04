@@ -1,94 +1,208 @@
+
 .certification-section {
-  padding: 4rem 0;
+  padding: 4rem 2rem 4rem 6rem;
   background: transparent;
-  text-align: left;
-}
-
-.certification-section-title {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #333;
-  text-align: center;
-}
-
-// Timeline Wrapper
-.certification-timeline {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   position: relative;
-  border-left: 4px dashed #01c2ff;
-  margin-left: 40px;
+  z-index: 2;
+
+  .certification-section-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
+    -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4rem;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 120px;
+      height: 4px;
+      background: linear-gradient(90deg, #10b981, #06b6d4);
+      margin: 1rem auto 0;
+      border-radius: 2px;
+      animation: flow 3s ease-in-out infinite;
+    }
+  }
+
+  .certification-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0 2rem;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, #10b981, #06b6d4, #8b5cf6);
+      border-radius: 2px;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+    }
+
+    li {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 3rem;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: -3.5rem;
+        top: 0.5rem;
+        width: 1rem;
+        height: 1rem;
+        background: linear-gradient(135deg, #10b981, #06b6d4);
+        border-radius: 50%;
+        border: 3px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 
+          0 0 0 4px rgba(16, 185, 129, 0.2),
+          0 4px 12px rgba(0, 0, 0, 0.1);
+        animation: glow 2s ease-in-out infinite;
+      }
+
+      &:hover {
+        .certification-timeline-content {
+          transform: translateX(10px);
+          background: rgba(255, 255, 255, 0.15);
+          border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .certification-timeline-date {
+          background: linear-gradient(135deg, #fce6f1, #58d4fa);
+          // color: #ffffff;
+          color: black;
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .certification-timeline-date {
+    position: absolute;
+    top: 0;
+    left: -9rem;
+    width: 4rem;
+    text-align: center;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.1);
+    // color: #ffffff;
+    color: black;
+    padding: 0.5rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .certification-timeline-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #10b981, #06b6d4);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    h4 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      // color: #ffffff;
+      color: black;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      // color: rgba(255, 255, 255, 0.8);
+      color: black;
+      margin: 0;
+      font-weight: 500;
+    }
+  }
+
+  .certification-timeline li:hover .certification-timeline-content::before {
+    opacity: 1;
+  }
+
+  .view-toggle-button {
+    background: linear-gradient(135deg, #f0e0e8, #5cd2f6);
+    border: none;
+    // color: #ffffff;
+    color: black;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+
+    &:hover {
+      background: linear-gradient(135deg, #fce6f1, #58d4fa);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    }
+  }
 }
 
-// Timeline Item
-.certification-timeline li {
-  position: relative;
-  margin-bottom: 2rem;
-  padding-left: 60px;
-  border-left: 3px solid transparent;
-  transition: all 0.3s ease;
+@keyframes flow {
+  0%, 100% { transform: scaleX(1); opacity: 1; }
+  50% { transform: scaleX(1.2); opacity: 0.8; }
 }
 
-.certification-timeline li:hover {
-  background: linear-gradient(90deg, rgba(1, 194, 255, 0.05), rgba(1, 194, 255, 0.03));
-  border-right: 6px solid #01c2ff;
-  border-radius: 5px;
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1); }
+  50% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.3), 0 4px 12px rgba(0, 0, 0, 0.15); }
 }
 
-// Year Badge
-.certification-timeline-date {
-  position: absolute;
-  top: 0;
-  left: -85px;
-  width: 70px;
-  text-align: right;
-  font-weight: bold;
-  color: #01c2ff;
-  background: #f0faff;
-  padding: 0.3rem 0.5rem;
-  border-radius: 5px;
-  font-size: 0.9rem;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
-}
+@media (max-width: 768px) {
+  .certification-section {
+    padding: 3rem 1rem;
 
-// Content Block
-.certification-timeline-content {
-  background-color: #f9f9f9;
-  border: 1px dashed #ccc;
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-}
+    .certification-section-title {
+      font-size: 2.2rem;
+    }
 
-.certification-timeline-content h4 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: #333;
-}
+    .certification-timeline {
+      margin-left: 1rem;
 
-.certification-timeline-content p {
-  font-size: 0.95rem;
-  margin: 0;
-  color: #555;
-}
+      li {
+        padding-left: 2rem;
+      }
+    }
 
-.certification-timeline li:hover .certification-timeline-content {
-  transform: translateX(5px);
-  border-color: #01c2ff;
-}
+    .certification-timeline-date {
+      position: relative;
+      left: 0;
+      margin-bottom: 1rem;
+      width: auto;
+      display: inline-block;
+    }
 
-// Toggle Button
-.view-toggle-button {
-  font-weight: 600;
-  padding: 0.5rem 1.25rem;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: #01c2ff;
-    color: white;
-    border-color: #01c2ff;
+    .certification-timeline-content {
+      padding: 1rem 1.5rem;
+    }
   }
 }
