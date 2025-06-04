@@ -90,7 +90,7 @@
     .icon-wrapper {
       width: 50px;
       height: 50px;
-      background: rgba(251, 191, 36, 0.2);
+      background: rgba(255, 188, 19, 0.692);
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -100,7 +100,7 @@
       flex-shrink: 0;
 
       .text-primary {
-        color: #fbbf24 !important;
+        color: #ffffff !important;
       }
     }
 
@@ -158,7 +158,7 @@
     }
 
     .badge {
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.2)) !important;
+      background: linear-gradient(135deg, rgba(251, 190, 36, 0.445), rgba(245, 159, 11, 0.555)) !important;
       // color: #ffffff !important;
       color: black !important;
       border: 1px solid rgba(251, 191, 36, 0.3);

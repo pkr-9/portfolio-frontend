@@ -31,7 +31,7 @@
   .certification-timeline {
     list-style: none;
     padding: 0;
-    margin: 0 0 0 2rem;
+    margin: 0 0 0 5rem;
     position: relative;
 
     &::before {
@@ -48,8 +48,8 @@
 
     li {
       position: relative;
-      margin-bottom: 3rem;
-      padding-left: 3rem;
+      margin-bottom: 1rem;
+      padding-left: 1rem;
 
       &::before {
         content: '';
