@@ -166,7 +166,7 @@
   }
 
   .view-toggle-button {
-    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    background: linear-gradient(135deg, #f0e0e8, #5cd2f6);
     border: none;
     // color: #ffffff;
     color: black;
@@ -177,7 +177,7 @@
     box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
 
     &:hover {
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      background: linear-gradient(135deg, #fce6f1, #58d4fa);
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(96, 165, 250, 0.4);
     }
