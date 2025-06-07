@@ -1,73 +1,70 @@
 [
   {
     "id": 1,
-    "slug": "portfolio-website",
-    "title": "Portfolio-Website",
-    "shortDescription": "BookNest is a next-generation book marketplace built for readers, sellers, and collectors. It combines powerful search, secure transactions, and a social reading experience into one fast, responsive platform. Discover, review, donate, and trade books while managing your digital bookshelf.",
-    "fullDescription": "BookNest is a specialized and intelligent online platform built exclusively for book enthusiasts. Unlike generic marketplaces, BookNest focuses entirely on the lifecycle of books — from discovery and purchase to review, resale, and donation. Users can browse books using advanced search filters such as title, edition, condition, ISBN, or price. They can organize their collections in a virtual bookshelf, track orders in real time, and securely buy or sell with multiple payment options.Sellers benefit from robust inventory management tools, bulk uploads, and visibility within a trusted community. Buyers can read peer reviews, engage in discussions, and share favorites with one-click social sharing. Features like loyalty points, real-time tracking, e-book downloads, and multi-role accounts (admin, seller, buyer) make the platform comprehensive and scalable.With performance-optimized UI, secure JWT-based sessions, Razorpay payments, and integration of Mongoose, Multer, EasyInvoice, and Toastify, BookNest stands out as a full-stack, user-centric solution for modern digital reading and commerce.",
+    "slug": "production-grade-portfolio",
+    "title": "Production-Grade Portfolio Platform",
+    "shortDescription": "A full-stack, client-customizable portfolio platform with secure admin dashboard and production deployment readiness.",
+    "fullDescription": "This platform is a modular, secure, and production-ready portfolio system designed for real-world personal branding. It includes a client-facing React frontend to showcase projects and skills, and an admin dashboard for easy content management, even by non-technical users. Built using Spring Boot, PostgreSQL, and Supabase Storage, the backend offers robust REST APIs secured by JWT authentication. The system supports deployment to any VPS with SSL, custom domains, and email integration. Fully customizable for developers, freelancers, or business professionals, the platform is mobile-responsive and built with modern UX principles.",
     "features": [
-      "Advanced book search with edition, ISBN, and condition filters",
-      "Community forums, reviews, and social sharing",
-      "Virtual bookshelves and wishlist management",
-      "Multi-role authentication (customer, seller, admin)",
-      "Bulk book listing upload for sellers",
-      "Secure multi-method payments via Razorpay",
-      "Real-time order tracking with invoice generation",
-      "Loyalty points and reward system",
-      "Support for book donation and reselling",
-      "E-book listing and download support"
+      "Secure and user-friendly admin panel",
+      "Modular frontend and backend structure",
+      "Real-time content management without redeploy",
+      "Deployment-ready with SSL, domain, and CI/CD support",
+      "Supabase storage integration for image and file uploads",
+      "Multi-section portfolio (about, projects, contact, etc.)",
+      "Mobile responsive and professionally themed UI",
+      "Admin authentication and protected dashboard",
+      "Customizable for multiple user personas (developer, designer, freelancer)"
     ],
     "techStack": [
-      "React.js",
-      "Redux Toolkit",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Mongoose",
+      "React 19",
+      "Vite",
+      "React Router DOM v7",
+      "SCSS + Bootstrap 5",
+      "Framer Motion",
+      "Java 17",
+      "Spring Boot 3",
+      "PostgreSQL (Supabase)",
+      "Spring Security",
+      "Supabase Storage",
+      "MapStruct",
+      "Flyway",
+      "Hibernate",
       "JWT",
-      "Razorpay",
-      "Nodemailer",
-      "Multer",
       "Axios",
-      "Toastify",
-      "EasyInvoice"
+      "i18next"
     ],
     "role": "Full Stack Developer",
-    "duration": "April 2025 – Present",
+    "duration": "January 2025 – March 2025",
     "img": "/assets/images/portfolio/portfolio-1.png",
     "main_img": "/assets/images/portfolio/portfolio.png",
     "gallery": [
       "/assets/images/portfolio/portfolio-1.png",
-      "/assets/images/portfolio/image2.png",
-      "/assets/images/portfolio/image3.png"
+      "/assets/images/portfolio/portfolio-2.png",
+      "/assets/images/portfolio/portfolio-3.png"
     ],
-    "repo": "https://github.com/example/booknest-marketplace",
-    "live": "https://booknest.example.com",
-    "architecture": "Modular Monolithic with Frontend-Backend Separation",
+    "repo": "https://github.com/example/production-portfolio",
+    "live": "https://portfolio.example.com",
+    "architecture": "Modular Monolith with RESTful API integration between client, admin, and backend services",
     "security": [
-      "Multi-factor authentication",
-      "JWT-based secure login",
-      "Password encryption with bcrypt",
-      "Environment-secured secrets via dotenv"
+      "JWT-based authentication with Spring Security",
+      "Environment-secured secrets using `.env` and config maps",
+      "Role-based access control for admin panel",
+      "Rate limiting and audit logging for sensitive actions"
     ],
-    "scalability": "Optimized for large inventory management and data handling with MongoDB and Mongoose",
+    "scalability": "Backend designed to support multi-user dashboards and extendable REST API for blogs, testimonials, and contact forms",
     "community": {
-      "reviewsEnabled": true,
+      "reviewsEnabled": false,
       "socialSharing": true,
-      "forums": true,
-      "loyaltySystem": true
+      "forums": false,
+      "loyaltySystem": false
     },
-    "paymentFeatures": [
-      "UPI (Google Pay, PhonePe, etc.)",
-      "Credit/Debit Cards",
-      "Digital Wallets",
-      "Real-time payment status with Razorpay"
-    ],
-    "ebookSupport": true,
+    "paymentFeatures": [],
+    "ebookSupport": false,
     "team": [
       {
         "name": "Pappu Kumar",
-        "role": "Lead Developer",
+        "role": "Full Stack Engineer",
         "github": "https://github.com/pappukumarme9999",
         "linkedin": "https://www.linkedin.com/in/pappu-kumar-gupta/"
       }
@@ -107,12 +104,13 @@
       "EasyInvoice"
     ],
     "role": "Full Stack Developer",
-    "duration": "August 2024 – December 2024",
+    "duration": "April 2025 – Present",
     "img": "/assets/images/booknest/booknest-1.png",
+    "main_img": "/assets/images/booknest/booknest-1.png",
     "gallery": [
-      "/assets/images/booknest/booknest.png",
-      "/assets/images/booknest/booknest-2.png",
-      "/assets/images/booknest/booknest-3.png"
+      "/assets/images/portfolio/portfolio-1.png",
+      "/assets/images/portfolio/image2.png",
+      "/assets/images/portfolio/image3.png"
     ],
     "repo": "https://github.com/example/booknest-marketplace",
     "live": "https://booknest.example.com",
@@ -141,11 +139,12 @@
       {
         "name": "Pappu Kumar",
         "role": "Lead Developer",
-        "github": "https://github.com/sg",
-        "linkedin": "https://linkedin.com/in/sg"
+        "github": "https://github.com/pappukumarme9999",
+        "linkedin": "https://www.linkedin.com/in/pappu-kumar-gupta/"
       }
     ]
   },
+
   {
     "id": 3,
     "slug": "ecommerce-platform",
