@@ -5,21 +5,7 @@ import { motion } from 'framer-motion';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import './ProjectCard.scss';
 
-// import im1 from '../../../assets/images/im1.jpg';
-// import im2 from '../../../assets/images/im2.jpg';
-// import im3 from '../../../assets/images/im3.jpg';
-// import im4 from '../../../assets/images/im4.jpg';
-
-// const imageMap = {
-//   'im1.jpg': im1,
-//   'im2.jpg': im2,
-//   'im3.jpg': im3,
-//   'im4.jpg': im4,
-// };
-
 const ProjectCard = ({ imgName, title, description, duration, link }) => {
-  // const imgSrc = imageMap[imgName] || im1;
-
   return (
     <motion.div
       className="custom-project-card"

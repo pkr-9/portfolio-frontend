@@ -4,7 +4,21 @@ import '../../../styles/global.scss';
 import './Certification.scss';
 
 const certifications = [
+  {
+    year: '2024',
+    title:
+      'Oracle Cloud Infrastructure(OCI) 2024 Certified Foundations Associate',
+    provider: 'Oracle',
+  },
+  {
+    year: '2024',
+    title: 'MongoDB Developers Toolkit',
+    provider: 'GeeksforGeeks',
+  },
   { year: '2024', title: 'Cloud Computing', provider: 'NPTEL' },
+];
+
+const extraCertifications = [
   {
     year: '2024',
     title: 'NLP - Natural Language Processing with Python',
@@ -15,12 +29,6 @@ const certifications = [
     title: 'Python 101 for Data Science',
     provider: 'Cognitive Class',
   },
-];
-
-const extraCertifications = [
-  { year: '2022', title: 'MongoDB Developers Toolkit', provider: 'Coursera' },
-  { year: '2022', title: 'Kubernetes Basics', provider: 'Linux Foundation' },
-  { year: '2023', title: 'Git & GitHub Pro', provider: 'LinkedIn Learning' },
 ];
 
 const Certification = () => {

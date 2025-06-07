@@ -199,7 +199,8 @@ footer {
       justify-content: space-between;
     }
 
-    p, div {
+    p,
+    div {
       color: #9ca3af;
       font-size: 0.875rem;
       margin: 0.5rem 0;
@@ -216,7 +217,7 @@ footer {
     bottom: 2rem;
     right: 2rem;
     padding: 0.7rem;
-    background: linear-gradient(to right, #2563eb, #7c3aed);
+    background: linear-gradient(to right, #638eeb, #25e9bc);
     border-radius: 9999px;
     color: #000000;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
@@ -271,7 +272,8 @@ footer {
 
 // Animation
 @keyframes blob {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(0px, 0px) scale(1);
   }
   33% {

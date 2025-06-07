@@ -38,7 +38,24 @@
     font-size: 1.125rem;
     line-height: 1.75;
   }
+  .about-text li {
+    margin-bottom: 0.4rem;
+    color: #4b5563;
+  }
 
+  .about-card-2 {
+    background-color: rgb(201, 255, 255); /* Fallback color */
+    background-image: linear-gradient(to right, #bbfdff, #ffffff);
+    margin: 20px 0;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+
+    ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+  }
   .custom-progress {
     height: 0.5rem;
     border-radius: 1rem;

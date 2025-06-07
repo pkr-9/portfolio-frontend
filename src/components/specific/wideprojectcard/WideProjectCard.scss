@@ -12,10 +12,14 @@
   transition: transform 0.5s ease;
 
   .background-image {
+    background-color: red;
     position: absolute;
     inset: 0;
+    height: 100%;
+    width: 100%;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     z-index: 1;
     filter: brightness(0.95);
     transition: all 0.5s ease;
@@ -25,17 +29,19 @@
     position: relative;
     z-index: 3;
     padding: 40px;
-    color: #fff;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
 
     .title {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       font-weight: 700;
       color: #ffffff;
-      text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+      margin-top: 0;
+      padding-top: 0;
+      text-shadow: 10px 5px 10px rgb(0 0 0);
     }
 
     .details {
@@ -45,28 +51,15 @@
 
       p {
         font-size: 1.1rem;
-        color: #ffffff;
+        color: #e0e0e0;
         font-weight: 500;
         margin-bottom: 15px;
-      }
-
-      button {
-        font-weight: 600;
-        border-radius: 25px;
-        padding: 10px 20px;
-        transition: all 0.3s ease;
-
-        &:hover {
-          background: #00c6ff;
-          color: white;
-          border-color: transparent;
-        }
       }
     }
   }
 
   &:hover .background-image {
-    filter: blur(4px) brightness(0.8);
+    filter: blur(4px) brightness(0.4);
     transform: scale(1.02);
   }
 }

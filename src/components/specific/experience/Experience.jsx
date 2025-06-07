@@ -33,45 +33,45 @@ const experiences = [
       'Participated in Agile sprints and collaborated with QA, BA, and product stakeholders.',
     ],
   },
-  {
-    company: 'Dummy_Data 1',
-    role: 'Full Stack Developer',
-    start: 'Jun 2020',
-    end: 'Dec 2022',
-    skills: ['Angular', 'Spring Boot', 'MySQL', 'Docker'],
-    responsibilities: [
-      'Developed and maintained full-stack applications using Angular and Spring Boot.',
-      'Designed database schemas and optimized MySQL queries.',
-      'Implemented CI/CD pipelines with Docker and Jenkins.',
-    ],
-  },
+  // {
+  //   company: 'Dummy_Data 1',
+  //   role: 'Full Stack Developer',
+  //   start: 'Jun 2020',
+  //   end: 'Dec 2022',
+  //   skills: ['Angular', 'Spring Boot', 'MySQL', 'Docker'],
+  //   responsibilities: [
+  //     'Developed and maintained full-stack applications using Angular and Spring Boot.',
+  //     'Designed database schemas and optimized MySQL queries.',
+  //     'Implemented CI/CD pipelines with Docker and Jenkins.',
+  //   ],
+  // },
 ];
 
 const extraExperiences = [
-  {
-    company: 'Dummy_Data 2.',
-    role: 'Software Developer',
-    start: 'Mar 2018',
-    end: 'May 2020',
-    skills: ['Java', 'Hibernate', 'Oracle DB', 'Jenkins'],
-    responsibilities: [
-      'Implemented backend logic using Java and Hibernate.',
-      'Managed Oracle DB and wrote optimized SQL scripts.',
-      'Built CI pipelines with Jenkins.',
-    ],
-  },
-  {
-    company: 'Dummy_Data 3',
-    role: 'Junior Developer',
-    start: 'Jul 2016',
-    end: 'Feb 2018',
-    skills: ['PHP', 'Laravel', 'MySQL', 'Git'],
-    responsibilities: [
-      'Assisted in web development using Laravel framework.',
-      'Maintained version control using Git and GitHub.',
-      'Wrote modular PHP code and integrated third-party APIs.',
-    ],
-  },
+  // {
+  //   company: 'Dummy_Data 2.',
+  //   role: 'Software Developer',
+  //   start: 'Mar 2018',
+  //   end: 'May 2020',
+  //   skills: ['Java', 'Hibernate', 'Oracle DB', 'Jenkins'],
+  //   responsibilities: [
+  //     'Implemented backend logic using Java and Hibernate.',
+  //     'Managed Oracle DB and wrote optimized SQL scripts.',
+  //     'Built CI pipelines with Jenkins.',
+  //   ],
+  // },
+  // {
+  //   company: 'Dummy_Data 3',
+  //   role: 'Junior Developer',
+  //   start: 'Jul 2016',
+  //   end: 'Feb 2018',
+  //   skills: ['PHP', 'Laravel', 'MySQL', 'Git'],
+  //   responsibilities: [
+  //     'Assisted in web development using Laravel framework.',
+  //     'Maintained version control using Git and GitHub.',
+  //     'Wrote modular PHP code and integrated third-party APIs.',
+  //   ],
+  // },
 ];
 
 const Experience = () => {

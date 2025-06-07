@@ -6,10 +6,14 @@ import './HomepageAbout.scss';
 
 const HomepageAbout = () => {
   const stats = [
-    { icon: <Award size={24} />, number: '50+', label: 'Projects Completed' },
-    { icon: <Users size={24} />, number: '25+', label: 'Happy Clients' },
-    { icon: <Coffee size={24} />, number: '1000+', label: 'Cups of Coffee' },
-    { icon: <Heart size={24} />, number: '100%', label: 'Passion' },
+    { icon: <Heart size={24} />, number: '100%', label: 'Learning Spirit' },
+    { icon: <Award size={24} />, number: '10+', label: 'Mini Projects Built' },
+    {
+      icon: <Users size={24} />,
+      number: 'Open Source',
+      label: 'Contributions Started',
+    },
+    { icon: <Coffee size={24} />, number: '∞', label: 'Lines of Code to Go' },
   ];
 
   const skills = [
@@ -31,7 +35,8 @@ const HomepageAbout = () => {
         >
           <h2 className="about-heading">About Me</h2>
           <p className="about-subheading">
-            Passionate developer crafting digital experiences
+            Passionate web developer focused on learning, building, and growing
+            through real-world projects
           </p>
         </motion.div>
 
@@ -48,26 +53,23 @@ const HomepageAbout = () => {
               <Card className="about-card">
                 <Card.Body>
                   <Card.Title className="about-title">
-                    Creative & Committed
+                    Eager to Learn & Build
                   </Card.Title>
-                  {/* <Card.Text className="about-text">
-                    I'm passionate about delivering robust backend architecture,
-                    clean code, and smooth user experiences. I blend logic with
-                    creativity, backed by a strong foundation in Java, Spring
-                    Boot, and problem-solving.
-                  </Card.Text> */}
                   <Card.Text className="about-text">
-                    With a keen eye for detail and a love for continuous
-                    learning, I strive to create solutions that not only meet
-                    requirements but exceed expectations. Every project is an
-                    opportunity to push boundaries and innovate.
+                    I'm a self-motivated developer who enjoys solving problems
+                    through code. With a strong foundation in Java, Spring Boot,
+                    and React, I focus on writing clean, maintainable code and
+                    building responsive user experiences. While I’m early in my
+                    career, I’m committed to continuous learning, adapting
+                    quickly, and contributing meaningfully to every project I
+                    join.
                   </Card.Text>
                 </Card.Body>
               </Card>
 
               <Card className="about-card">
                 <Card.Body>
-                  <Card.Title className="h5">Skills</Card.Title>
+                  <Card.Title className="h5 about-title">Skills</Card.Title>
                   <div className="d-flex flex-column gap-3">
                     {skills.map((item, index) => (
                       <div key={index}>
@@ -125,6 +127,18 @@ const HomepageAbout = () => {
                 </motion.div>
               ))}
             </motion.div>
+            <Card className="about-card-2">
+              <Card.Body>
+                <Card.Title className="h5 about-title">
+                  Currently Learning
+                </Card.Title>
+                <ul className="about-text">
+                  <li>Unit testing and CI/CD basics</li>
+                  <li>TypeScript in React projects</li>
+                  <li>Spring Boot API best practices</li>
+                </ul>
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container>

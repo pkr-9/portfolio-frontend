@@ -26,6 +26,7 @@ const ProjectDetailPage = () => {
     role,
     duration,
     img,
+    main_img,
     gallery,
     repo,
     live,
@@ -46,7 +47,7 @@ const ProjectDetailPage = () => {
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <motion.img
-        src={img}
+        src={main_img || img}
         alt={title}
         className="detail-image"
         initial={{ opacity: 0 }}
@@ -80,20 +81,26 @@ const ProjectDetailPage = () => {
         <h2>Tech Stack</h2>
         <div className="tech-stack">{techStack.join(', ')}</div>
       </motion.section>
-      {gallery?.length > 0 && (
+      {/* {gallery?.length > 0 && (
         <motion.section className="section">
           <h2>Gallery</h2>
           <div className="gallery-carousel">
             <div className="carousel-track">
               {gallery.map((src, i) => (
                 <div className="carousel-item" key={i}>
-                  <img src={src} alt={`screenshot-${i + 1}`} />
+                  <img
+                    src={src}
+                    onError={(e) => {
+                      e.target.src = '/assets/images/image.png'; // fallback image
+                    }}
+                    alt={`screenshot-${i + 1}`}
+                  />
                 </div>
               ))}
             </div>
           </div>
         </motion.section>
-      )}
+      )} */}
 
       {security?.length > 0 && (
         <motion.section className="section">
