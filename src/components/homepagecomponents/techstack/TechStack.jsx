@@ -1,33 +1,36 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import { Code, Database, Globe, Smartphone } from 'lucide-react';
+import { Database, Code2, Server, Wrench } from 'lucide-react';
 import './TechStack.scss';
 
 const TechStack = () => {
   const technologies = [
     {
-      icon: <Code size={32} />,
+      icon: <Code2 size={32} />,
       title: 'Frontend Development',
-      description: 'React, TypeScript, Next.js',
+      description:
+        'React, Redux, Angular, Bootstrap, Tailwind, HTML5, CSS3, JavaScript (ES6+)',
       color: 'blue-cyan',
     },
     {
-      icon: <Database size={32} />,
-      title: 'Backend Development',
-      description: 'Java, Spring Boot, Node.js',
+      icon: <Server size={32} />,
+      title: 'Backend & API Development',
+      description:
+        'Java (Core & Advanced), Spring Boot, Node.js, Express, JPA, RESTful APIs, Servlets, JSP, JWT',
       color: 'green-emerald',
     },
     {
-      icon: <Globe size={32} />,
-      title: 'Web Technologies',
-      description: 'REST APIs, GraphQL',
+      icon: <Database size={32} />,
+      title: 'Database & DevOps',
+      description:
+        'MySQL, MongoDB, Oracle XE, SQL Server, Docker, cPanel, CI/CD',
       color: 'purple-pink',
     },
     {
-      icon: <Smartphone size={32} />,
-      title: 'Mobile & Cloud',
-      description: 'React Native, AWS, Docker',
+      icon: <Wrench size={32} />,
+      title: 'Tools & Methodologies',
+      description:
+        'Git, IntelliJ, Eclipse, Postman, Maven, JIRA, Agile, JUnit, Jest, Secure Coding, DSA',
       color: 'orange-red',
     },
   ];
@@ -73,12 +76,13 @@ const TechStack = () => {
         >
           <Row xs={1} md={2} lg={4} className="g-4">
             {technologies.map((tech, index) => (
-              <Col key={index}>
+              <Col key={index} className="d-flex">
                 <motion.div
                   variants={itemVariants}
                   whileHover={{ scale: 1.05 }}
+                  className="w-100"
                 >
-                  <Card className="tech-card shadow-sm border-0 position-relative">
+                  <Card className="tech-card shadow-sm border-0 position-relative h-100">
                     <div
                       className={`icon-container gradient-${tech.color} mb-4`}
                     >

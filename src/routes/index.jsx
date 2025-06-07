@@ -22,7 +22,7 @@ const AppRoutes = () => (
       <Route path="/about" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/projects" element={<ProjectsPage />} />
-      <Route path="/projects/:id" element={<ProjectDetailPage />} />
+      <Route path="/projects/:slug" element={<ProjectDetailPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </BrowserRouter>

@@ -1,22 +1,8 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import im1 from '../../../assets/images/im1.jpg';
-import im2 from '../../../assets/images/im2.jpg';
-import im3 from '../../../assets/images/im3.jpg';
-import im4 from '../../../assets/images/im4.jpg';
 import './WideProjectCard.scss';
-
-const imageMap = {
-  'im1.jpg': im1,
-  'im2.jpg': im2,
-  'im3.jpg': im3,
-  'im4.jpg': im4,
-};
-
-const WideProjectCard = ({ imgName, title, description, link }) => {
-  const imgSrc = imageMap[imgName] || im1;
-
+const WideProjectCard = ({ imgName, title, description, duration, link }) => {
   return (
     <motion.div
       className="dimensional-card"
@@ -35,7 +21,7 @@ const WideProjectCard = ({ imgName, title, description, link }) => {
     >
       <div
         className="background-image"
-        style={{ backgroundImage: `url(${imgSrc})` }}
+        style={{ backgroundImage: `url(${imgName})` }}
       />
 
       <motion.div
@@ -62,15 +48,13 @@ const WideProjectCard = ({ imgName, title, description, link }) => {
             hover: { opacity: 1, y: 0 },
           }}
         >
+          <p className="duration">
+            <strong>Duration:</strong> {duration}
+          </p>
           <p>{description}</p>
-          <Button
-            variant="outline-info"
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link to={`/projects/${link}`} className="explore-button">
             Explore →
-          </Button>
+          </Link>
         </motion.div>
       </motion.div>
     </motion.div>

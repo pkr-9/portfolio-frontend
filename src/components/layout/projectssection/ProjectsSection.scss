@@ -1,0 +1,12 @@
+.projects {
+  padding: 20px 20px 60px 20px;
+  background: transparent;
+  text-align: center;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}

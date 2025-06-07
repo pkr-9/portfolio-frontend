@@ -1,9 +1,9 @@
 // src/components/layout/contact/Contact.scss
 .contact-page {
   background-color: #ffffff;
+  margin-top: 90px;
 }
 .contact-section {
-  margin-top: 90px;
   border-radius: 1rem;
 
   .contact-title {
@@ -38,7 +38,9 @@
     .contact-info {
       text-decoration: none;
       color: inherit;
-      transition: background-color 0.3s, transform 0.3s;
+      transition:
+        background-color 0.3s,
+        transform 0.3s;
       padding: 0.75rem;
       border-radius: 0.5rem;
       display: flex;
@@ -92,7 +94,10 @@
         border-radius: 50%;
         color: #2563eb;
         margin-right: 0.75rem;
-        transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        transition:
+          background-color 0.3s,
+          color 0.3s,
+          transform 0.3s;
         display: inline-flex;
         align-items: center;
         justify-content: center;

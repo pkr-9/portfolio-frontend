@@ -15,17 +15,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 25px;
+    padding: 2px 25px;
     position: relative;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top left, #00ffe0, #002aff, transparent);
+      background: radial-gradient(circle at top left, #000000, #505ccf, #08080869);
+      opacity: 0.08;
       background-size: 200% 200%;
-      animation: auroraMove 12s linear infinite;
-      opacity: 0.12;
+      // animation: auroraMove 12s linear infinite;
+      opacity: 0.4;
       z-index: 0;
     }
 
@@ -36,23 +37,24 @@
       z-index: 2;
 
       .logo-img {
-        width: 40px;
-        height: 40px;
-        background: url("/logo.png") center/contain no-repeat;
-        margin-right: 12px;
-        animation: floatLogo 5s ease-in-out infinite;
+        width: 150px;
+        height: 75px;
+        background: url("/logo2.png") center/contain no-repeat;
+        margin: 0 60px 0 20px;
+        padding: 0;
+        // animation: floatLogo 5s ease-in-out infinite;
       }
 
-      .company-name {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--nav-link-color);
-        text-decoration: none;
+      // .company-name {
+      //   font-size: 2rem;
+      //   font-weight: bold;
+      //   color: var(--nav-link-color);
+      //   text-decoration: none;
 
-        &:hover {
-          color: var(--nav-link-hover);
-        }
-      }
+      //   &:hover {
+      //     color: var(--nav-link-hover);
+      //   }
+      // }
     }
 
     .desktop-nav {
@@ -73,7 +75,9 @@
         .nav-icon {
           font-size: 1.2rem;
           color: var(--icon-color);
-          transition: transform 0.3s ease, color 0.3s ease;
+          transition:
+            transform 0.3s ease,
+            color 0.3s ease;
         }
 
         &:hover {
@@ -86,7 +90,7 @@
         }
 
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           width: 0%;
           height: 2px;
@@ -117,7 +121,9 @@
       margin-left: 20px;
       cursor: pointer;
       z-index: 5;
-      transition: color 0.3s ease, transform 0.4s ease;
+      transition:
+        color 0.3s ease,
+        transform 0.4s ease;
 
       &:hover {
         color: var(--nav-link-hover);
@@ -191,14 +197,14 @@
 }
 
 /* Animations */
-@keyframes floatLogo {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-}
+// @keyframes floatLogo {
+//   0%, 100% {
+//     transform: translateY(0);
+//   }
+//   50% {
+//     transform: translateY(-4px);
+//   }
+// }
 
 @keyframes rotateIcon {
   from {
@@ -209,14 +215,14 @@
   }
 }
 
-@keyframes auroraMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
-}
+// @keyframes auroraMove {
+//   0% {
+//     background-position: 0% 50%;
+//   }
+//   100% {
+//     background-position: 100% 50%;
+//   }
+// }
 
 /* Responsive */
 @media (max-width: 768px) {

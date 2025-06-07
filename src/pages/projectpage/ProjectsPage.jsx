@@ -1,5 +1,5 @@
 import Navigation from '../../components/layout/navbar/Navbar';
-import VerticalProjectsSection from '../../components/layout/verticalprojectssection/VerticalProjectsSection';
+import ProjectsSection from '../../components/layout/projectssection/ProjectsSection';
 import WideProjectsSection from '../../components/layout/wideprojectssection/WideProjectsSection';
 import Footer from '../../components/layout/footer/Footer';
 import '../../styles/global.scss';
@@ -11,7 +11,7 @@ const ProjectsPage = () => {
       <Navigation />
       <div className="projects-page">
         <WideProjectsSection />
-        <VerticalProjectsSection />
+        <ProjectsSection />
         <Footer />
       </div>
     </>

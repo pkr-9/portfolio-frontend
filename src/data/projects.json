@@ -1,30 +1,128 @@
 [
   {
     "id": 1,
-    "img": "../../assets/images/im1.jpg",
-    "title": "Project One",
-    "description": "Description for project one. lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.....",
-    "link": "../pages/projectdetailpage/ProjectDetailPage.jsx"
+    "slug": "booknest-marketplace",
+    "title": "BookNest – Online Book Marketplace",
+    "shortDescription": "BookNest is a next-generation book marketplace built for readers, sellers, and collectors. It combines powerful search, secure transactions, and a social reading experience into one fast, responsive platform. Discover, review, donate, and trade books while managing your digital bookshelf.",
+    "fullDescription": "BookNest is a specialized and intelligent online platform built exclusively for book enthusiasts. Unlike generic marketplaces, BookNest focuses entirely on the lifecycle of books — from discovery and purchase to review, resale, and donation. Users can browse books using advanced search filters such as title, edition, condition, ISBN, or price. They can organize their collections in a virtual bookshelf, track orders in real time, and securely buy or sell with multiple payment options.Sellers benefit from robust inventory management tools, bulk uploads, and visibility within a trusted community. Buyers can read peer reviews, engage in discussions, and share favorites with one-click social sharing. Features like loyalty points, real-time tracking, e-book downloads, and multi-role accounts (admin, seller, buyer) make the platform comprehensive and scalable.With performance-optimized UI, secure JWT-based sessions, Razorpay payments, and integration of Mongoose, Multer, EasyInvoice, and Toastify, BookNest stands out as a full-stack, user-centric solution for modern digital reading and commerce.",
+    "features": [
+      "Advanced book search with edition, ISBN, and condition filters",
+      "Community forums, reviews, and social sharing",
+      "Virtual bookshelves and wishlist management",
+      "Multi-role authentication (customer, seller, admin)",
+      "Bulk book listing upload for sellers",
+      "Secure multi-method payments via Razorpay",
+      "Real-time order tracking with invoice generation",
+      "Loyalty points and reward system",
+      "Support for book donation and reselling",
+      "E-book listing and download support"
+    ],
+    "techStack": [
+      "React.js",
+      "Redux Toolkit",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "JWT",
+      "Razorpay",
+      "Nodemailer",
+      "Multer",
+      "Axios",
+      "Toastify",
+      "EasyInvoice"
+    ],
+    "role": "Full Stack Developer",
+    "duration": "March 2024 – May 2024",
+    "img": "/assets/images/booknest/booknest-1.png",
+    "gallery": [
+      "/assets/images/booknest/booknest.png",
+      "/assets/images/booknest/booknest-2.png",
+      "/assets/images/booknest/booknest-3.png"
+    ],
+    "repo": "https://github.com/example/booknest-marketplace",
+    "live": "https://booknest.example.com",
+    "architecture": "Modular Monolithic with Frontend-Backend Separation",
+    "security": [
+      "Multi-factor authentication",
+      "JWT-based secure login",
+      "Password encryption with bcrypt",
+      "Environment-secured secrets via dotenv"
+    ],
+    "scalability": "Optimized for large inventory management and data handling with MongoDB and Mongoose",
+    "community": {
+      "reviewsEnabled": true,
+      "socialSharing": true,
+      "forums": true,
+      "loyaltySystem": true
+    },
+    "paymentFeatures": [
+      "UPI (Google Pay, PhonePe, etc.)",
+      "Credit/Debit Cards",
+      "Digital Wallets",
+      "Real-time payment status with Razorpay"
+    ],
+    "ebookSupport": true,
+    "team": [
+      {
+        "name": "SG",
+        "role": "Lead Developer",
+        "github": "https://github.com/sg",
+        "linkedin": "https://linkedin.com/in/sg"
+      },
+      {
+        "name": "Alex Doe",
+        "role": "UI/UX Designer",
+        "github": "https://github.com/alexdoe",
+        "linkedin": "https://linkedin.com/in/alexdoe"
+      }
+    ]
   },
   {
     "id": 2,
-    "img": "../../assets/images/im2.jpg",
-    "title": "Project Two",
-    "description": "Description for project two.",
-    "link": "http://example.com/project-two"
+    "slug": "job-tracker",
+    "title": "Job Tracker",
+    "shortDescription": "Track your job applications with analytics.",
+    "fullDescription": "A job tracking app with visual charts, customizable stages, and reminders. Built with MERN stack and chart.js.",
+    "features": [
+      "Job stage analytics",
+      "Calendar reminders",
+      "Multi-user support"
+    ],
+    "techStack": ["React", "Node.js", "MongoDB", "Chart.js"],
+    "role": "Frontend + UI Design",
+    "img": "/assets/images/im2.jpg",
+    "repo": "https://github.com/example/job-tracker",
+    "live": "https://jobtracker.example.com"
   },
   {
     "id": 3,
-    "img": "../../assets/images/im3.jpg",
-    "title": "Project Three",
-    "description": "Description for project three.",
-    "link": "http://example.com/project-three"
+    "slug": "ecommerce-platform",
+    "title": "E-commerce Platform",
+    "shortDescription": "A full-featured e-commerce platform.",
+    "fullDescription": "An e-commerce platform with product management, user authentication, and payment integration. Built with React, Node.js, and Stripe.",
+    "features": [
+      "Product management",
+      "User authentication",
+      "Payment integration"
+    ],
+    "techStack": ["React", "Node.js", "Express", "MongoDB", "Stripe"],
+    "role": "Full Stack Developer",
+    "img": "/assets/images/im3.jpg",
+    "repo": "https://github.com/example/smart-parking",
+    "live": "https://ecommerce.example.com"
   },
   {
     "id": 4,
-    "img": "../../assets/images/im4.jpg",
-    "title": "Project Four",
-    "description": "Description for project four.",
-    "link": "http://example.com/project-four"
+    "slug": "portfolio-website",
+    "title": "Portfolio Website",
+    "shortDescription": "A personal portfolio website to showcase projects.",
+    "fullDescription": "A responsive portfolio website built with React and Tailwind CSS to showcase my projects and skills.",
+    "features": ["Responsive design", "Project showcase", "Contact form"],
+    "techStack": ["React", "Tailwind CSS", "Vite"],
+    "role": "Frontend Developer",
+    "img": "/assets/images/im4.jpg",
+    "repo": "https://github.com/example/job-tracker",
+    "live": "https://portfolio.example.com"
   }
 ]

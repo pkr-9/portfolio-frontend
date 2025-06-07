@@ -36,10 +36,11 @@ const Navigation = () => {
     <header className={`aurora-header ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
         <div className="logo-section" onClick={() => setMobileOpen(false)}>
-          <div className="logo-img" />
-          <Link to="/" className="company-name">
-            My Portfolio
-          </Link>
+          {/* <div className="logo-img" /> */}
+          <Link to="/" className="logo-img"></Link>
+          {/* <Link to="/" className="company-name">
+            SG Engineered
+          </Link> */}
         </div>
 
         <div className="hamburger" onClick={() => setMobileOpen(!mobileOpen)}>

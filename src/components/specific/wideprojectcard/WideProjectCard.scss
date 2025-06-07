@@ -34,7 +34,7 @@
     .title {
       font-size: 2.2rem;
       font-weight: 700;
-      color: #fff;
+      color: #ffffff;
       text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
     }
 
@@ -45,7 +45,8 @@
 
       p {
         font-size: 1.1rem;
-        color: #eee;
+        color: #ffffff;
+        font-weight: 500;
         margin-bottom: 15px;
       }
 
@@ -65,7 +66,23 @@
   }
 
   &:hover .background-image {
-    filter: blur(2px) brightness(0.8);
+    filter: blur(4px) brightness(0.8);
     transform: scale(1.02);
+  }
+}
+.explore-button {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 8px 16px;
+  border: 1px solid #00ffee;
+  border-radius: 5px;
+  color: #00ffee;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #00ffee;
+    color: #000000;
   }
 }

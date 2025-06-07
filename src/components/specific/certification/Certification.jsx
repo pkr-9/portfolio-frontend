@@ -4,13 +4,21 @@ import '../../../styles/global.scss';
 import './Certification.scss';
 
 const certifications = [
-  { year: '2024', title: 'Java Backend', provider: 'Udemy' },
-  { year: '2023', title: 'React Mastery', provider: 'FreeCodeCamp' },
-  { year: '2022', title: 'Oracle SQL Expert', provider: 'Oracle' },
+  { year: '2024', title: 'Cloud Computing', provider: 'NPTEL' },
+  {
+    year: '2024',
+    title: 'NLP - Natural Language Processing with Python',
+    provider: 'Udemy',
+  },
+  {
+    year: '2023',
+    title: 'Python 101 for Data Science',
+    provider: 'Cognitive Class',
+  },
 ];
 
 const extraCertifications = [
-  { year: '2022', title: 'Docker Essentials', provider: 'Coursera' },
+  { year: '2022', title: 'MongoDB Developers Toolkit', provider: 'Coursera' },
   { year: '2022', title: 'Kubernetes Basics', provider: 'Linux Foundation' },
   { year: '2023', title: 'Git & GitHub Pro', provider: 'LinkedIn Learning' },
 ];
