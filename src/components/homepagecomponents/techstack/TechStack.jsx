@@ -16,7 +16,7 @@ const TechStack = () => {
       icon: <Server size={32} />,
       title: 'Backend & API Development',
       description:
-        'Java (Core & Advanced), Spring Boot, Node.js, Express, JPA, RESTful APIs, Servlets, JSP, JWT',
+        'MVC, Java (Core & Advanced), Spring Boot, Node.js, Express, JPA, RESTful APIs, Servlets, JSP, JWT',
       color: 'green-emerald',
     },
     {
