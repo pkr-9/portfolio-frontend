@@ -35,7 +35,6 @@
       "i18next"
     ],
     "role": "Full Stack Developer",
-    "duration": "January 2025 – March 2025",
     "img": "/assets/images/portfolio/portfolio-1.png",
     "main_img": "/assets/images/portfolio/portfolio.png",
     "gallery": [
@@ -65,6 +64,7 @@
       {
         "name": "Pappu Kumar",
         "role": "Full Stack Engineer",
+        "duration": "April 2025 – Present",
         "github": "https://github.com/pappukumarme9999",
         "linkedin": "https://www.linkedin.com/in/pappu-kumar-gupta/"
       }
@@ -104,7 +104,7 @@
       "EasyInvoice"
     ],
     "role": "Full Stack Developer",
-    "duration": "April 2025 – Present",
+    "duration": "January 2025 – March 2025",
     "img": "/assets/images/booknest/booknest-1.png",
     "main_img": "/assets/images/booknest/booknest-1.png",
     "gallery": [
