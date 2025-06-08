@@ -1,9 +1,10 @@
 .dimensional-card {
   position: relative;
   height: 340px;
-  width: 100%;
+  width: calc(100% - 2rem); // subtract margin
   max-width: 1100px;
   margin: 40px auto;
+  box-sizing: border-box;
   border-radius: 20px;
   overflow: hidden;
   perspective: 1200px;
@@ -84,7 +85,8 @@
 @media (max-width: 480px) {
   .dimensional-card {
     height: auto; // Let content dictate height
-    margin: 1rem 0.5rem;
+    width: calc(100% - 2rem); // or 1rem + 1rem margin
+    margin: 1rem auto;
     border-radius: 12px;
     overflow: hidden;
 
@@ -130,7 +132,8 @@
 @media (max-width: 768px) {
   .dimensional-card {
     height: auto; // let content grow
-    margin: 1.5rem 1rem;
+    width: calc(100% - 2rem); // or 1rem + 1rem margin
+    margin: 1rem auto;
     border-radius: 12px;
     transform: none !important;
     overflow: hidden;
@@ -177,7 +180,8 @@
 @media (min-width: 769px) and (max-width: 1024px) {
   .dimensional-card {
     height: auto;
-    margin: 1.5rem;
+    width: calc(100% - 2rem); // or 1rem + 1rem margin
+    margin: 1rem auto;
     border-radius: 16px;
 
     .content {
@@ -206,8 +210,9 @@
 @media (min-width: 1200px) {
   .dimensional-card {
     height: 300px;
-    max-width: 1100px;
-    margin: 40px auto;
+    // max-width: 1100px;
+    width: calc(100% - 2rem); // or 1rem + 1rem margin
+    margin: 1rem auto;
 
     .content {
       padding: 2.5rem;
@@ -255,9 +260,9 @@
   }
 }
 
-.show-on-mobile {
-  @media (max-width: 768px) {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
+// .show-on-mobile {
+//   @media (max-width: 768px) {
+//     opacity: 1 !important;
+//     transform: none !important;
+//   }
+// }
