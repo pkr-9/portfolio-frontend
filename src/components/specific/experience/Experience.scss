@@ -1,25 +1,21 @@
-
 .experience-section {
   padding: 5rem 2rem;
   background: transparent;
   position: relative;
   z-index: 2;
   color: black;
-
   .experience-title {
     text-align: center;
     font-size: 3rem;
     font-weight: 800;
     background: linear-gradient(135deg, #ffffff, #f8fafc);
     -webkit-background-clip: text;
-    // -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 4rem;
     position: relative;
     color: black !important;
-
     &::after {
-      content: '';
+      content: "";
       display: block;
       width: 100px;
       height: 4px;
@@ -29,22 +25,20 @@
       animation: shimmer 2s ease-in-out infinite;
     }
   }
-
   .experience-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     padding: 0;
-    box-shadow: 
+    box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.1),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
     position: relative;
-
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -54,43 +48,34 @@
       opacity: 0;
       transition: opacity 0.3s ease;
     }
-
     &:hover {
       transform: translateY(-8px) scale(1.02);
-      box-shadow: 
+      box-shadow:
         0 20px 40px rgba(0, 0, 0, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
       border-color: rgba(255, 255, 255, 0.3);
-
       &::before {
         opacity: 1;
       }
     }
-
     .card-body {
       padding: 2rem;
     }
-
     .company-name {
       font-size: 1.5rem;
       font-weight: 700;
-      // color: #ffffff;
       color: black;
       margin-bottom: 0.5rem;
     }
-
     .role-name {
       font-size: 1.1rem;
       font-weight: 500;
-      // color: rgba(255, 255, 255, 0.8) !important;
       color: black !important;
       margin-bottom: 1rem;
     }
-    
     .date-range {
       span {
         background: rgba(255, 255, 255, 0.15);
-        // color: #ffffff;
         color: black;
         padding: 0.5rem 1rem;
         border-radius: 50px;
@@ -100,11 +85,9 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
       }
     }
-
     .skills-wrapper {
       .skill-badge {
         background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(167, 139, 250, 0.2)) !important;
-        // color: #ffffff !important;
         color: black !important;
         border: 1px solid rgba(255, 255, 255, 0.2);
         padding: 0.5rem 1rem;
@@ -114,48 +97,39 @@
         margin-bottom: 0.5rem;
         backdrop-filter: blur(10px);
         transition: all 0.3s ease;
-
         &:hover {
           background: linear-gradient(135deg, rgba(96, 165, 250, 0.3), rgba(167, 139, 250, 0.3)) !important;
           transform: translateY(-2px);
         }
       }
     }
-
     .btn-outline-secondary {
       background-color: rgba(209, 247, 252, 0.32);
-    border: 1px solid rgb(0 0 0 / 22%);
-      // color: #ffffff;
+      border: 1px solid rgb(0 0 0 / 22%);
       color: black;
       border-radius: 50px;
       padding: 0.6rem 1.5rem;
       font-weight: 500;
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
-
       &:hover {
         background: rgba(167, 255, 251, 0.767);
         border-color: rgba(255, 255, 255, 0.4);
-        // color: #ffffff;
         color: black;
         transform: translateY(-2px);
       }
     }
-
     .responsibility-list {
       list-style: none;
       padding-left: 0;
-
       li {
         position: relative;
         padding-left: 1.5rem;
         margin-bottom: 0.8rem;
-        // color: rgba(255, 255, 255, 0.9);
         color: black;
         line-height: 1.6;
-
         &::before {
-          content: '→';
+          content: "→";
           position: absolute;
           left: 0;
           color: #60a5fa;
@@ -164,18 +138,15 @@
       }
     }
   }
-
   .view-toggle-button {
     background: linear-gradient(135deg, #f0e0e8, #5cd2f6);
     border: none;
-    // color: #ffffff;
     color: black;
     padding: 0.8rem 2rem;
     border-radius: 50px;
     font-weight: 600;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
-
     &:hover {
       background: linear-gradient(135deg, #fce6f1, #58d4fa);
       transform: translateY(-2px);
@@ -183,10 +154,14 @@
     }
   }
 }
-
 @keyframes shimmer {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 @media (max-width: 768px) {
@@ -199,8 +174,136 @@
 
     .experience-card {
       .card-body {
-        padding: 1.5rem;
+        padding: 1.2rem;
       }
+
+      .company-name {
+        font-size: 1.2rem;
+      }
+
+      .role-name {
+        font-size: 1rem;
+      }
+
+      .date-range span {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+      }
+
+      .skill-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+      }
+
+      .btn-outline-secondary {
+        font-size: 0.85rem;
+        padding: 0.5rem 1.2rem;
+      }
+
+      .responsibility-list li {
+        font-size: 0.85rem;
+      }
+    }
+
+    .view-toggle-button {
+      font-size: 0.9rem;
+      padding: 0.6rem 1.5rem;
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .experience-section {
+    padding: 4rem 2rem;
+
+    .experience-title {
+      font-size: 2.5rem;
+    }
+
+    .experience-card {
+      .card-body {
+        padding: 1.8rem;
+      }
+
+      .company-name {
+        font-size: 1.4rem;
+      }
+
+      .role-name {
+        font-size: 1.05rem;
+      }
+
+      .date-range span {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .skill-badge {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .btn-outline-secondary {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.4rem;
+      }
+
+      .responsibility-list li {
+        font-size: 0.95rem;
+      }
+    }
+
+    .view-toggle-button {
+      font-size: 0.95rem;
+      padding: 0.7rem 1.8rem;
+    }
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .experience-section {
+    padding: 4.5rem 3rem;
+
+    .experience-title {
+      font-size: 2.8rem;
+    }
+
+    .experience-card {
+      .card-body {
+        padding: 2rem;
+      }
+
+      .company-name {
+        font-size: 1.45rem;
+      }
+
+      .role-name {
+        font-size: 1.1rem;
+      }
+
+      .date-range span {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .skill-badge {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .btn-outline-secondary {
+        font-size: 0.95rem;
+        padding: 0.6rem 1.5rem;
+      }
+
+      .responsibility-list li {
+        font-size: 1rem;
+      }
+    }
+
+    .view-toggle-button {
+      font-size: 1rem;
+      padding: 0.8rem 2rem;
     }
   }
 }
