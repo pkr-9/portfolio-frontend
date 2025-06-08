@@ -1,9 +1,9 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import c1 from '../../../assets/images/carousel_1.png';
-import c2 from '../../../assets/images/carousel_1.png';
-import c3 from '../../../assets/images/carousel_1.png';
+import c1 from '/assets/images/carousel_1.png';
+import c2 from '/assets/images/carousel_1.png';
+import c3 from '/assets/images/carousel_1.png';
 import '../../../styles/global.scss';
 import './Carousel.scss';
 

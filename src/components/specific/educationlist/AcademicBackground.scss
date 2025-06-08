@@ -1,4 +1,3 @@
-
 .academic-section {
   padding: 5rem 2rem;
   background: transparent;
@@ -11,38 +10,34 @@
     font-weight: 800;
     background: linear-gradient(135deg, #ffffff, #f8fafc);
     -webkit-background-clip: text;
-    // -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 2rem;
     position: relative;
 
     &::after {
-      content: '';
+      content: "";
       display: block;
       width: 100px;
       height: 4px;
       background: linear-gradient(90deg, #fbbf24, #f59e0b);
       margin: 1rem auto 0;
       border-radius: 2px;
-      animation: shine 2.5s ease-in-out infinite;
     }
   }
 
   .text-muted {
-    // color: rgba(255, 255, 255, 0.7) !important;
     color: black !important;
     font-size: 1.1rem;
     margin-bottom: 4rem;
   }
 
   .education-card {
-    // background: rgba(255, 255, 255, 0.1);
     background-color: linear-gradient(to right, #bbfdffd3, #ffffff) /* Fallback color */;
     background-image: linear-gradient(to right, #bbfdffd3, #ffffff);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-radius: 20px;
-    box-shadow: 
+    box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.1),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -50,7 +45,7 @@
     position: relative;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -63,7 +58,7 @@
 
     &:hover {
       transform: translateY(-10px) rotateX(2deg);
-      box-shadow: 
+      box-shadow:
         0 20px 40px rgba(0, 0, 0, 0.15),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
       border-color: rgba(255, 255, 255, 0.3) !important;
@@ -78,7 +73,6 @@
       }
 
       .degree-title {
-        // color: #ffffff;
         color: black;
       }
     }
@@ -107,20 +101,17 @@
     .degree-title {
       font-size: 1.4rem;
       font-weight: 700;
-      // color: rgba(255, 255, 255, 0.95);
       color: black;
       margin-bottom: 0.5rem;
       transition: color 0.3s ease;
     }
 
     .text-muted {
-      // color: rgba(255, 255, 255, 0.7) !important;
       color: black !important;
       font-weight: 500;
     }
-    
+
     .text-secondary {
-      // color: rgba(255, 255, 255, 0.6) !important;
       color: black !important;
     }
 
@@ -133,13 +124,12 @@
         position: relative;
         padding-left: 1.5rem;
         margin-bottom: 0.8rem;
-        // color: rgba(255, 255, 255, 0.85);
         color: black;
         line-height: 1.6;
         font-weight: 500;
 
         &::before {
-          content: '✓';
+          content: "✓";
           position: absolute;
           left: 0;
           color: #10b981;
@@ -159,7 +149,6 @@
 
     .badge {
       background: linear-gradient(135deg, rgba(251, 190, 36, 0.445), rgba(245, 159, 11, 0.555)) !important;
-      // color: #ffffff !important;
       color: black !important;
       border: 1px solid rgba(251, 191, 36, 0.3);
       padding: 0.5rem 1rem;
@@ -174,11 +163,6 @@
       }
     }
   }
-}
-
-@keyframes shine {
-  0%, 100% { opacity: 1; transform: scaleX(1); }
-  50% { opacity: 0.8; transform: scaleX(1.15); }
 }
 
 @media (max-width: 768px) {

@@ -67,7 +67,7 @@ const HomepageAbout = () => {
                 </Card.Body>
               </Card>
 
-              <Card className="about-card">
+              {/* <Card className="about-card">
                 <Card.Body>
                   <Card.Title className="h5 about-title">Skills</Card.Title>
                   <div className="d-flex flex-column gap-3">
@@ -93,6 +93,19 @@ const HomepageAbout = () => {
                       </div>
                     ))}
                   </div>
+                </Card.Body>
+              </Card> */}
+
+              <Card className="about-card-2">
+                <Card.Body>
+                  <Card.Title className="h5 about-title">
+                    Currently Learning
+                  </Card.Title>
+                  <ul className="about-text">
+                    <li>Practicing Supervised Learning - ML</li>
+                    <li>TypeScript in React projects</li>
+                    <li>Spring Boot API best practices</li>
+                  </ul>
                 </Card.Body>
               </Card>
             </motion.div>
@@ -127,18 +140,6 @@ const HomepageAbout = () => {
                 </motion.div>
               ))}
             </motion.div>
-            <Card className="about-card-2">
-              <Card.Body>
-                <Card.Title className="h5 about-title">
-                  Currently Learning
-                </Card.Title>
-                <ul className="about-text">
-                  <li>Unit testing and CI/CD basics</li>
-                  <li>TypeScript in React projects</li>
-                  <li>Spring Boot API best practices</li>
-                </ul>
-              </Card.Body>
-            </Card>
           </Col>
         </Row>
       </Container>

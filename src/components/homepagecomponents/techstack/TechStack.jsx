@@ -20,7 +20,7 @@ const TechStack = () => {
     },
     {
       icon: <Server size={32} />,
-      title: 'Backend & API Development',
+      title: 'Backend & API',
       description: 'MVC, Spring Boot, Node.js, JPA, RESTful APIs',
       color: 'green-emerald',
     },

@@ -46,7 +46,7 @@
   .about-card-2 {
     background-color: rgb(201, 255, 255); /* Fallback color */
     background-image: linear-gradient(to right, #bbfdff, #ffffff);
-    margin: 20px 0;
+    margin: 10px 0;
     padding: 1.5rem;
     border-radius: 0.75rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
@@ -56,16 +56,16 @@
       padding-left: 1.5rem;
     }
   }
-  .custom-progress {
-    height: 0.5rem;
-    border-radius: 1rem;
-    background-color: #e5e7eb;
+  // .custom-progress {
+  //   height: 0.5rem;
+  //   border-radius: 1rem;
+  //   background-color: #e5e7eb;
 
-    .progress-bar {
-      background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
-      border-radius: 1rem;
-    }
-  }
+  //   .progress-bar {
+  //     background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+  //     border-radius: 1rem;
+  //   }
+  // }
 
   .stat-card {
     border: 1px solid #e5e7eb;
