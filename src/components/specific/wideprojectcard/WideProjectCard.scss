@@ -81,124 +81,146 @@
 }
 
 // Mobile responsiveness
+@media (max-width: 480px) {
+  .dimensional-card {
+    height: auto; // Let content dictate height
+    margin: 1rem 0.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+
+    .background-image {
+      filter: blur(3px) brightness(0.6);
+    }
+
+    .content {
+      padding: 1rem;
+      overflow-y: auto; // Allow vertical scroll if needed
+      max-height: 400px; // Prevent infinite growth
+
+      .title {
+        font-size: 1.2rem;
+        line-height: 1.4;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-shadow: none;
+      }
+
+      .details {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+
+        p {
+          font-size: 0.9rem;
+          line-height: 1.3;
+          margin-bottom: 0.75rem;
+          word-wrap: break-word;
+        }
+
+        .explore-button {
+          font-size: 0.85rem;
+          padding: 6px 12px;
+        }
+      }
+    }
+  }
+}
+
+// For small devices (phones & tablets up to 768px)
 @media (max-width: 768px) {
-  .wide-project-card {
-    height: 320px;
+  .dimensional-card {
+    height: auto; // let content grow
     margin: 1.5rem 1rem;
     border-radius: 12px;
+    transform: none !important;
+    overflow: hidden;
 
-    .card-content {
-      padding: 1.5rem;
-    }
-
-    .card-title {
-      font-size: 1.6rem;
-    }
-
-    .card-details {
-      .card-description {
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-      }
-
-      .tech-stack {
-        margin-bottom: 1rem;
-
-        .tech-badge {
-          font-size: 0.75rem;
-          padding: 0.2rem 0.6rem;
-        }
-      }
-    }
-
-    .explore-link {
-      padding: 0.6rem 1.2rem;
-      font-size: 0.85rem;
-    }
-
-    // Disable 3D transforms on mobile for better performance
-    &:hover {
-      transform: none;
-
-      .card-background {
-        transform: scale(1.02);
-      }
-    }
-  }
-
-  @media (max-width: 768px) {
-    .dimensional-card {
+    .background-image {
+      filter: blur(3px) brightness(0.6);
       transform: none !important;
+    }
 
-      .background-image {
-        filter: blur(2px) brightness(0.5);
-        transform: none !important;
+    .content {
+      padding: 1rem;
+      overflow-y: auto;
+      max-height: 420px;
+
+      .title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-shadow: none;
       }
 
-      .content {
-        .details {
-          opacity: 1 !important;
-          transform: translateY(0) !important;
-          transition: none !important;
+      .details {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        transition: none !important;
+
+        p {
+          font-size: 0.95rem;
+          line-height: 1.4;
+          margin-bottom: 0.75rem;
+          word-wrap: break-word;
+        }
+
+        .explore-button {
+          font-size: 0.9rem;
+          padding: 0.5rem 1rem;
         }
       }
     }
   }
 }
 
-@media (max-width: 480px) {
-  .wide-project-card {
-    height: 300px;
-    margin: 1rem 0.5rem;
-
-    .card-content {
-      padding: 1.2rem;
-    }
-
-    .card-title {
-      font-size: 1.4rem;
-    }
-
-    .card-details {
-      .tech-stack {
-        .tech-badge {
-          font-size: 0.7rem;
-          padding: 0.15rem 0.5rem;
-        }
-      }
-    }
-
-    .status-badge {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.75rem;
-    }
-  }
-}
-
-// Tablet landscape
+// Tablet landscape (medium devices)
 @media (min-width: 769px) and (max-width: 1024px) {
-  .wide-project-card {
-    height: 260px;
+  .dimensional-card {
+    height: auto;
     margin: 1.5rem;
+    border-radius: 16px;
 
-    .card-title {
-      font-size: 1.8rem;
+    .content {
+      padding: 1.75rem;
+
+      .title {
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
+
+      .details {
+        p {
+          font-size: 1rem;
+        }
+
+        .explore-button {
+          font-size: 0.95rem;
+          padding: 0.6rem 1.2rem;
+        }
+      }
     }
   }
 }
 
-// Large screens
+// Large screens (desktop)
 @media (min-width: 1200px) {
-  .wide-project-card {
+  .dimensional-card {
     height: 300px;
     max-width: 1100px;
+    margin: 40px auto;
 
-    .card-title {
-      font-size: 2.2rem;
-    }
-
-    .card-content {
+    .content {
       padding: 2.5rem;
+
+      .title {
+        font-size: 2.2rem;
+      }
+
+      .details {
+        p {
+          font-size: 1.1rem;
+        }
+      }
     }
   }
 }
