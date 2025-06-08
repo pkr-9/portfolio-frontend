@@ -7,24 +7,24 @@ import './AcademicBackground.scss';
 const educationList = [
   {
     degree: 'Master of Computer Applications (MCA)',
-    institution: 'XYZ Institute of Technology',
-    year: '2023',
-    location: 'New Delhi, India',
+    institution: 'IMED | Bharati Vidyapeeth Deemed University',
+    year: '2025',
+    location: 'Pune, India',
     highlights: [
-      'Specialization in Full Stack Development',
-      'CGPA: 8.7/10',
-      'Thesis on AI-Powered Web Applications',
+      'Mastered ML and Full Stack Development',
+      'CGPA: 8.2/10',
+      'Involved in multiple projects including a Machine Learning-based industrial project',
     ],
   },
   {
     degree: 'Bachelor of Computer Applications (BCA)',
-    institution: 'ABC University',
-    year: '2020',
+    institution: 'Maulana Mazharul Haque Arabic and Persian University',
+    year: '2022',
     location: 'Patna, India',
     highlights: [
-      'Major in Software Engineering',
-      'CGPA: 8.4/10',
-      'Final Year Project on E-Governance Systems',
+      'Developed strong foundations in programming and software development',
+      'Percentage: 74%',
+      'Built small-scale applications and participated in coding competitions',
     ],
   },
 ];

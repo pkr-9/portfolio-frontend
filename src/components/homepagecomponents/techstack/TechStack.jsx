@@ -1,36 +1,39 @@
 import { motion } from 'framer-motion';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import { Database, Code2, Server, Wrench } from 'lucide-react';
+import { Database, Code2, Server, Wrench, BrainCircuit } from 'lucide-react';
 import './TechStack.scss';
 
 const TechStack = () => {
   const technologies = [
     {
+      icon: <BrainCircuit size={32} />,
+      title: 'ML & Python Ecosystem',
+      description:
+        'Python & Scripting, TensorFlow, NumPy, Pandas, Scikit-learn',
+      color: 'teal-indigo',
+    },
+    {
       icon: <Code2 size={32} />,
       title: 'Frontend Development',
-      description:
-        'React, Redux, Angular, Bootstrap, Tailwind, HTML5, CSS3, JavaScript (ES6+)',
+      description: 'React, Redux, Angular, Bootstrap, Tailwind, JavaScript',
       color: 'blue-cyan',
     },
     {
       icon: <Server size={32} />,
       title: 'Backend & API Development',
-      description:
-        'MVC, Java (Core & Advanced), Spring Boot, Node.js, Express, JPA, RESTful APIs, Servlets, JSP, JWT',
+      description: 'MVC, Spring Boot, Node.js, JPA, RESTful APIs',
       color: 'green-emerald',
     },
     {
       icon: <Database size={32} />,
       title: 'Database & DevOps',
-      description:
-        'MySQL, MongoDB, Oracle XE, SQL Server, Docker, cPanel, CI/CD',
+      description: 'MySQL, MongoDB, Oracle XE, Docker, CI/CD',
       color: 'purple-pink',
     },
     {
       icon: <Wrench size={32} />,
       title: 'Tools & Methodologies',
-      description:
-        'Git, IntelliJ, Eclipse, Postman, Maven, JIRA, Agile, JUnit, Jest, Secure Coding, DSA',
+      description: 'Git, Postman, JIRA, Agile, Secure Coding, DSA',
       color: 'orange-red',
     },
   ];
@@ -74,7 +77,7 @@ const TechStack = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <Row xs={1} md={2} lg={4} className="g-4">
+          <Row xs={1} sm={2} md={2} lg={5} xl={5} className="g-4">
             {technologies.map((tech, index) => (
               <Col key={index} className="d-flex">
                 <motion.div
