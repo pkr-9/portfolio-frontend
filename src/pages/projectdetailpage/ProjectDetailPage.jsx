@@ -1,3 +1,4 @@
+// ProjectDetailPage.jsx
 import React from 'react';
 import Navigation from '../../components/layout/navbar/Navbar';
 import Footer from '../../components/layout/footer/Footer';
@@ -23,23 +24,53 @@ const ProjectDetailPage = () => {
   const {
     title,
     fullDescription,
-    features,
-    techStack,
-    role,
     duration,
     img,
     main_img,
-    gallery,
-    repo,
     live,
-    architecture,
-    security,
-    scalability,
-    community,
-    paymentFeatures,
-    ebookSupport,
-    team,
+    sectionTitles = {},
+    ...fields
   } = project;
+
+  const renderSection = (key, content) => {
+    if (!content || (Array.isArray(content) && content.length === 0))
+      return null;
+
+    return (
+      <motion.section className="section" key={key}>
+        <h2>{sectionTitles[key] || key.replace(/([A-Z])/g, ' $1')}</h2>
+        {Array.isArray(content) ? (
+          <ul>
+            {content.map((item, i) => (
+              <li key={i}>
+                {typeof item === 'string' ? item : JSON.stringify(item)}
+              </li>
+            ))}
+          </ul>
+        ) : typeof content === 'object' ? (
+          <ul>
+            {Object.entries(content)
+              .filter(([_, value]) => value)
+              .map(([key, _]) => (
+                <li key={key}>{key.replace(/([A-Z])/g, ' $1')}</li>
+              ))}
+          </ul>
+        ) : (
+          <p>{content}</p>
+        )}
+      </motion.section>
+    );
+  };
+
+  const excludedKeys = [
+    'id',
+    'slug',
+    'shortDescription',
+    'repo',
+    'gallery',
+    'team',
+    'ebookSupport',
+  ];
 
   return (
     <>
@@ -61,102 +92,24 @@ const ProjectDetailPage = () => {
 
         <motion.h1 className="title">{title}</motion.h1>
         <p className="meta">
-          <strong>Role:</strong> {role}
-        </p>
-        <p className="meta">
           <strong>Duration:</strong> {duration}
-        </p>
-        <p className="meta">
-          <strong>Architecture:</strong> {architecture}
         </p>
 
         <motion.p className="description">{fullDescription}</motion.p>
 
-        <motion.section className="section">
-          <h2>Features</h2>
-          <ul>
-            {features.map((f, i) => (
-              <li key={i}>{f}</li>
-            ))}
-          </ul>
-        </motion.section>
+        {Object.entries(fields)
+          .filter(([key]) => !excludedKeys.includes(key))
+          .map(([key, value]) => renderSection(key, value))}
 
-        <motion.section className="section">
-          <h2>Tech Stack</h2>
-          <div className="tech-stack">{techStack.join(', ')}</div>
-        </motion.section>
-        {/* {gallery?.length > 0 && (
-        <motion.section className="section">
-          <h2>Gallery</h2>
-          <div className="gallery-carousel">
-            <div className="carousel-track">
-              {gallery.map((src, i) => (
-                <div className="carousel-item" key={i}>
-                  <img
-                    src={src}
-                    onError={(e) => {
-                      e.target.src = '/assets/images/image.png'; // fallback image
-                    }}
-                    alt={`screenshot-${i + 1}`}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-      )} */}
-
-        {security?.length > 0 && (
-          <motion.section className="section">
-            <h2>Security Features</h2>
-            <ul>
-              {security.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          </motion.section>
-        )}
-
-        {scalability && (
-          <motion.section className="section">
-            <h2>Scalability</h2>
-            <p>{scalability}</p>
-          </motion.section>
-        )}
-
-        {paymentFeatures?.length > 0 && (
-          <motion.section className="section">
-            <h2>Payment Options</h2>
-            <ul>
-              {paymentFeatures.map((p, i) => (
-                <li key={i}>{p}</li>
-              ))}
-            </ul>
-          </motion.section>
-        )}
-
-        {ebookSupport && (
+        {project.ebookSupport && (
           <motion.p className="highlight">E-book support: ✅ Enabled</motion.p>
         )}
 
-        {community && (
+        {project.team?.length > 0 && (
           <motion.section className="section">
-            <h2>Community Features</h2>
-            <ul>
-              {Object.entries(community).map(([key, value]) =>
-                value ? (
-                  <li key={key}>{key.replace(/([A-Z])/g, ' $1')}</li>
-                ) : null
-              )}
-            </ul>
-          </motion.section>
-        )}
-
-        {team?.length > 0 && (
-          <motion.section className="section">
-            <h2>Team</h2>
+            <h2>{sectionTitles.team || 'Team'}</h2>
             <ul className="team">
-              {team.map((member, i) => (
+              {project.team.map((member, i) => (
                 <li key={i}>
                   <span className="name">{member.name}</span> – {member.role}
                   {member.github && (
@@ -178,9 +131,6 @@ const ProjectDetailPage = () => {
         )}
 
         <motion.div className="links">
-          <a href={repo} target="_blank" rel="noreferrer">
-            View Code
-          </a>
           <a href={live} target="_blank" rel="noreferrer">
             Live Demo
           </a>

@@ -17,7 +17,7 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isSubmitSuccessful },
     reset,
   } = useForm({
     resolver: zodResolver(formSchema),
@@ -30,8 +30,14 @@ const Contact = () => {
   });
 
   const onSubmit = (data) => {
-    console.log('Form submitted:', data);
-    // Implement your toast or notification here
+    const subject = encodeURIComponent(
+      'New Message from Portfolio Contact Form'
+    );
+    const body = encodeURIComponent(
+      `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\n\nMessage:\n${data.message}`
+    );
+    const mailtoLink = `mailto:pappukumar9999@yahoo.com?subject=${subject}&body=${body}`;
+    window.location.href = mailtoLink;
     reset();
   };
 
@@ -156,7 +162,7 @@ const Contact = () => {
                     <Form.Label>Phone</Form.Label>
                     <Form.Control
                       type="tel"
-                      placeholder="+91-XXXXXXXXXX"
+                      placeholder="Only 10 digits"
                       {...register('phone')}
                       isInvalid={!!errors.phone}
                     />
@@ -184,8 +190,22 @@ const Contact = () => {
                     type="submit"
                     disabled={isSubmitting}
                   >
-                    <Send className="me-2" size={16} />
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {isSubmitting ? (
+                      <>
+                        <Spinner
+                          as="span"
+                          animation="border"
+                          size="sm"
+                          role="status"
+                          aria-hidden="true"
+                        />{' '}
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="me-2" size={16} /> Send Message
+                      </>
+                    )}
                   </Button>
                 </Form>
               </Card.Body>

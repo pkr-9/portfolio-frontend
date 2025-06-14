@@ -47,9 +47,6 @@ const WideProjectCard = ({ imgName, title, description, duration, link }) => {
             rest: { opacity: 0, y: 20 },
             hover: { opacity: 1, y: 0 },
           }}
-          initial="rest"
-          animate="rest"
-          whileHover="hover"
         >
           <p className="duration">
             <strong>Duration:</strong> {duration}

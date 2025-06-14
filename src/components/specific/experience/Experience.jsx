@@ -23,7 +23,7 @@ const experiences = [
       'REST API',
       'RBAC',
       'SQL',
-      'JUnit',
+      'Jest',
       'Agile',
     ],
     responsibilities: [

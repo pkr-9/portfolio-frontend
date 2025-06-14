@@ -8,32 +8,31 @@ const TechStack = () => {
     {
       icon: <BrainCircuit size={32} />,
       title: 'ML & Python Ecosystem',
-      description:
-        'Python & Scripting, TensorFlow, NumPy, Pandas, Scikit-learn',
+      description: 'Python & Scripting, NLP, Scikit-learn',
       color: 'teal-indigo',
     },
     {
       icon: <Code2 size={32} />,
       title: 'Frontend Development',
-      description: 'React, Redux, Angular, Bootstrap, Tailwind, JavaScript',
+      description: 'React, Redux, Bootstrap, SCSS, JavaScript',
       color: 'blue-cyan',
     },
     {
       icon: <Server size={32} />,
       title: 'Backend & API',
-      description: 'MVC, Spring Boot, Node.js, JPA, RESTful APIs',
+      description: 'MVC, Spring Boot, Node.js, JPA, RESTful',
       color: 'green-emerald',
     },
     {
       icon: <Database size={32} />,
       title: 'Database & DevOps',
-      description: 'MySQL, MongoDB, Oracle XE, Docker, CI/CD',
+      description: 'MySQL, MongoDB, Oracle XE, Docker',
       color: 'purple-pink',
     },
     {
       icon: <Wrench size={32} />,
       title: 'Tools & Methodologies',
-      description: 'Git, Postman, JIRA, Agile, Secure Coding, DSA',
+      description: 'Git, Postman, CI/CD, Agile, DSA',
       color: 'orange-red',
     },
   ];

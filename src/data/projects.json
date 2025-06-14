@@ -1,79 +1,17 @@
 [
   {
     "id": 1,
-    "slug": "production-grade-portfolio",
-    "title": "Production-Grade Portfolio Platform",
-    "shortDescription": "A full-stack, client-customizable portfolio platform with secure admin dashboard and production deployment readiness.",
-    "fullDescription": "This platform is a modular, secure, and production-ready portfolio system designed for real-world personal branding. It includes a client-facing React frontend to showcase projects and skills, and an admin dashboard for easy content management, even by non-technical users. Built using Spring Boot, PostgreSQL, and Supabase Storage, the backend offers robust REST APIs secured by JWT authentication. The system supports deployment to any VPS with SSL, custom domains, and email integration. Fully customizable for developers, freelancers, or business professionals, the platform is mobile-responsive and built with modern UX principles.",
-    "features": [
-      "Secure and user-friendly admin panel",
-      "Modular frontend and backend structure",
-      "Real-time content management without redeploy",
-      "Deployment-ready with SSL, domain, and CI/CD support",
-      "Supabase storage integration for image and file uploads",
-      "Multi-section portfolio (about, projects, contact, etc.)",
-      "Mobile responsive and professionally themed UI",
-      "Admin authentication and protected dashboard",
-      "Customizable for multiple user personas (developer, designer, freelancer)"
-    ],
-    "techStack": [
-      "React 19",
-      "Vite",
-      "React Router DOM v7",
-      "SCSS + Bootstrap 5",
-      "Framer Motion",
-      "Java 17",
-      "Spring Boot 3",
-      "PostgreSQL (Supabase)",
-      "Spring Security",
-      "Supabase Storage",
-      "MapStruct",
-      "Flyway",
-      "Hibernate",
-      "JWT",
-      "Axios",
-      "i18next"
-    ],
-    "role": "Full Stack Developer",
-    "duration": "April 2025 – Present",
-    "img": "/assets/images/portfolio/portfolio-1.png",
-    "main_img": "/assets/images/portfolio/portfolio.png",
-    "gallery": [
-      "/assets/images/portfolio/portfolio-1.png",
-      "/assets/images/portfolio/portfolio-2.png",
-      "/assets/images/portfolio/portfolio-3.png"
-    ],
-    "repo": "https://github.com/example/production-portfolio",
-    "live": "https://portfolio.example.com",
-    "architecture": "Modular Monolith with RESTful API integration between client, admin, and backend services",
-    "security": [
-      "JWT-based authentication with Spring Security",
-      "Environment-secured secrets using `.env` and config maps",
-      "Role-based access control for admin panel",
-      "Rate limiting and audit logging for sensitive actions"
-    ],
-    "scalability": "Backend designed to support multi-user dashboards and extendable REST API for blogs, testimonials, and contact forms",
-    "community": {
-      "reviewsEnabled": false,
-      "socialSharing": true,
-      "forums": false,
-      "loyaltySystem": false
-    },
-    "paymentFeatures": [],
-    "ebookSupport": false,
-    "team": [
-      {
-        "name": "Pappu Kumar",
-        "role": "Full Stack Engineer",
-        "github": "https://github.com/pappukumarme9999",
-        "linkedin": "https://www.linkedin.com/in/pappu-kumar-gupta/"
-      }
-    ]
-  },
-  {
-    "id": 2,
     "slug": "booknest-marketplace",
     "title": "BookNest – Online Book Marketplace",
+    "sectionTitles": {
+      "features": "Key Features",
+      "techStack": "Technology Stack",
+      "security": "Security Enhancements",
+      "scalability": "Scalability",
+      "community": "Community Features",
+      "paymentFeatures": "Payment Options",
+      "team": "Team Members"
+    },
     "shortDescription": "A specialized, community-driven platform for buying, selling, and managing books.",
     "fullDescription": "BookNest is a specialized and intelligent online platform built exclusively for book enthusiasts. Unlike generic marketplaces, BookNest focuses entirely on the lifecycle of books — from discovery and purchase to review, resale, and donation. Users can browse books using advanced search filters such as title, edition, condition, ISBN, or price. They can organize their collections in a virtual bookshelf, track orders in real time, and securely buy or sell with multiple payment options.Sellers benefit from robust inventory management tools, bulk uploads, and visibility within a trusted community. Buyers can read peer reviews, engage in discussions, and share favorites with one-click social sharing. Features like loyalty points, real-time tracking, e-book downloads, and multi-role accounts (admin, seller, buyer) make the platform comprehensive and scalable.With performance-optimized UI, secure JWT-based sessions, Razorpay payments, and integration of Mongoose, Multer, EasyInvoice, and Toastify, BookNest stands out as a full-stack, user-centric solution for modern digital reading and commerce.",
     "features": [
@@ -103,16 +41,9 @@
       "Toastify",
       "EasyInvoice"
     ],
-    "role": "Full Stack Developer",
     "duration": "January 2025 – March 2025",
     "img": "/assets/images/booknest/booknest-1.png",
     "main_img": "/assets/images/booknest/booknest-1.png",
-    "gallery": [
-      "/assets/images/portfolio/portfolio-1.png",
-      "/assets/images/portfolio/image2.png",
-      "/assets/images/portfolio/image3.png"
-    ],
-    "repo": "https://github.com/example/booknest-marketplace",
     "live": "https://booknest.example.com",
     "architecture": "Modular Monolithic with Frontend-Backend Separation",
     "security": [
@@ -144,35 +75,75 @@
       }
     ]
   },
-
   {
-    "id": 3,
-    "slug": "ecommerce-platform",
-    "title": "Example----E-commerce Platform",
-    "shortDescription": "A full-featured e-commerce platform.",
-    "fullDescription": "An e-commerce platform with product management, user authentication, and payment integration. Built with React, Node.js, and Stripe.",
+    "id": 2,
+    "slug": "production-grade-portfolio",
+    "title": "Production-Grade Portfolio Platform",
+    "sectionTitles": {
+      "features": "Platform Features",
+      "techStack": "Tech Stack Used",
+      "security": "Security Highlights",
+      "scalability": "Scalability",
+      "team": "Development Team"
+    },
+    "shortDescription": "A full-stack, client-customizable portfolio platform with secure admin dashboard and production deployment readiness.",
+    "fullDescription": "This platform is a modular, secure, and production-ready portfolio system designed for real-world personal branding. It includes a client-facing React frontend to showcase projects and skills, and an admin dashboard for easy content management, even by non-technical users. Built using Spring Boot, PostgreSQL, and Supabase Storage, the backend offers robust REST APIs secured by JWT authentication. The system supports deployment to any VPS with SSL, custom domains, and email integration. Fully customizable for developers, freelancers, or business professionals, the platform is mobile-responsive and built with modern UX principles.",
     "features": [
-      "Product management",
-      "User authentication",
-      "Payment integration"
+      "Secure and user-friendly admin panel",
+      "Modular frontend and backend structure",
+      "Real-time content management without redeploy",
+      "Deployment-ready with SSL, domain, and CI/CD support",
+      "Supabase storage integration for image and file uploads",
+      "Multi-section portfolio (about, projects, contact, etc.)",
+      "Mobile responsive and professionally themed UI",
+      "Admin authentication and protected dashboard",
+      "Customizable for multiple user personas (developer, designer, freelancer)"
     ],
-    "techStack": ["React", "Node.js", "Express", "MongoDB", "Stripe"],
-    "role": "Full Stack Developer",
-    "img": "/assets/images/im3.jpg",
-    "repo": "https://github.com/example/smart-parking",
-    "live": "https://ecommerce.example.com"
-  },
-  {
-    "id": 4,
-    "slug": "portfolio-website",
-    "title": "Example----Portfolio Website",
-    "shortDescription": "A personal portfolio website to showcase projects.",
-    "fullDescription": "A responsive portfolio website built with React and Tailwind CSS to showcase my projects and skills.",
-    "features": ["Responsive design", "Project showcase", "Contact form"],
-    "techStack": ["React", "Tailwind CSS", "Vite"],
-    "role": "Frontend Developer",
-    "img": "/assets/images/im4.jpg",
-    "repo": "https://github.com/example/job-tracker",
-    "live": "https://portfolio.example.com"
+    "techStack": [
+      "React 19",
+      "Vite",
+      "React Router DOM v7",
+      "SCSS + Bootstrap 5",
+      "Framer Motion",
+      "Java 17",
+      "Spring Boot 3",
+      "PostgreSQL (Supabase)",
+      "Spring Security",
+      "Supabase Storage",
+      "MapStruct",
+      "Flyway",
+      "Hibernate",
+      "JWT",
+      "Axios",
+      "i18next"
+    ],
+    "duration": "April 2025 – Present",
+    "img": "/assets/images/portfolio/portfolio-1.png",
+    "main_img": "/assets/images/portfolio/portfolio.png",
+    "live": "https://portfolio.example.com",
+    "architecture": "Modular Monolith with RESTful API integration between client, admin, and backend services",
+    "security": [
+      "JWT-based authentication with Spring Security",
+      "Environment-secured secrets using `.env` and config maps",
+      "Role-based access control for admin panel",
+      "Rate limiting and audit logging for sensitive actions"
+    ],
+    "scalability": "Backend designed to support multi-user dashboards and extendable REST API for blogs, testimonials, and contact forms",
+    "community": {
+      "reviewsEnabled": false,
+      "socialSharing": true,
+      "forums": false,
+      "loyaltySystem": false
+    },
+    "paymentFeatures": [],
+    "ebookSupport": false,
+    "team": [
+      {
+        "name": "Pappu Kumar",
+        "role": "Full Stack Engineer",
+        "github": "https://github.com/pappukumarme9999",
+        "linkedin": "https://www.linkedin.com/in/pappu-kumar-gupta/"
+      }
+    ]
   }
 ]
