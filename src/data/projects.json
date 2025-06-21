@@ -120,7 +120,7 @@
     "duration": "April 2025 – Present",
     "img": "/assets/images/portfolio/portfolio-1.png",
     "main_img": "/assets/images/portfolio/portfolio.png",
-    "live": "https://portfolio.example.com",
+    "live": "https://portfolio-frontend-cyan-gamma.vercel.app/",
     "architecture": "Modular Monolith with RESTful API integration between client, admin, and backend services",
     "security": [
       "JWT-based authentication with Spring Security",
