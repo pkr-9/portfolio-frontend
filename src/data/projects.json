@@ -44,7 +44,7 @@
     "duration": "January 2025 – March 2025",
     "img": "/assets/images/booknest/booknest-1.png",
     "main_img": "/assets/images/booknest/booknest-1.png",
-    "live": "https://booknest.example.com",
+    "live": "https://booknest-master.vercel.app/",
     "architecture": "Modular Monolithic with Frontend-Backend Separation",
     "security": [
       "Multi-factor authentication",
