@@ -14,9 +14,11 @@ const ProjectsSection = () => {
               key={project.id}
               title={project.title}
               description={project.shortDescription}
-              duration={project.duration}
-              link={project.slug}
               imgName={project.img}
+              majorTechStack={project.majorTechStack}
+              repo={project.repo}
+              live={project.live}
+              documentation={project.documentation}
             />
           );
         })}

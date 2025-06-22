@@ -162,7 +162,7 @@ const Contact = () => {
                     <Form.Label>Phone</Form.Label>
                     <Form.Control
                       type="tel"
-                      placeholder="Only 10 digits"
+                      placeholder="10 digits"
                       {...register('phone')}
                       isInvalid={!!errors.phone}
                     />
@@ -176,7 +176,7 @@ const Contact = () => {
                     <Form.Control
                       as="textarea"
                       rows={3}
-                      placeholder="Tell me about your project..."
+                      placeholder="Your message here..."
                       {...register('message')}
                       isInvalid={!!errors.message}
                     />

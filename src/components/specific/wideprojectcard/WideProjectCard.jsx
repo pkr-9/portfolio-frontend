@@ -1,8 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+// import React from 'react';
+// import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './WideProjectCard.scss';
-const WideProjectCard = ({ imgName, title, description, duration, link }) => {
+
+const WideProjectCard = ({
+  title,
+  description,
+  imgName,
+  majorTechStack,
+  repo,
+  live,
+  documentation,
+}) => {
   return (
     <motion.div
       className="dimensional-card"
@@ -48,13 +57,46 @@ const WideProjectCard = ({ imgName, title, description, duration, link }) => {
             hover: { opacity: 1, y: 0 },
           }}
         >
-          <p className="duration">
-            <strong>Duration:</strong> {duration}
+          <p className="major-tech-stack">
+            <strong>{majorTechStack.join(', ')}</strong>
           </p>
           <p>{description}</p>
-          <Link to={`/projects/${link}`} className="explore-button">
+
+          <div className="project-buttons">
+            {repo && (
+              <a
+                href={repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-repo"
+              >
+                GitHub Repo
+              </a>
+            )}
+            {live && (
+              <a
+                href={live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-live"
+              >
+                View Live
+              </a>
+            )}
+            {documentation && (
+              <a
+                href={documentation}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-doc"
+              >
+                View Docs
+              </a>
+            )}
+          </div>
+          {/* <Link to={`/projects/${link}`} className="explore-button">
             Explore →
-          </Link>
+          </Link> */}
         </motion.div>
       </motion.div>
     </motion.div>

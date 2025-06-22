@@ -3,6 +3,12 @@
     "id": 1,
     "slug": "booknest-marketplace",
     "title": "BookNest – Online Book Marketplace",
+    "documentation": "/assets/pdfs/BTD.pdf",
+    "majorTechStack": ["MERN", "JWT", "Razorpay"],
+    "img": "/assets/images/booknest/booknest-1.png",
+    "main_img": "/assets/images/booknest/booknest-1.png",
+    "repo": "",
+    "live": "https://booknest-master.vercel.app/",
     "sectionTitles": {
       "features": "Key Features",
       "techStack": "Technology Stack",
@@ -41,10 +47,6 @@
       "Toastify",
       "EasyInvoice"
     ],
-    "duration": "January 2025 – March 2025",
-    "img": "/assets/images/booknest/booknest-1.png",
-    "main_img": "/assets/images/booknest/booknest-1.png",
-    "live": "https://booknest-master.vercel.app/",
     "architecture": "Modular Monolithic with Frontend-Backend Separation",
     "security": [
       "Multi-factor authentication",
@@ -79,6 +81,13 @@
     "id": 2,
     "slug": "production-grade-portfolio",
     "title": "Production-Grade Portfolio Platform",
+    "repo": "",
+    "live": "https://portfolio-frontend-cyan-gamma.vercel.app/",
+    "documentation": "/assets/pdfs/portfolio.pdf",
+    "majorTechStack": ["MERN", "JWT", "Razorpay"],
+    "duration": "April 2025 – Present",
+    "img": "/assets/images/portfolio/portfolio-1.png",
+    "main_img": "/assets/images/portfolio/portfolio.png",
     "sectionTitles": {
       "features": "Platform Features",
       "techStack": "Tech Stack Used",
@@ -86,7 +95,7 @@
       "scalability": "Scalability",
       "team": "Development Team"
     },
-    "shortDescription": "A full-stack, client-customizable portfolio platform with secure admin dashboard and production deployment readiness.",
+    "shortDescription": "A full-stack, client-customizable portfolio platform.",
     "fullDescription": "This platform is a modular, secure, and production-ready portfolio system designed for real-world personal branding. It includes a client-facing React frontend to showcase projects and skills, and an admin dashboard for easy content management, even by non-technical users. Built using Spring Boot, PostgreSQL, and Supabase Storage, the backend offers robust REST APIs secured by JWT authentication. The system supports deployment to any VPS with SSL, custom domains, and email integration. Fully customizable for developers, freelancers, or business professionals, the platform is mobile-responsive and built with modern UX principles.",
     "features": [
       "Secure and user-friendly admin panel",
@@ -117,10 +126,6 @@
       "Axios",
       "i18next"
     ],
-    "duration": "April 2025 – Present",
-    "img": "/assets/images/portfolio/portfolio-1.png",
-    "main_img": "/assets/images/portfolio/portfolio.png",
-    "live": "https://portfolio-frontend-cyan-gamma.vercel.app/",
     "architecture": "Modular Monolith with RESTful API integration between client, admin, and backend services",
     "security": [
       "JWT-based authentication with Spring Security",
@@ -145,5 +150,17 @@
         "linkedin": "https://www.linkedin.com/in/pappu-kumar-gupta/"
       }
     ]
+  },
+  {
+    "id": 3,
+    "slug": "Personal_Finance_Tracker",
+    "title": "Personal Finance Tracker",
+    "documentation": "/assets/pdfs/Personal_Finance_Tracker.pdf",
+    "majorTechStack": ["React", "JWT", "Springboot"],
+    "img": "/assets/images/im2.jpg",
+    "main_img": "/assets/images/im2.jpg",
+    "repo": "",
+    "live": "",
+    "shortDescription": "A web application to help users manage finances."
   }
 ]

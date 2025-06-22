@@ -84,3 +84,47 @@
 .card-link:hover {
   color: #ffffff;
 }
+
+.project-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.3s ease;
+  }
+
+  .btn-repo {
+    background-color: #1f2937;
+    color: #ffffff;
+
+    &:hover {
+      background-color: #111827;
+    }
+  }
+
+  .btn-live {
+    background-color: #10b981;
+    color: white;
+
+    &:hover {
+      background-color: #059669;
+    }
+  }
+
+  .btn-doc {
+    background-color: #3b82f6;
+    color: #ffffff;
+
+    &:hover {
+      background-color: #2563eb;
+    }
+  }
+}

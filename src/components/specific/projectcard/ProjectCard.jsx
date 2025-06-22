@@ -1,11 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+// import { FaExternalLinkAlt } from 'react-icons/fa';
 import Tilt from 'react-parallax-tilt';
 import { motion } from 'framer-motion';
-import { FaExternalLinkAlt } from 'react-icons/fa';
 import './ProjectCard.scss';
 
-const ProjectCard = ({ imgName, title, description, duration, link }) => {
+const ProjectCard = ({
+  title,
+  description,
+  imgName,
+  majorTechStack,
+  repo,
+  live,
+  documentation,
+}) => {
   return (
     <motion.div
       className="custom-project-card"
@@ -25,13 +33,39 @@ const ProjectCard = ({ imgName, title, description, duration, link }) => {
           <img src={imgName} alt={title} className="card-image" />
           <div className="card-content">
             <h3 className="card-title">{title}</h3>
-            <p className="duration">
-              <strong>Duration:</strong> {duration}
+            <p className="tech-stack">
+              <strong>{majorTechStack.join(', ')}</strong>
             </p>
             <p className="card-description">{description}</p>
-            <Link to={`/projects/${link}`} className="card-link">
+            {/* <Link to={`/projects/${link}`} className="card-link">
               Explore <FaExternalLinkAlt size={12} />
-            </Link>
+            </Link> */}
+            <div className="project-buttons">
+              <a
+                href={repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-repo"
+              >
+                GitHub Repo
+              </a>
+              <a
+                href={live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-live"
+              >
+                View Live
+              </a>
+              <a
+                href={documentation}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-doc"
+              >
+                View Docs
+              </a>
+            </div>
           </div>
         </div>
       </Tilt>
