@@ -66,12 +66,12 @@ const Contact = () => {
     {
       icon: Github,
       label: 'GitHub',
-      href: 'https://github.com/pappukumarme9999',
+      href: 'https://github.com/pkr-9',
     },
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/pappu-kumar-gupta/',
+      href: 'https://www.linkedin.com/in/p-kr9/',
     },
   ];
 
