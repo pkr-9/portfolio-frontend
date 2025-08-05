@@ -157,8 +157,8 @@
     "title": "Personal Finance Tracker",
     "documentation": "/assets/pdfs/Personal_Finance_Tracker.pdf",
     "majorTechStack": ["React", "JWT", "Springboot"],
-    "img": "/assets/images/im2.jpg",
-    "main_img": "/assets/images/im2.jpg",
+    "img": "/assets/images/finance.png",
+    "main_img": "/assets/images/finance.png",
     "repo": "https://github.com/pkr-9/project-collection/tree/main/porto-front",
     "live": "https://finance-tracker-react-omega.vercel.app/",
     "shortDescription": "A web application to help users manage finances."
