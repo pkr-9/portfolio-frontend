@@ -1,0 +1,332 @@
+portfolio-backend/
+├── src/
+│   ├── main/
+│   │   ├── java/com/pappu/portfolio/
+│   │   │   ├── admin/
+│   │   │   │   ├── controller/
+│   │   │   │   │   ├── AdminAnalyticsController.java
+│   │   │   │   │   ├── AdminProjectController.java
+│   │   │   │   │   ├── AdminUserController.java
+│   │   │   │   │   ├── AdminContentController.java
+│   │   │   │   │   └── AdminSystemController.java
+│   │   │   │   ├── service/
+│   │   │   │   │   ├── AdminAnalyticsService.java
+│   │   │   │   │   ├── AdminExportService.java
+│   │   │   │   │   ├── AdminImportService.java
+│   │   │   │   │   ├── AdminLogService.java
+│   │   │   │   │   └── AdminNotificationService.java
+│   │   │   │   └── scheduler/
+│   │   │   │       ├── DatabaseBackupScheduler.java
+│   │   │   │       └── StatsAggregatorScheduler.java
+│   │   │   │
+│   │   │   ├── analytics/
+│   │   │   │   ├── model/
+│   │   │   │   │   ├── VisitorStats.java
+│   │   │   │   │   └── ClickEvent.java
+│   │   │   │   └── service/
+│   │   │   │       ├── GeoIPService.java
+│   │   │   │       └── VisitorTrackingService.java
+│   │   │   │
+│   │   │   ├── audit/
+│   │   │   │   ├── AuditAware.java
+│   │   │   │   ├── EntityAuditListener.java
+│   │   │   │   └── model/
+│   │   │   │       └── AuditLog.java
+│   │   │   │
+│   │   │   ├── cache/
+│   │   │   │   ├── RedisCacheManager.java
+│   │   │   │   ├── CacheEvictScheduler.java
+│   │   │   │   └── config/
+│   │   │   │       ├── RedisConfig.java
+│   │   │   │       └── CacheNames.java
+│   │   │   │
+│   │   │   ├── config/
+│   │   │   │   ├── AsyncConfig.java
+│   │   │   │   ├── RateLimiterConfig.java
+│   │   │   │   ├── AuditConfig.java
+│   │   │   │   ├── WebConfig.java
+│   │   │   │   ├── SecurityConfig.java
+│   │   │   │   ├── CorsConfig.java
+│   │   │   │   ├── MapStructConfig.java
+│   │   │   │   ├── SchedulerConfig.java
+│   │   │   │   ├── SwaggerConfig.java
+│   │   │   │   ├── MailConfig.java
+│   │   │   │   └── StorageConfig.java
+│   │   │   │
+│   │   │   ├── constants/
+│   │   │   │   ├── ApiPaths.java
+│   │   │   │   ├── ValidationMessages.java
+│   │   │   │   ├── AppConstants.java
+│   │   │   │   ├── CacheConstants.java
+│   │   │   │   ├── ErrorConstants.java
+│   │   │   │   └── RoleConstants.java
+│   │   │   │
+│   │   │   ├── controller/
+│   │   │   │   ├── v1/
+│   │   │   │   │   ├── ProjectControllerV1.java
+│   │   │   │   │   ├── BlogControllerV1.java
+│   │   │   │   │   └── SkillControllerV1.java
+│   │   │   │   ├── v2/
+│   │   │   │   │   ├── ProjectControllerV2.java
+│   │   │   │   │   └── ContactControllerV2.java
+│   │   │   │   ├── auth/
+│   │   │   │   │   ├── AuthController.java
+│   │   │   │   │   └── RefreshTokenController.java
+│   │   │   │   ├── ProjectController.java
+│   │   │   │   ├── BlogController.java
+│   │   │   │   ├── SkillController.java
+│   │   │   │   ├── ContactController.java
+│   │   │   │   └── ... (all domain controllers)
+│   │   │   │
+│   │   │   ├── dto/
+│   │   │   │   ├── request/
+│   │   │   │   │   ├── admin/
+│   │   │   │   │   │   ├── AdminProjectCreateRequest.java
+│   │   │   │   │   │   ├── AdminUserUpdateRequest.java
+│   │   │   │   │   │   └── BulkImportRequest.java
+│   │   │   │   │   ├── ProjectCreateRequest.java
+│   │   │   │   │   ├── BlogPostRequest.java
+│   │   │   │   │   ├── ContactRequest.java
+│   │   │   │   │   └── ... (all request DTOs)
+│   │   │   │   ├── response/
+│   │   │   │   │   ├── admin/
+│   │   │   │   │   │   ├── AdminProjectResponse.java
+│   │   │   │   │   │   ├── SystemHealthResponse.java
+│   │   │   │   │   │   └── UserDetailResponse.java
+│   │   │   │   │   ├── ProjectResponse.java
+│   │   │   │   │   ├── BlogResponse.java
+│   │   │   │   │   ├── PagedResponse.java
+│   │   │   │   │   └── ... (all response DTOs)
+│   │   │   │   └── wrapper/
+│   │   │   │       ├── ErrorResponse.java
+│   │   │   │       ├── SuccessResponse.java
+│   │   │   │       └── ValidationErrorResponse.java
+│   │   │   │
+│   │   │   ├── event/
+│   │   │   │   ├── event/
+│   │   │   │   │   ├── ContactSubmittedEvent.java
+│   │   │   │   │   ├── ProjectUpdatedEvent.java
+│   │   │   │   │   ├── UserRegisteredEvent.java
+│   │   │   │   │   └── AdminAlertEvent.java
+│   │   │   │   └── listener/
+│   │   │   │       ├── AnalyticsEventListener.java
+│   │   │   │       ├── NotificationListener.java
+│   │   │   │       ├── EmailNotificationListener.java
+│   │   │   │       └── AuditEventListener.java
+│   │   │   │
+│   │   │   ├── exception/
+│   │   │   │   ├── ApiException.java
+│   │   │   │   ├── GlobalExceptionHandler.java
+│   │   │   │   ├── EntityNotFoundException.java
+│   │   │   │   ├── InvalidRequestException.java
+│   │   │   │   ├── UnauthorizedException.java
+│   │   │   │   ├── RateLimitException.java
+│   │   │   │   ├── ServiceUnavailableException.java
+│   │   │   │   └── ValidationException.java
+│   │   │   │
+│   │   │   ├── mapper/
+│   │   │   │   ├── ProjectMapper.java
+│   │   │   │   ├── BlogMapper.java
+│   │   │   │   ├── SkillMapper.java
+│   │   │   │   ├── UserMapper.java
+│   │   │   │   ├── ContactMapper.java
+│   │   │   │   └── AnalyticsMapper.java
+│   │   │   │
+│   │   │   ├── model/
+│   │   │   │   ├── common/
+│   │   │   │   │   ├── BaseEntity.java
+│   │   │   │   │   └── SoftDeleteEntity.java
+│   │   │   │   ├── enums/
+│   │   │   │   │   ├── ProjectType.java
+│   │   │   │   │   ├── SkillLevel.java
+│   │   │   │   │   ├── BlogStatus.java
+│   │   │   │   │   ├── ContactStatus.java
+│   │   │   │   │   └── UserRole.java
+│   │   │   │   ├── Project.java
+│   │   │   │   ├── ProjectMedia.java
+│   │   │   │   ├── BlogPost.java
+│   │   │   │   ├── BlogComment.java
+│   │   │   │   ├── User.java
+│   │   │   │   ├── UserProfile.java
+│   │   │   │   └── ... (all domain models)
+│   │   │   │
+│   │   │   ├── notification/
+│   │   │   │   ├── EmailTemplates.java
+│   │   │   │   ├── NotificationService.java
+│   │   │   │   ├── template/
+│   │   │   │   │   ├── ContactNotification.html
+│   │   │   │   │   └── WelcomeEmail.html
+│   │   │   │   └── webpush/
+│   │   │   │       ├── WebPushService.java
+│   │   │   │       └── PushNotification.java
+│   │   │   │
+│   │   │   ├── repository/
+│   │   │   │   ├── custom/
+│   │   │   │   │   ├── ProjectRepositoryCustom.java
+│   │   │   │   │   ├── BlogRepositoryCustom.java
+│   │   │   │   │   └── UserRepositoryCustom.java
+│   │   │   │   ├── ProjectRepository.java
+│   │   │   │   ├── BlogRepository.java
+│   │   │   │   ├── UserRepository.java
+│   │   │   │   └── ... (all repositories)
+│   │   │   │
+│   │   │   ├── search/
+│   │   │   │   ├── ElasticSearchService.java
+│   │   │   │   ├── SearchIndexer.java
+│   │   │   │   └── model/
+│   │   │   │       └── SearchableProject.java
+│   │   │   │
+│   │   │   ├── security/
+│   │   │   │   ├── oauth2/
+│   │   │   │   │   ├── CustomOAuth2UserService.java
+│   │   │   │   │   ├── OAuth2LoginSuccessHandler.java
+│   │   │   │   │   └── OAuth2FailureHandler.java
+│   │   │   │   ├── JwtTokenProvider.java
+│   │   │   │   ├── JwtAuthFilter.java
+│   │   │   │   ├── CustomUserDetailsService.java
+│   │   │   │   ├── RateLimitingFilter.java
+│   │   │   │   ├── TwoFactorAuthService.java
+│   │   │   │   ├── SecurityUtils.java
+│   │   │   │   └── model/
+│   │   │   │       ├── JwtToken.java
+│   │   │   │       └── UserPrincipal.java
+│   │   │   │
+│   │   │   ├── service/
+│   │   │   │   ├── interfaces/
+│   │   │   │   │   ├── FileStorageService.java
+│   │   │   │   │   ├── SearchService.java
+│   │   │   │   │   ├── ProjectService.java
+│   │   │   │   │   ├── BlogService.java
+│   │   │   │   │   └── ... (all service interfaces)
+│   │   │   │   └── impl/
+│   │   │   │       ├── S3FileStorageServiceImpl.java
+│   │   │   │       ├── LocalFileStorageServiceImpl.java
+│   │   │   │       ├── ElasticSearchServiceImpl.java
+│   │   │   │       ├── ProjectServiceImpl.java
+│   │   │   │       └── ... (all service implementations)
+│   │   │   │
+│   │   │   ├── storage/
+│   │   │   │   ├── FileStorageProperties.java
+│   │   │   │   ├── FileSystemStorageService.java
+│   │   │   │   └── exception/
+│   │   │   │       ├── StorageException.java
+│   │   │   │       └── FileNotFoundException.java
+│   │   │   │
+│   │   │   ├── util/
+│   │   │   │   ├── SlugUtil.java
+│   │   │   │   ├── ValidationUtils.java
+│   │   │   │   ├── DateUtils.java
+│   │   │   │   ├── FileUploadUtil.java
+│   │   │   │   ├── RandomIdUtil.java
+│   │   │   │   ├── HtmlSanitizer.java
+│   │   │   │   ├── MarkdownProcessor.java
+│   │   │   │   └── ThumbnailGenerator.java
+│   │   │   │
+│   │   │   ├── validation/
+│   │   │   │   ├── UniqueEmailValidator.java
+│   │   │   │   ├── ValidProjectTypeValidator.java
+│   │   │   │   └── FutureDateValidator.java
+│   │   │   │
+│   │   │   ├── web/
+│   │   │   │   ├── socket/
+│   │   │   │   │   ├── NotificationSocketHandler.java
+│   │   │   │   │   └── WebSocketConfig.java
+│   │   │   │   ├── rest/
+│   │   │   │   │   ├── ResponseBuilder.java
+│   │   │   │   │   └── PaginationUtil.java
+│   │   │   │   └── sse/
+│   │   │   │       ├── SseEmitterService.java
+│   │   │   │       └── RealtimeStatsEmitter.java
+│   │   │   │
+│   │   │   └── PortfolioApplication.java
+│   │   │
+│   │   └── resources/
+│   │       ├── application.yml
+│   │       ├── application-dev.yml
+│   │       ├── application-prod.yml
+│   │       ├── application-docker.yml
+│   │       ├── messages.properties
+│   │       ├── messages_fr.properties
+│   │       ├── db/
+│   │       │   └── migration/
+│   │       │       ├── V1__init_schema.sql
+│   │       │       ├── V2__add_blog_tables.sql
+│   │       │       └── ... (all migrations)
+│   │       ├── static/
+│   │       │   ├── images/
+│   │       │   ├── documents/
+│   │       │   └── templates/
+│   │       └── templates/
+│   │           ├── emails/
+│   │           │   ├── contact_notification.html
+│   │           │   └── welcome_email.html
+│   │           └── reports/
+│   │               └── monthly_stats.html
+│   │
+│   └── test/
+│       └── java/com/pappu/portfolio/
+│           ├── config/
+│           │   ├── TestSecurityConfig.java
+│           │   └── TestContainersConfig.java
+│           ├── controller/
+│           │   ├── AbstractControllerTest.java
+│           │   ├── ProjectControllerTest.java
+│           │   ├── AdminControllerTest.java
+│           │   └── ... (all controller tests)
+│           ├── repository/
+│           │   ├── AbstractRepositoryTest.java
+│           │   ├── ProjectRepositoryTest.java
+│           │   ├── BlogRepositoryTest.java
+│           │   └── ... (all repository tests)
+│           ├── service/
+│           │   ├── MockDataFactory.java
+│           │   ├── ProjectServiceTest.java
+│           │   ├── BlogServiceTest.java
+│           │   └── ... (all service tests)
+│           ├── util/
+│           │   ├── TestFileUtils.java
+│           │   ├── TestSecurityUtils.java
+│           │   └── TestEmailUtils.java
+│           └── integration/
+│               ├── SecurityIntegrationTest.java
+│               └── ApiVersioningTest.java
+│
+├── docker/
+│   ├── Dockerfile
+│   ├── docker-compose.yml
+│   ├── docker-compose-dev.yml
+│   └── nginx/
+│       ├── nginx.conf
+│       └── ssl/
+│           ├── certificate.crt
+│           └── private.key
+│
+├── docs/
+│   ├── api/
+│   │   ├── client-api.md
+│   │   └── admin-api.md
+│   ├── architecture.md
+│   └── deployment.md
+│
+├── scripts/
+│   ├── deploy.sh
+│   ├── backup-db.sh
+│   └── migrate.sh
+│
+├── postman/
+│   ├── Portfolio-Client.postman_collection.json
+│   ├── Portfolio-Admin.postman_collection.json
+│   └── environment/
+│       ├── local.postman_environment.json
+│       └── production.postman_environment.json
+│
+├── .env.example
+├── .gitignore
+├── .dockerignore
+├── build.gradle
+├── gradle.properties
+├── settings.gradle
+├── LICENSE
+├── README.md
+├── SECURITY.md
+└── CHANGELOG.md

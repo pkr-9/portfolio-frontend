@@ -159,8 +159,8 @@
     "majorTechStack": ["React", "JWT", "Springboot"],
     "img": "/assets/images/im2.jpg",
     "main_img": "/assets/images/im2.jpg",
-    "repo": "",
-    "live": "https://finance-tracker-react-five.vercel.app/",
+    "repo": "https://github.com/pkr-9/project-collection/tree/main/porto-front",
+    "live": "https://finance-tracker-react-omega.vercel.app/",
     "shortDescription": "A web application to help users manage finances."
   }
 ]

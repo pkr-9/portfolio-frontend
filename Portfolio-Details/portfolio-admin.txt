@@ -1,0 +1,122 @@
+portfolio-admin/
+├── public/
+├── src/
+│   ├── api/
+│   │   ├── authApi.js
+│   │   ├── blogApi.js
+│   │   ├── projectApi.js
+│   │   ├── skillApi.js
+│   │   └── index.js
+│   ├── assets/
+│   │   ├── images/
+│   │   ├── icons/
+│   │   └── fonts/
+│   ├── auth/
+│   │   ├── components/
+│   │   │   ├── LoginForm.jsx
+│   │   │   └── AuthWrapper.jsx
+│   │   ├── hooks/
+│   │   │   └── useAuth.js
+│   │   ├── Login.jsx
+│   │   └── authUtils.js
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── buttons/
+│   │   │   │   ├── PrimaryButton.jsx
+│   │   │   │   └── PrimaryButton.scss
+│   │   │   ├── cards/
+│   │   │   │   ├── StatsCard.jsx
+│   │   │   │   └── StatsCard.scss
+│   │   │   └── DataTable/
+│   │   │       ├── DataTable.jsx
+│   │   │       └── DataTable.scss
+│   │   ├── layout/
+│   │   │   ├── Sidebar/
+│   │   │   │   ├── Sidebar.jsx
+│   │   │   │   ├── SidebarItem.jsx
+│   │   │   │   └── Sidebar.scss
+│   │   │   ├── Topbar/
+│   │   │   │   ├── Topbar.jsx
+│   │   │   │   ├── UserMenu.jsx
+│   │   │   │   └── Topbar.scss
+│   │   │   └── Breadcrumbs/
+│   │   │       ├── Breadcrumbs.jsx
+│   │   │       └── Breadcrumbs.scss
+│   │   └── ui/
+│   │       ├── alerts/
+│   │       ├── loaders/
+│   │       └── modals/
+│   ├── config/
+│   │   ├── routesConfig.js
+│   │   ├── theme.js
+│   │   └── constants.js
+│   ├── context/
+│   │   ├── AuthContext.jsx
+│   │   ├── ThemeContext.jsx
+│   │   └── index.js
+│   ├── hooks/
+│   │   ├── useApi.js
+│   │   ├── useModal.js
+│   │   └── useToast.js
+│   ├── layouts/
+│   │   ├── AdminLayout.jsx
+│   │   ├── AuthLayout.jsx
+│   │   └── index.js
+│   ├── pages/
+│   │   ├── Dashboard/
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── components/
+│   │   │   │   ├── StatsOverview.jsx
+│   │   │   │   └── RecentActivity.jsx
+│   │   │   └── Dashboard.scss
+│   │   ├── projects/
+│   │   │   ├── ProjectManager.jsx
+│   │   │   ├── components/
+│   │   │   │   ├── ProjectForm.jsx
+│   │   │   │   └── ProjectList.jsx
+│   │   │   └── ProjectManager.scss
+│   │   ├── skills/
+│   │   │   ├── SkillManager.jsx
+│   │   │   ├── components/
+│   │   │   │   ├── SkillForm.jsx
+│   │   │   │   └── SkillList.jsx
+│   │   │   └── SkillManager.scss
+│   │   ├── blog/
+│   │   │   ├── BlogManager.jsx
+│   │   │   ├── components/
+│   │   │   │   ├── BlogForm.jsx
+│   │   │   │   └── BlogList.jsx
+│   │   │   └── BlogManager.scss
+│   │   └── settings/
+│   │       ├── Settings.jsx
+│   │       └── Settings.scss
+│   ├── routes/
+│   │   ├── ProtectedRoute.jsx
+│   │   ├── PublicRoute.jsx
+│   │   └── index.jsx
+│   ├── store/
+│   │   ├── slices/
+│   │   │   ├── authSlice.js
+│   │   │   └── uiSlice.js
+│   │   └── store.js
+│   ├── styles/
+│   │   ├── themes/
+│   │   │   ├── dark.scss
+│   │   │   └── light.scss
+│   │   ├── variables.scss
+│   │   ├── global.scss
+│   │   ├── mixins.scss
+│   │   └── utilities.scss
+│   ├── utils/
+│   │   ├── apiHelpers.js
+│   │   ├── formatters.js
+│   │   └── validators.js
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.js
+├── .env
+├── .env.example
+├── .eslintrc.js
+├── .prettierrc
+├── package.json
+└── README.md

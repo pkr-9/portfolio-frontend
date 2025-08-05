@@ -1,0 +1,169 @@
+portfolio-client/
+├── dist/
+├── node_modules/
+├── public/
+├── src/
+│   ├── __tests__/
+│   │   └── setup.js
+│   ├── api/
+│   │   ├── apiClient.js
+│   │   ├── contactApi.js
+│   │   ├── index.js
+│   │   └── projectApi.js
+│   ├── assets/
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── button/
+│   │   │   │   ├── Button.jsx
+│   │   │   │   └── Button.scss
+│   │   │   └── Spinner/
+│   │   ├── forms/
+│   │   │   └── ValidatedInput.jsx
+│   │   ├── layout/
+│   │   │   ├── aboutsection/
+│   │   │   │   ├── AboutSection.jsx
+│   │   │   │   └── AboutSection.scss
+│   │   │   ├── carousel/
+│   │   │   │   ├── Carousel.jsx
+│   │   │   │   └── Carousel.scss
+│   │   │   ├── contact/
+│   │   │   │   ├── Contact.jsx
+│   │   │   │   └── Contact.scss
+│   │   │   ├── footer/
+│   │   │   │   ├── Footer.jsx
+│   │   │   │   └── Footer.scss
+│   │   │   ├── hero/
+│   │   │   │   ├── Hero.jsx
+│   │   │   │   └── Hero.scss
+│   │   │   ├── navbar/
+│   │   │   │   ├── Navbar.jsx
+│   │   │   │   └── Navbar.scss
+│   │   │   ├── ServicesSection/
+│   │   │   │   ├── ServicesSection.jsx
+│   │   │   │   └── ServicesSection.scss
+│   │   │   ├── verticalprojectssection/
+│   │   │   │   ├── VerticalProjectsSection.jsx
+│   │   │   │   └── VerticalProjectsSection.scss
+│   │   │   ├── whyus/
+│   │   │   │   ├── WhyUs.jsx
+│   │   │   │   └── WhyUs.scss
+│   │   │   └── wideprojectssection/
+│   │   │       ├── WideProjectSection.jsx
+│   │   │       └── WideProjectSection.scss
+│   │   └── specific/
+│   │       ├── achievements/
+│   │       │   ├── Achievements.jsx
+│   │       │   └── Achievements.scss
+│   │       ├── banner/
+│   │       │   ├── Banner.jsx
+│   │       │   └── Banner.scss
+│   │       ├── experience/
+│   │       │   ├── Experience.jsx
+│   │       │   └── Experience.scss
+│   │       ├── projectcard/
+│   │       │   ├── ProjectCard.jsx
+│   │       │   └── ProjectCard.scss
+│   │       ├── skills/
+│   │       │   ├── Skills.jsx
+│   │       │   └── Skills.scss
+│   │       ├── socialmedia/
+│   │       │   ├── SocialMedia.jsx
+│   │       │   └── SocialMedia.scss
+│   │       ├── strengthcard/
+│   │       │   ├── StrengthCard.jsx
+│   │       │   └── StrengthCard.scss
+│   │       ├── verticalprojectcard/
+│   │       │   ├── VerticalProjectCard.jsx
+│   │       │   └── VerticalProjectCard.scss
+│   │       └── wideprojectcard/
+│   │           ├── WideProjectCard.jsx
+│   │           └── WideProjectCard.scss
+│   ├── config/
+│   │   ├── constants.js
+│   │   ├── index.js
+│   │   └── siteConfig.js
+│   ├── contexts/
+│   │   ├── index.js
+│   │   ├── SettingsContext.jsx
+│   │   └── ThemeContext.jsx
+│   ├── data/
+│   │   ├── bannerData.json
+│   │   ├── projects.json
+│   │   └── skills.js
+│   ├── hooks/
+│   │   ├── index.js
+│   │   ├── useAnalytics.js
+│   │   ├── useFetch.js
+│   │   └── useLocalStorage.js
+│   ├── locales/
+│   │   ├── en.json
+│   │   ├── config.js
+│   │   └── index.js
+│   ├── layouts/
+│   │   ├── index.js
+│   │   └── MainLayout.jsx
+│   ├── lib/
+│   │   ├── formatDate.js
+│   │   ├── index.js
+│   │   └── validation.js
+│   ├── mocks/
+│   │   ├── browsers.js
+│   │   ├── handlers.js
+│   │   └── server.js
+│   ├── pages/
+│   │   ├── aboutpage/
+│   │   │   ├── AboutPage.jsx
+│   │   │   └── AboutPage.css
+│   │   ├── contactpage/
+│   │   │   ├── ContactPage.jsx
+│   │   │   └── ContactPage.css
+│   │   ├── homepage/
+│   │   │   ├── HomePage.jsx
+│   │   │   └── HomePage.css
+│   │   ├── notfoundpage/
+│   │   │   ├── NotFoundPage.jsx
+│   │   │   └── NotFoundPage.css
+│   │   ├── projectdetailpage/
+│   │   │   ├── ProjectDetailPage.jsx
+│   │   │   └── ProjectDetailPage.scss
+│   │   └── projectpage/
+│   │       ├── ProjectsPage.jsx
+│   │       └── ProjectsPage.css
+│   ├── routes/
+│   │   ├── index.jsx
+│   │   └── ProtectedRoute.jsx
+│   ├── store/
+│   │   ├── index.js
+│   │   ├── projectStore.js
+│   │   └── uiStore.js
+│   ├── styles/
+│   │   ├── themes/
+│   │   │   ├── _themes.scss
+│   │   │   ├── dark.scss
+│   │   │   └── light.scss
+│   │   ├── _variables.scss
+│   │   ├── global.scss
+│   │   ├── App.css
+│   │   └── index.css
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+├── .editorconfig
+├── .eslintignore
+├── .eslintrc.js
+├── .gitignore
+├── .lintstagedrc.js
+├── .npmrc
+├── .prettierignore
+├── .prettierrc.json
+├── eslint.config.js
+├── index.html
+├── LICENSE
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── README.md
+├── stylelint.config.js
+├── vite.config.js
+└── vitest.config.js
